@@ -17,12 +17,12 @@
 
 <!-- BEGIN: Page JS-->
 <script src="{{ asset('app-assets/js/scripts/pages/dashboard-ecommerce.js') }}"></script>
-<script src="../../../app-assets/js/scripts/charts/chartjs/line/line.js"></script>
-<script src="../../../app-assets/js/scripts/charts/chartjs/line/line-area.js"></script>
-<script src="../../../app-assets/js/scripts/charts/chartjs/line/line-logarithmic.js"></script>
-<script src="../../../app-assets/js/scripts/charts/chartjs/line/line-multi-axis.js"></script>
-<script src="../../../app-assets/js/scripts/charts/chartjs/line/line-skip-points.js"></script>
-<script src="../../../app-assets/js/scripts/charts/chartjs/line/line-stacked-area.js"></script>
+<script src="{{ asset('app-assets/js/scripts/charts/chartjs/line/line.js')}}"></script>
+<script src="{{ asset('app-assets/js/scripts/charts/chartjs/line/line-area.js')}}"></script>
+<script src="{{ asset('app-assets/js/scripts/charts/chartjs/line/line-logarithmic.js')}}"></script>
+<script src="{{ asset('app-assets/js/scripts/charts/chartjs/line/line-multi-axis.js')}}"></script>
+<script src="{{ asset('app-assets/js/scripts/charts/chartjs/line/line-skip-points.js')}}"></script>
+<script src="{{ asset('app-assets/js/scripts/charts/chartjs/line/line-stacked-area.js')}}"></script>
 <!-- END: Page JS-->
 
 {{-- Datatables Script --}}
@@ -35,3 +35,9 @@
 
 {{-- Chart JS --}}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+ <!-- include libraries(jQuery, bootstrap) -->
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+ <!-- include summernote css/js -->
+ <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>

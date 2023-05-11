@@ -3,19 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\division;
 use Illuminate\Http\Request;
 
-class insertberitaController extends Controller
+class detailspageController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $division = division::all();
-        $title = "Inventory";
-        return view('dashboard.insertberita.index')->with(compact('division','title'));
+        return view('homepage.detailberita.index');
     }
 
     /**
@@ -31,8 +28,7 @@ class insertberitaController extends Controller
      */
     public function store(Request $request)
     {
-        $division = division::all();
-        return view('dashboard.insertberita.createberita')->with(compact('division'));
+        //
     }
 
     /**

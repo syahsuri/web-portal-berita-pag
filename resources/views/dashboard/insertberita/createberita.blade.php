@@ -1,6 +1,5 @@
 @extends('dashboard.layouts.main')
 @section('contents')
-
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="content-wrapper">
@@ -32,7 +31,7 @@
                         <div class="row breadcrumbs-top d-inline-block">
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href=""></a>
+                                    <li class="breadcrumb-item"><a href="">Dashboard</a>
                                     </li>
                                     <li class="breadcrumb-item active">Tambah Berita
                                     </li>
@@ -49,76 +48,45 @@
                             @csrf
                             <div class="form-body">
                                 <div class="form-group">
-                                    <label for="id_jenis_product">Jenis Product</label>
-                                    <select class="c-select form-control" id="id_jenis_product" name="id_jenis_product">
+                                    <label for="judul_berita">Judul Berita</label>
+                                    <input type="text" id="judul"
+                                        class="form-control @error('judul') is-invalid @enderror" name="judul"
+                                        id="judul" value="judul">
                                     </select>
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="eventRegInput3">Catagory</label>
+                                    <select class="c-select form-control" id="category" name="category">
+                                        @foreach ($division as $divisi)
+                                            <option value="{{ $divisi->id }}"
+                                                {{ old('id') == $divisi->id ? 'selected' : '' }}>
+                                                {{ $divisi->nama_divisi }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
-                                    <label for="eventRegInput2">Kode Barang</label>
-                                    <input type="text" id="kode_barang" class="form-control @error('kode_barang') is-invalid @enderror" name="kode_barang"
-                                        id="kode_barang" value="">
-                                    @error('kode_barang')
+                                <div class="form-group">
+                                    <label for="eventRegInput2">Author</label>
+                                    <input type="text" id="author"
+                                        class="form-control @error('author') is-invalid @enderror" name="author"
+                                        id="author" value="">
+                                    @error('author')
                                         <div class="invalid-feedback">
                                         </div>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="eventRegInput3">Nama Product</label>
-                                    <input type="text" id="nama_product"
-                                        class="form-control @error('nama_product') is-invalid @enderror" name="nama_product"
-                                        id="nama_product" value="" required>
-                                    @error('nama_product')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
+                                    <label for="thumbnail">Thumbnail</label>
+                                    <input type="file" class="form-control-file" id="thumbnail" name="thumbnail">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="eventRegInput5">Brand</label>
-                                    <input type="text" id="brand"
-                                        class="form-control @error('brand') is-invalid @enderror" name="brand"
-                                        id="brand" value="" required>
-                                    @error('brand')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
+                                    <label for="eventRegInput3">Article</label>
+                                    <textarea id="summernote" name="editordata"></textarea>
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="eventRegInput5">Stok</label>
-                                    <input type="text" id="stok"
-                                        class="form-control @error('stok') is-invalid @enderror" name="stok"
-                                        id="stok" value="" required>
-                                    @error('brand')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label>Harga Satuan</label>
-                                    <div class="input-group mt-0">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Rp .</span>
-                                        </div>
-                                        <input type="text" id="harga_satuan"
-                                            class="form-control @error('harga_satuan') is-invalid @enderror"
-                                            name="harga_satuan" id="" value="" required>
-                                        @error('harga_satuan')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                </div>
-
                             </div>
-
                             <div class="form-actions center">
                                 <button type="button" class="btn btn-warning mr-1">
                                     <i class="ft-x"></i> Cancel
@@ -137,7 +105,11 @@
 
     <script>
         $(document).ready(function() {
-            $('#example').DataTable();
+            $('#summernote').summernote({
+                placeholder: 'Write Articles Here',
+                tabsize: 2,
+                height: 350
+            });
         });
     </script>
 @endsection

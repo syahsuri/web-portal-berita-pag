@@ -15,8 +15,7 @@
                         </div>
                         <div class="post-info">
                             <span class="color-3">SPORTS </span>
-                            <h3 class="post-title post-title-size"><a href="#" rel="bookmark"> The generated Lorem
-                                    Ipsum is therefore always free from . </a></h3>
+                            <h3 class="post-title post-title-size"><a href="#" rel="bookmark"> The generated Lorem Ipsum is therefore always free from . </a></h3>
                             <div class="post-editor-date">
                                 <!-- post date -->
                                 <div class="post-date">
@@ -39,8 +38,7 @@
                         </div>
                         <div class="post-info">
                             <span class="color-5">BUSINESS</span>
-                            <h3 class="post-title post-title-size"><a href="#" rel="bookmark">Contrary to popular
-                                    belief, Lorem Ipsum is not simply random text. </a></h3>
+                            <h3 class="post-title post-title-size"><a href="#" rel="bookmark">Contrary to popular belief, Lorem Ipsum is not simply random text. </a></h3>
                             <div class="post-editor-date">
                                 <!-- post date -->
                                 <div class="post-date">
@@ -410,7 +408,7 @@
                 <div class="col-sm-4">
                     <div class="post-style1">
                         <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-                            <!-- post image -->
+                        <!-- post image -->
                             <a href="#" class="video-img-icon">
                                 <i class="fa fa-play"></i>
                                 <img src="http://pertaarungas.pertamina.com/galeri/aafc59947ee716e53a7a1fa4a5a592cb.JPG"

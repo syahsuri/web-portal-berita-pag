@@ -33,13 +33,13 @@
                 <div class="header-logo">
                     <!-- logo -->
                     <a href="index.html">
-                        <img class="td-retina-data img-responsive" src="images/logo.png" alt="">
+                        <img class="td-retina-data img-responsive" src="{{ asset('images/logo.png')}}" alt="">
                     </a>
                 </div>
             </div>
             <div class="col-xs-8 col-md-8 col-sm-8 hidden-xs">
                 <div class="header-banner">
-                    <a href="#"><img class="td-retina img-responsive" src="images/top-bannner.jpg"
+                    <a href="#"><img class="td-retina img-responsive" src="{{ asset('images/top-bannner.jpg')}}"
                             alt=""></a>
                 </div>
             </div>

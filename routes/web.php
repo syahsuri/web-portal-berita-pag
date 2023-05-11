@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\detailspageController;
 use App\Http\Controllers\homepageController;
 use App\Http\Controllers\insertberitaController;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +21,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/homepage', [homepageController::class, 'index'])->name('homepage');
+
+
+Route::prefix('/homepage')->group(function() {
+    Route::get('/', [homepageController::class, 'index'])->name('homepage');
+    Route::get('/detailberita', [detailspageController::class, 'index'])->name('detailsberita');
+});
 
 Route::prefix('/dashboard')->group(function() {
     Route::get('/', [dashboardController::class, 'index'])->name('dashboard');

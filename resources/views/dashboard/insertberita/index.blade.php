@@ -50,10 +50,10 @@
                 <!-- Datatables -->
                 <div class="row">
                     <div class="col">
-                        <button class="btn btn-primary" href="{{ route('createberita') }}">
+                        <a class="btn btn-primary" href="{{ route('createberita') }}">
                             <i class="fa-regular fa-plus me-2"></i>
                             Tambah
-                        </button>
+                        </a>
                         <div class="card mt-3">
                             <div class="card-body">
                                 {{-- Table --}}
