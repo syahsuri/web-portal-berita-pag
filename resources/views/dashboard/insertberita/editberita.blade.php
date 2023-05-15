@@ -27,13 +27,13 @@
                 {{-- Heading --}}
                 <div class="content-header row">
                     <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-                        <h3 class="content-header-title mb-0 d-inline-block">Tambah Berita</h3>
+                        <h3 class="content-header-title mb-0 d-inline-block">Edit Berita</h3>
                         <div class="row breadcrumbs-top d-inline-block">
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="">Dashboard</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Tambah Berita
+                                    <li class="breadcrumb-item active">Edit Berita
                                     </li>
                                 </ol>
                             </div>
@@ -44,15 +44,16 @@
                 <!-- Form -->
                 <div class="card-content collapse show">
                     <div class="card-body">
-                        <form class="form" action="{{ route('createberita.store') }}" method="POST"
-                            enctype="multipart/form-data">
+
+                        <form class="form" action="{{ route('editberita.update', ['id' => $articles->id]) }}"
+                            method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-body">
                                 <div class="form-group">
                                     <label for="judul_berita">Judul Berita</label>
                                     <input type="text" id="judul"
                                         class="form-control @error('judul') is-invalid @enderror" name="judul"
-                                        value="" required>
+                                        id="judul" value="{{ $articles->judul }}">
                                     </select>
                                 </div>
 
@@ -60,7 +61,7 @@
                                     <label for="judul_berita">slug</label>
                                     <input type="text" id="slug"
                                         class="form-control @error('judul') is-invalid @enderror" name="slug"
-                                        value="">
+                                        id="judul" value="{{ $articles->slug }}">
                                     </select>
                                 </div>
 
@@ -69,7 +70,7 @@
                                     <select class="c-select form-control" id="id_divisi" name="id_divisi">
                                         @foreach ($divisions as $divisi)
                                             <option value="{{ $divisi->id }}"
-                                                {{ old('id') == $divisi->id ? 'selected' : '' }}>
+                                                {{ old('id_divisi', $articles->id_divisi) == $divisi->id ? 'selected' : '' }}>
                                                 {{ $divisi->nama_divisi }}</option>
                                         @endforeach
                                     </select>
@@ -79,21 +80,23 @@
                                     <label for="eventRegInput2">Author</label>
                                     <input type="text" id="author"
                                         class="form-control @error('author') is-invalid @enderror" name="author"
-                                        id="author" value="">
-                                    @error('author')
-                                        <div class="invalid-feedback">
-                                        </div>
-                                    @enderror
+                                        id="author" value="{{ $articles->author }}">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="thumbnail">Thumbnail</label>
                                     <input type="file" class="form-control-file" id="thumbnail" name="thumbnail">
+                                    @if ($articles->thumbnail)
+                                        <p>Previous thumbnail:</p>
+                                        <img src="{{ asset('images/' . $articles->thumbnail) }}" alt="thumbnail"
+                                            style="max-width: 200px; max-height: 200px;">
+                                    @endif
                                 </div>
+
 
                                 <div class="form-group">
                                     <label for="eventRegInput3">Article</label>
-                                    <textarea id="summernote" name="article"></textarea>
+                                    <textarea id="summernote" name="article" value="">{{ $articles->article }}</textarea>
                                 </div>
                             </div>
                             <div class="form-actions center">

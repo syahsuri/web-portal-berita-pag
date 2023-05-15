@@ -1,25 +1,27 @@
 @extends('homepage.layouts.main')
 
 @section('highlightsSections')
-    <section class="headding-news">
+    <section class="headding-news ">
         <div class="container">
             <div class="row row-margin">
                 <div class="col-sm-3 col-padding">
                     <div class="post-wrapper post-grid-1 wow fadeIn" data-wow-duration="2s">
                         <div class="post-thumb img-zoom-in">
                             <a href="#">
-                                <img class="entry-thumb"
-                                    src="https://pertaarungas.pertamina.com/gambar/7fdeca8ba02980212ec63de025c07bc0.JPG"
-                                    alt="">
+                                <img class="entry-thumb" src="{{ asset('images/' . $secondlatestnews->thumbnail) }}"
+                                    alt="" value="{{ $secondlatestnews->thumbnail }}" alt="">
                             </a>
                         </div>
                         <div class="post-info">
-                            <span class="color-3">SPORTS </span>
-                            <h3 class="post-title post-title-size"><a href="#" rel="bookmark"> The generated Lorem Ipsum is therefore always free from . </a></h3>
+                            <span class="color-3">{{ $secondlatestnews->division->nama_divisi }}</span>
+                            <h3 class="post-title post-title-size"><a
+                                    href="{{ route('detailsberita', ['slug' => $secondlatestnews->slug]) }}"
+                                    rel="bookmark">{{ substr($secondlatestnews->judul, 0) }}{{ strlen($secondlatestnews->judul) > 50 ? '...' : '' }}</a>
+                            </h3>
                             <div class="post-editor-date">
                                 <!-- post date -->
                                 <div class="post-date">
-                                    <i class="pe-7s-clock"></i> Oct 6, 2016
+                                    <i class="pe-7s-clock"></i> {{ $secondlatestnews->created_at->format('d F Y') }}
                                 </div>
                                 <!-- post comment -->
                                 <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
@@ -32,17 +34,17 @@
                         <div class="post-thumb img-zoom-in">
                             <a href="#">
                                 <img class="entry-thumb"
-                                    src="https://pertaarungas.pertamina.com/gambar/e9a3207468140278618215a173db053e.jpg"
+                                    src="{{ asset('images/' . $fifthlatestnews->thumbnail) }}"
                                     alt="">
                             </a>
                         </div>
                         <div class="post-info">
-                            <span class="color-5">BUSINESS</span>
-                            <h3 class="post-title post-title-size"><a href="#" rel="bookmark">Contrary to popular belief, Lorem Ipsum is not simply random text. </a></h3>
+                            <span class="color-5">{{ $fifthlatestnews->division->nama_divisi }}</span>
+                            <h3 class="post-title post-title-size"><a href="{{ route('detailsberita', ['slug' => $fifthlatestnews->slug]) }}" rel="bookmark">{{ substr($fifthlatestnews->judul, 0) }}{{ strlen($fifthlatestnews->judul) > 50 ? '...' : '' }}</a></h3>
                             <div class="post-editor-date">
                                 <!-- post date -->
                                 <div class="post-date">
-                                    <i class="pe-7s-clock"></i> Oct 6, 2016
+                                    <i class="pe-7s-clock"></i> {{ $fifthlatestnews->created_at->format('d F Y') }}
                                 </div>
                                 <!-- post comment -->
                                 <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
@@ -52,23 +54,24 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-sm-6 col-padding">
                     <div class="post-wrapper post-grid-3 wow fadeIn" data-wow-duration="2s">
                         <div class="post-thumb img-zoom-in">
                             <a href="#">
-                                <img class="entry-thumb-middle"
-                                    src="https://pertaarungas.pertamina.com/gambar/ac4ccca8921d9e3e8a142a32ab6ecc8c.jpg"
-                                    alt="">
+                                <img class="entry-thumb-middle" src="{{ asset('images/' . $firstlatestnews->thumbnail) }}"
+                                    alt="" value="{{ $firstlatestnews->thumbnail }}">
                             </a>
                         </div>
                         <div class="post-info">
-                            <span class="color-4">FASHION</span>
-                            <h3 class="post-title"><a href="#" rel="bookmark">There are many variations of passages of
-                                    Lorem Ipsum available, but the majority have </a></h3>
+                            <span class="color-4">{{ $firstlatestnews->division->nama_divisi }}</span>
+                            <h3 class="post-title"><a
+                                    href="{{ route('detailsberita', ['slug' => $firstlatestnews->slug]) }}"
+                                    rel="bookmark">{{ $firstlatestnews->judul }} </a></h3>
                             <div class="post-editor-date">
                                 <!-- post date -->
                                 <div class="post-date">
-                                    <i class="pe-7s-clock"></i> Oct 6, 2016
+                                    <i class="pe-7s-clock"></i> {{ $firstlatestnews->created_at->format('d F Y') }}
                                 </div>
                                 <!-- post comment -->
                                 <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
@@ -78,23 +81,26 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div class="col-sm-3 col-padding">
                     <div class="post-wrapper post-grid-4 wow fadeIn" data-wow-duration="2s">
                         <div class="post-thumb img-zoom-in">
                             <a href="#">
-                                <img class="entry-thumb"
-                                    src="https://pertaarungas.pertamina.com/gambar/6f50253d2c9c817a06de93a82106957e.jpg"
+                                <img class="entry-thumb" src="{{ asset('images/' . $thirdlatestnews->thumbnail) }}"
                                     alt="">
                             </a>
                         </div>
                         <div class="post-info">
-                            <span class="color-1">TRAVEL</span>
-                            <h3 class="post-title post-title-size"><a href="#" rel="bookmark">The standard chunk of
-                                    Lorem Ipsum used since the 1500s is reproduced</a></h3>
+                            <span class="color-1">{{ $thirdlatestnews->division->nama_divisi }}</span>
+                            <h3 class="post-title post-title-size"><a
+                                    href="{{ route('detailsberita', ['slug' => $thirdlatestnews->slug]) }}"
+                                    rel="bookmark">{{ substr($thirdlatestnews->judul, 0) }}{{ strlen($thirdlatestnews->judul) > 50 ? '...' : '' }}</a>
+                            </h3>
                             <div class="post-editor-date">
                                 <!-- post date -->
                                 <div class="post-date">
-                                    <i class="pe-7s-clock"></i> Oct 6, 2016
+                                    <i class="pe-7s-clock"></i>{{ $thirdlatestnews->created_at->format('d F Y') }}
                                 </div>
                                 <!-- post comment -->
                                 <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
@@ -103,22 +109,25 @@
                             </div>
                         </div>
                     </div>
+
+
                     <div class="post-wrapper post-grid-5 wow fadeIn" data-wow-duration="2s">
                         <div class="post-thumb img-zoom-in">
                             <a href="#">
-                                <img class="entry-thumb"
-                                    src="https://pertaarungas.pertamina.com/gambar/7fdeca8ba02980212ec63de025c07bc0.JPG"
+                                <img class="entry-thumb" src="{{ asset('images/' . $fourthlatestnews->thumbnail) }}"
                                     alt="">
                             </a>
                         </div>
                         <div class="post-info">
-                            <span class="color-2">TECHNOLOGY</span>
-                            <h3 class="post-title post-title-size"><a href="#" rel="bookmark">The 20 free things in
-                                    Sydney with your girlfriend </a></h3>
+                            <span class="color-2">{{ $fourthlatestnews->division->nama_divisi }}</span>
+                            <h3 class="post-title post-title-size"><a
+                                    href="{{ route('detailsberita', ['slug' => $fourthlatestnews->slug]) }}"
+                                    rel="bookmark">{{ substr($fourthlatestnews->judul, 0) }}{{ strlen($fourthlatestnews->judul) > 50 ? '...' : '' }}</a>
+                            </h3>
                             <div class="post-editor-date">
                                 <!-- post date -->
                                 <div class="post-date">
-                                    <i class="pe-7s-clock"></i> Oct 6, 2016
+                                    <i class="pe-7s-clock"></i> {{ $fourthlatestnews->created_at->format('d F Y') }}
                                 </div>
                                 <!-- post comment -->
                                 <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
@@ -408,7 +417,7 @@
                 <div class="col-sm-4">
                     <div class="post-style1">
                         <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-                        <!-- post image -->
+                            <!-- post image -->
                             <a href="#" class="video-img-icon">
                                 <i class="fa fa-play"></i>
                                 <img src="http://pertaarungas.pertamina.com/galeri/aafc59947ee716e53a7a1fa4a5a592cb.JPG"

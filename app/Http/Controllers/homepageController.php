@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\article;
+use App\Models\division;
 use Illuminate\Http\Request;
 
 class homepageController extends Controller
@@ -12,7 +14,13 @@ class homepageController extends Controller
      */
     public function index()
     {
-        Return view('homepage.index');
+        $divisions = division::all();
+        $firstlatestnews = Article::latest()->first();
+        $secondlatestnews = Article::latest()->skip(1)->take(1)->first();
+        $thirdlatestnews = Article::latest()->skip(2)->take(1)->first();
+        $fourthlatestnews = Article::latest()->skip(3)->take(1)->first();
+        $fifthlatestnews = Article::latest()->skip(4)->take(1)->first();
+        return view('homepage.index')->with(compact('firstlatestnews','secondlatestnews','thirdlatestnews','divisions','fourthlatestnews','fifthlatestnews'));
     }
 
     /**

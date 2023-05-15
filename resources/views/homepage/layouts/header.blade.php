@@ -32,7 +32,7 @@
             <div class="col-xs-12 col-md-4 col-sm-4">
                 <div class="header-logo">
                     <!-- logo -->
-                    <a href="index.html">
+                    <a href="{{ route('homepage') }}">
                         <img class="td-retina-data img-responsive" src="{{ asset('images/logo.png')}}" alt="">
                     </a>
                 </div>
@@ -51,7 +51,7 @@
     <nav class="navbar">
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.html" class="category01">HOME</a></li>
+                <li class="active"><a href="{{ route('homepage') }}" class="category01">HOME</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle category03" data-toggle="dropdown">BERITA FUNGSI
                         <span class="pe-7s-angle-down"></span></a>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\article;
 use App\Models\division;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,10 @@ class insertberitaController extends Controller
      */
     public function index()
     {
-        $division = division::all();
+        $divisions = division::all();
+        $articles = article::all();
         $title = "Inventory";
-        return view('dashboard.insertberita.index')->with(compact('division','title'));
+        return view('dashboard.insertberita.index')->with(compact('divisions', 'title', 'articles'));
     }
 
     /**
@@ -23,7 +25,8 @@ class insertberitaController extends Controller
      */
     public function create()
     {
-        //
+        $divisions = division::all();
+        return view('dashboard.insertberita.createberita')->with(compact('divisions'));
     }
 
     /**
@@ -31,8 +34,31 @@ class insertberitaController extends Controller
      */
     public function store(Request $request)
     {
-        $division = division::all();
-        return view('dashboard.insertberita.createberita')->with(compact('division'));
+        $request->validate([
+            'judul' => 'required',
+            'slug' => 'required|unique:articles',
+            'id_divisi' => 'required',
+            'author' => 'required',
+            'article' => 'required'
+        ]);
+
+        $article = new article();
+        $article->judul = $request->judul;
+        $article->slug = $request->slug;
+        $article->id_divisi = $request->id_divisi;
+        $article->author = $request->author;
+        $article->article = $request->article;
+
+        if ($request->hasFile('thumbnail')) {
+            $file = $request->file('thumbnail');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('images'), $filename);
+            $article->thumbnail = $filename;
+        }
+
+        $article->save();
+
+        return redirect()->route('insertberita')->with('success', 'Artikel berhasil disimpan.');
     }
 
     /**
@@ -46,9 +72,13 @@ class insertberitaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+
+        $divisions = division::all();
+        $articles = article::find($id);
+        $title = "Inventory";
+        return view('dashboard.insertberita.editberita')->with(compact('divisions', 'title', 'articles'));
     }
 
     /**
@@ -56,14 +86,41 @@ class insertberitaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        // Find the article to be updated
+        $article = Article::findOrFail($id);
+
+        // Update the article's fields with the new data from the form
+        $article->judul = $request->input('judul');
+        $article->slug = $request->input('slug');
+        $article->id_divisi = $request->input('id_divisi');
+        $article->author = $request->input('author');
+
+        // Handle the thumbnail upload
+        if ($request->hasFile('thumbnail')) {
+            $file = $request->file('thumbnail');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('images'), $filename);
+            $article->thumbnail = $filename;
+        }
+
+        // Update the article's content
+        $article->article = $request->input('article');
+
+        // Save the changes to the database
+        $article->save();
+
+        // Redirect the user to the updated article's page
+        return redirect()->route('insertberita')->with('success', 'Artikel berhasil disimpan.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $article = article::find($request->id); // find the article based on its ID
+        $article->delete(); // delete the article
+        return redirect()->route('insertberita')->with('success', "Berita $article->judul berhasil dihapus!"); // redirect with success message
     }
 }

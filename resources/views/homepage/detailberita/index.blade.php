@@ -6,69 +6,29 @@
             <div class="col-sm-8">
                 <article class="content">
                     <div class="post-thumb">
-                        <img src="https://pertaarungas.pertamina.com/gambar/7fdeca8ba02980212ec63de025c07bc0.JPG"
+                        <img src="{{ asset('images/' . $detailsarticles->thumbnail) }}"
                             class="img-responsive post-image" alt="" />
                     </div>
                     <h1>
-                        Pertamina Dukung Pengembangan KEK Arun Lhokseumawe Menuju Kawasan
-                        Industri Hijau
+                        {{ $detailsarticles->judul }}
+
                     </h1>
                     <div class="date">
                         <ul>
                             <li>
-                                By<a title="" href="#"><span>Jone Kilna</span></a> --
+                                Oleh <a title="" href="#"><span>{{ $detailsarticles->author }}</span></a> --
                             </li>
-                            <li><a title="" href="#">11 Nov 2015</a> --</li>
+                            <li><a title="" href="#">{{ $detailsarticles->created_at->format('d F Y h:i A') }}</a> --</li>
                             <li>
                                 <a title="" href="#"><span>275 Comments</span></a>
                             </li>
                         </ul>
                     </div>
                     <div style="text-align: justify">
-                        <br />
                         <p>
-                            LHOKSEUMAWE - Sinergi BUMN dukung pengembangan Kawasan Ekonomi
-                            Khusus (KEK) Arun Lhokseumawe menjadi Kawasan Energi Hijau.
-                            Kerjasama lintas BUMN ini diwujudkan melalui penandatangan Head
-                            of Agreement Penyertaan Modal di PT Patriot selaku Badan Usaha
-                            Pembangun dan Pengelola (BUPP) KEK Arun Lhokseumawe dimana PT
-                            Pertamina (Persero) bersama BUMN lain yaitu PT Pupuk Iskandar
-                            Muda, PT Pelindo, dan PT Pembangunan Aceh mengambil peran
-                            strategis tersebut.
-                        </p>
-                        <p>
-                            Disaksikan langsung oleh Presiden RI Joko Widodo dan Menteri
-                            BUMN Erick Thohir, perjanjian tersebut ditandatangani oleh
-                            Direktur Utama PT Pertamina (Persero) Nicke Widyawati, Ditektur
-                            Utama PT Pupuk Iskandar Muda Budi Santoso Syarif, Direktur Utama
-                            PT Pelindo Arif Suhartono, dan Direktur Utama PT Pembangunan
-                            Aceh Ali Mulyagusdin. Penandatangan dilaksanakan hari ini (10/2)
-                            di acara Peresmian Pabrik NPK Chemical Aceh Utara, Lhokseumawe
-                            Provinsi Aceh.
-                        </p>
-                        <p>
-                            KEK Arun Lhokseumawe dengan luas 2.600 Hektar akan fokus pada
-                            sektor energi, petrokimia, agro industri pendukung ketahanan
-                            pangan, logistik serta industri penghasil kertas kraft. Selain
-                            itu wilayah ini juga memiliki potensi di pengembangan industri
-                            perikanan dan industri pertanian dengan dukungan komoditas
-                            unggulan seperti sawit, kopi, kakao, karet, kelapa, minyak
-                            atsiri dan lain-lain.
-                        </p>
-                        <p>
-                            KEK Arun Lhokseumawe dengan lokasinya yang sangat strategis
-                            memiliki potensi besar untuk berkembang di pasar perdagangan
-                            internasional khususnya ASEAN, sehingga membangun KEK Arun
-                            Lhokseumawe menjadi kawasan industri hijau sangatlah penting.
-                            Hal ini disampaikan oleh Presiden Republik Indonesia Joko Widodo
-                            dalam sambutannya di acara peresmian.
-                        </p>
-                        <p>
-                            “Kita harapkan kawasan KEK Arun Lhokseumawe ini nanti menjadi
-                            kawasan industri hijau. Investor sudah akan mulai masuk kesini
-                            dan kita harapkan ini akan berpengaruh pada PDRB provinsi aceh.
-                            Perkiraan Kementerian BUMN bisa mempengaruhi 7% dari PDRB di
-                            Aceh,” ungkap Jokowi.
+                            @php
+                                echo strip_tags($detailsarticles->article, '<b><i><u>');
+                            @endphp
                         </p>
                     </div>
 

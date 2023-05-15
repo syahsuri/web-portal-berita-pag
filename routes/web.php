@@ -25,12 +25,16 @@ Route::get('/', function () {
 
 Route::prefix('/homepage')->group(function() {
     Route::get('/', [homepageController::class, 'index'])->name('homepage');
-    Route::get('/detailberita', [detailspageController::class, 'index'])->name('detailsberita');
+    Route::get('/detailberita/{slug}', [detailspageController::class, 'index'])->name('detailsberita');
 });
 
 Route::prefix('/dashboard')->group(function() {
     Route::get('/', [dashboardController::class, 'index'])->name('dashboard');
     Route::get('/insertberita', [insertberitaController::class, 'index'])->name('insertberita');
-    Route::get('/createberita', [insertberitaController::class, 'store'])->name('createberita');
+    Route::delete('/insertberita/{id}', [insertberitaController::class, 'destroy'])->name('insertberita.destroy');
+    Route::get('/createberita', [insertberitaController::class, 'create'])->name('createberita');
+    Route::post('/createberita', [insertberitaController::class, 'store'])->name('createberita.store');
+    Route::get('/editberita{id}', [insertberitaController::class, 'edit'])->name('editberita');
+    Route::post('/editberita{id}', [insertberitaController::class, 'update'])->name('editberita.update');
 });
 

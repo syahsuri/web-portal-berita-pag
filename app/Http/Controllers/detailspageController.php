@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\article;
 use Illuminate\Http\Request;
 
 class detailspageController extends Controller
@@ -10,9 +11,10 @@ class detailspageController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request, $slug)
     {
-        return view('homepage.detailberita.index');
+        $detailsarticles = article::where('slug', $slug)->firstOrFail();
+        return view('homepage.detailberita.index')->with(compact('detailsarticles'));
     }
 
     /**

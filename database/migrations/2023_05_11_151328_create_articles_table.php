@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
+            $table->text('slug');
             $table->foreignId('id_divisi')->constrained('divisions')->onUpdate('cascade')->onDelete('restrict');
             $table->string('author');
             $table->string('thumbnail')->nullable();
