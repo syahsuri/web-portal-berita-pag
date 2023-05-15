@@ -1,6 +1,7 @@
 @extends('homepage.layouts.main')
 
 @section('highlightsSections')
+<h1>dskdmandsakdkm</h1>
     <section class="headding-news ">
         <div class="container">
             <div class="row row-margin">
