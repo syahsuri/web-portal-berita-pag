@@ -17,3 +17,22 @@ $(document).ready(function() {
 
 } );
 
+$(document).ready(function() {
+    $('#myTable2').DataTable( {
+        "lengthMenu": [5, 25, 50, "All"],
+        "scrollX": true,
+        "language": {
+            "search": "",
+            "searchPlaceholder": "Search...",
+            "decimal": ",",
+            "thousands": "."
+        }
+    } );
+    $(document).ready(function () {
+        $('.dataTables_filter input[type="search"]').css( {
+            "marginBottom": "10px"
+        } );
+    } );
+
+} );
+

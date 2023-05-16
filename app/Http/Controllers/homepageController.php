@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\article;
 use App\Models\division;
+use App\Models\headnewspage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class homepageController extends Controller
 {
@@ -15,12 +17,58 @@ class homepageController extends Controller
     public function index()
     {
         $divisions = division::all();
-        $firstlatestnews = Article::latest()->first();
-        $secondlatestnews = Article::latest()->skip(1)->take(1)->first();
-        $thirdlatestnews = Article::latest()->skip(2)->take(1)->first();
-        $fourthlatestnews = Article::latest()->skip(3)->take(1)->first();
-        $fifthlatestnews = Article::latest()->skip(4)->take(1)->first();
-        return view('homepage.index')->with(compact('firstlatestnews','secondlatestnews','thirdlatestnews','divisions','fourthlatestnews','fifthlatestnews'));
+        $midNews = DB::table('top_news')
+            ->join('articles', 'top_news.id_articles', '=', 'articles.id')
+            ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
+            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name')
+            ->first();
+
+        $firstleftNews = DB::table('top_news')
+            ->join('articles', 'top_news.id_articles', '=', 'articles.id')
+            ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
+            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name')
+            ->skip(1)
+            ->take(1)
+            ->first();
+
+        $secondleftNews = DB::table('top_news')
+            ->join('articles', 'top_news.id_articles', '=', 'articles.id')
+            ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
+            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name')
+            ->skip(2)
+            ->take(1)
+            ->first();
+
+        $firstrightNews = DB::table('top_news')
+            ->join('articles', 'top_news.id_articles', '=', 'articles.id')
+            ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
+            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name')
+            ->skip(3)
+            ->take(1)
+            ->first();
+
+        $secondrightNews = DB::table('top_news')
+            ->join('articles', 'top_news.id_articles', '=', 'articles.id')
+            ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
+            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name')
+            ->skip(4)
+            ->take(1)
+            ->first();
+
+        $scrollingrecentnews = Article::latest()->take(3)->get();
+        $otherLatestNews = Article::latest()
+            ->whereNotIn('id', $scrollingrecentnews->pluck('id'))
+            ->take(3)
+            ->get();
+
+        return view('homepage.index')->with(compact(
+            'midNews',
+            'firstleftNews',
+            'secondleftNews',
+            'firstrightNews',
+            'secondrightNews',
+            'scrollingrecentnews','otherLatestNews'
+        ));
     }
 
     /**

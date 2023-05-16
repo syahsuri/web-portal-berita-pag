@@ -36,5 +36,7 @@ Route::prefix('/dashboard')->group(function() {
     Route::post('/createberita', [insertberitaController::class, 'store'])->name('createberita.store');
     Route::get('/editberita{id}', [insertberitaController::class, 'edit'])->name('editberita');
     Route::post('/editberita{id}', [insertberitaController::class, 'update'])->name('editberita.update');
+    Route::put('/insertopnews{headnewspage}', [insertberitaController::class, 'topnews'])->name('insertberita.topnews');
 });
 
+Route::get('/get-thumbnail',[insertberitaController::class, 'getThumbnail']);

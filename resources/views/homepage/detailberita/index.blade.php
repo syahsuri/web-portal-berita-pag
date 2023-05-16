@@ -27,7 +27,7 @@
                     <div style="text-align: justify">
                         <p>
                             @php
-                                echo strip_tags($detailsarticles->article, '<b><i><u>');
+                                echo strip_tags($detailsarticles->article, '<p><b><i><u>');
                             @endphp
                         </p>
                     </div>
