@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\detailspageController;
+use App\Http\Controllers\homepageController;
+use App\Http\Controllers\insertberitaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +20,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+Route::prefix('/homepage')->group(function() {
+    Route::get('/', [homepageController::class, 'index'])->name('homepage');
+    Route::get('/detailberita/{slug}', [detailspageController::class, 'index'])->name('detailsberita');
+});
+
+Route::prefix('/dashboard')->group(function() {
+    Route::get('/', [dashboardController::class, 'index'])->name('dashboard');
+    Route::get('/insertberita', [insertberitaController::class, 'index'])->name('insertberita');
+    Route::delete('/insertberita/{id}', [insertberitaController::class, 'destroy'])->name('insertberita.destroy');
+    Route::get('/createberita', [insertberitaController::class, 'create'])->name('createberita');
+    Route::post('/createberita', [insertberitaController::class, 'store'])->name('createberita.store');
+    Route::get('/editberita{id}', [insertberitaController::class, 'edit'])->name('editberita');
+    Route::post('/editberita{id}', [insertberitaController::class, 'update'])->name('editberita.update');
+    Route::put('/insertopnews{headnewspage}', [insertberitaController::class, 'topnews'])->name('insertberita.topnews');
+});
+
+Route::get('/get-thumbnail',[insertberitaController::class, 'getThumbnail']);
