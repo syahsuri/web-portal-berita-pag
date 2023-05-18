@@ -4,6 +4,7 @@ use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\detailspageController;
 use App\Http\Controllers\homepageController;
 use App\Http\Controllers\insertberitaController;
+use App\Http\Controllers\insertvideosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,5 +37,11 @@ Route::prefix('/dashboard')->group(function() {
     Route::post('/createberita', [insertberitaController::class, 'store'])->name('createberita.store');
     Route::get('/editberita{id}', [insertberitaController::class, 'edit'])->name('editberita');
     Route::post('/editberita{id}', [insertberitaController::class, 'update'])->name('editberita.update');
+    Route::get('/insertvideos', [insertvideosController::class, 'index'])->name('insertvideos');
+    Route::delete('/insertvideos/{id}', [insertvideosController::class, 'destroy'])->name('insertvideos.destroy');
+    Route::get('/createvideos', [insertvideosController::class, 'create'])->name('createvideos');
+    Route::post('/createvideos', [insertvideosController::class, 'store'])->name('createvideos.store');
+    Route::get('/editvideos{id}', [insertvideosController::class, 'edit'])->name('editvideos');
+    Route::post('/editvideos{id}', [insertvideosController::class, 'update'])->name('editvideos.update');
 });
 
