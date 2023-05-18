@@ -18,8 +18,7 @@ class insertberitaController extends Controller
         $divisions = division::all();
         $topnews = headnewspage::all();
         $articles = article::all();
-        $title = "Inventory";
-        return view('dashboard.insertberita.index')->with(compact('divisions', 'title', 'articles', 'topnews'));
+        return view('dashboard.insertberita.index')->with(compact('divisions', 'articles', 'topnews'));
     }
 
     /**
