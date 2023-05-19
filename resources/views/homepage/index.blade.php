@@ -348,12 +348,34 @@
                     </div>
                 </div>
                 <!-- /.search area -->
-                <div class="banner-add">
+                 <div class="banner-add">
                     <!-- add -->
-                    <span class="add-title">- Broadcast -</span>
+                    {{-- <span class="add-title">- Broadcast -</span>
                     <a href="#"><img src="images/ad-banner.jpg" class="img-responsive center-block"
-                            alt=""></a>
-                </div>
+                            alt=""></a> --}}
+                            <div id="carouselExample" class="carousel slide">
+                                <div class="carousel-inner">
+                                  <div class="carousel-item active">
+                                    <img src="images/ad-banner.jpg" class="d-block w-100" alt="...">
+                                  </div>
+                                  <div class="carousel-item">
+                                    <img src="..." class="d-block w-100" alt="...">
+                                  </div>
+                                  <div class="carousel-item">
+                                    <img src="..." class="d-block w-100" alt="...">
+                                  </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                  <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                  <span class="visually-hidden">Next</span>
+                                </button>
+                              </div>
+                </div> 
+                
 
             </div>
             <!-- side content end -->
@@ -455,7 +477,7 @@
                                 <ul>
                                     <li><img src="images/comment-02.jpg" class="img-responsive" alt=""></li>
                                     <li>By <a title="" href="#"><span>Naeem Khan</span></a> --</li>
-                                    <li><a title="" href="#">Oct 6, 2016</a> --</li>
+                                    <li><a title="" href="#">Mei 15, 2023</a> --</li>
                                     <li><a title="" href="#"><span>275 Comments</span></a></li>
                                 </ul>
                             </div>
