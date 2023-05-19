@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\article;
 use App\Models\division;
+use App\Models\headnewspage;
 use Illuminate\Http\Request;
 
 class insertberitaController extends Controller
@@ -15,9 +16,9 @@ class insertberitaController extends Controller
     public function index()
     {
         $divisions = division::all();
+        $topnews = headnewspage::all();
         $articles = article::all();
-        $title = "Inventory";
-        return view('dashboard.insertberita.index')->with(compact('divisions', 'title', 'articles'));
+        return view('dashboard.insertberita.index')->with(compact('divisions', 'articles', 'topnews'));
     }
 
     /**
@@ -122,5 +123,31 @@ class insertberitaController extends Controller
         $article = article::find($request->id); // find the article based on its ID
         $article->delete(); // delete the article
         return redirect()->route('insertberita')->with('success', "Berita $article->judul berhasil dihapus!"); // redirect with success message
+    }
+
+    public function getThumbnail(Request $request)
+    {
+        $articleId = $request->input('id');
+        $article = article::find($articleId);
+
+        if ($article) {
+            $thumbnailPath = asset('images/' . $article->thumbnail);
+            return response()->json(['thumbnail' => $thumbnailPath]);
+        }
+
+        return response()->json(['thumbnail' => '']);
+    }
+
+    public function topnews(Request $request, headnewspage $headnewspage)
+    {
+        $article = [
+            'id_articles' => $request->id_articles
+        ];
+
+        // dd($article);
+        headnewspage::where('id', $headnewspage->id)->update($article);
+
+        return redirect()->route('insertberita')->with('success', "Berita berhasil dihapus!");
+
     }
 }

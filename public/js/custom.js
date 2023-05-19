@@ -1,7 +1,7 @@
 /* ---------------------------------------------
  javaScript Document
  --------------------------------------------- */
-$(document).ready(function() {
+$(document).ready(function () {
     "use strict";
 
     /* ---------------------------------------------
@@ -13,7 +13,7 @@ $(document).ready(function() {
         autoPlay: 5000, //Set AutoPlay to 5 seconds
         navigation: false,
         singleItem: true,
-        transitionStyle: "fade"
+        transitionStyle: "fade",
     });
 
     $("#content-slide").owlCarousel({
@@ -30,12 +30,12 @@ $(document).ready(function() {
         navigation: true,
         navigationText: [
             "<i class='fa pe-7s-angle-left'></i>",
-            "<i class='fa pe-7s-angle-right'></i>"
+            "<i class='fa pe-7s-angle-right'></i>",
         ],
-        afterInit: function(elem) {
+        afterInit: function (elem) {
             var that = this;
             that.owlControls.prependTo(elem);
-        }
+        },
     });
 
     $("#content-slide-2").owlCarousel({
@@ -51,12 +51,12 @@ $(document).ready(function() {
         navigation: true,
         navigationText: [
             "<i class='fa pe-7s-angle-left'></i>",
-            "<i class='fa pe-7s-angle-right'></i>"
+            "<i class='fa pe-7s-angle-right'></i>",
         ],
-        afterInit: function(elem) {
+        afterInit: function (elem) {
             var that = this;
             that.owlControls.prependTo(elem);
-        }
+        },
     });
 
     $("#content-slide-3").owlCarousel({
@@ -72,12 +72,12 @@ $(document).ready(function() {
         navigation: true,
         navigationText: [
             "<i class='fa pe-7s-angle-left'></i>",
-            "<i class='fa pe-7s-angle-right'></i>"
+            "<i class='fa pe-7s-angle-right'></i>",
         ],
-        afterInit: function(elem) {
+        afterInit: function (elem) {
             var that = this;
             that.owlControls.prependTo(elem);
-        }
+        },
     });
 
     $("#content-slide-4").owlCarousel({
@@ -91,7 +91,7 @@ $(document).ready(function() {
         pagination: false,
         dots: false,
         lazyLoad: true,
-        navigation: false
+        navigation: false,
     });
 
     $("#content-slide-5").owlCarousel({
@@ -108,12 +108,12 @@ $(document).ready(function() {
         navigation: true,
         navigationText: [
             "<i class='fa pe-7s-angle-left'></i>",
-            "<i class='fa pe-7s-angle-right'></i>"
+            "<i class='fa pe-7s-angle-right'></i>",
         ],
-        afterInit: function(elem) {
+        afterInit: function (elem) {
             var that = this;
             that.owlControls.prependTo(elem);
-        }
+        },
     });
     $("#content-slide-6").owlCarousel({
         items: 1,
@@ -128,12 +128,12 @@ $(document).ready(function() {
         navigation: true,
         navigationText: [
             "<i class='fa pe-7s-angle-left'></i>",
-            "<i class='fa pe-7s-angle-right'></i>"
+            "<i class='fa pe-7s-angle-right'></i>",
         ],
-        afterInit: function(elem) {
+        afterInit: function (elem) {
             var that = this;
             that.owlControls.prependTo(elem);
-        }
+        },
     });
 
     $("#content-slide-7").owlCarousel({
@@ -150,12 +150,12 @@ $(document).ready(function() {
         navigation: true,
         navigationText: [
             "<i class='fa pe-7s-angle-left'></i>",
-            "<i class='fa pe-7s-angle-right'></i>"
+            "<i class='fa pe-7s-angle-right'></i>",
         ],
-        afterInit: function(elem) {
+        afterInit: function (elem) {
             var that = this;
             that.owlControls.prependTo(elem);
-        }
+        },
     });
 
     $("#video-slide").owlCarousel({
@@ -171,12 +171,12 @@ $(document).ready(function() {
         navigation: true,
         navigationText: [
             "<i class='fa pe-7s-angle-left left'></i>",
-            "<i class='fa pe-7s-angle-right right'></i>"
+            "<i class='fa pe-7s-angle-right right'></i>",
         ],
-        afterInit: function(elem) {
+        afterInit: function (elem) {
             var that = this;
             that.owlControls.prependTo(elem);
-        }
+        },
     });
 
     var owl = $("#widget-slider");
@@ -184,265 +184,292 @@ $(document).ready(function() {
         autoPlay: 5000, //Set AutoPlay to 5 seconds
         navigation: false,
         singleItem: true,
-        transitionStyle: "fade"
+        transitionStyle: "fade",
     });
 
     /* ---------------------------------------------
      Video Effect
      --------------------------------------------- */
 
-    $(".post-thumb").mouseenter(function() {
+    $(".post-thumb")
+        .mouseenter(function () {
             $(this).addClass("hover");
         })
         // handle the mouseleave functionality
-        .mouseleave(function() {
+        .mouseleave(function () {
             $(this).removeClass("hover");
         });
 
-    $(".img-thumb").mouseenter(function() {
+    $(".img-thumb")
+        .mouseenter(function () {
             $(this).addClass("hover");
         })
         // handle the mouseleave functionality
-        .mouseleave(function() {
+        .mouseleave(function () {
             $(this).removeClass("hover");
         });
     /* ---------------------------------------------
      Scroll to Top Button it is called for scrolling down to top at html
      --------------------------------------------- */
-    $('body').append('<div id="toTop" class="btn btn-info"><span class="fa fa-dot-circle-o top"></span><br>TOP</div>');
+    $("body").append(
+        '<div id="toTop" class="btn btn-info"><span class="fa fa-dot-circle-o top"></span><br>TOP</div>'
+    );
 
-
-    $('#toTop').on('click', function() {
+    $("#toTop").on("click", function () {
         $("html, body").animate({ scrollTop: 0 }, 600);
         return false;
     });
 
-
     /* ---------------------------------------------
      Side Menu
     --------------------------------------------- */
-    $('.side-menu').metisMenu();
-
-
+    $(".side-menu").metisMenu();
 
     /* ---------------------------------------------
-      Pre loader loader 
+      Pre loader loader
      --------------------------------------------- */
 
     $(".se-pre-con").fadeOut("slow");
 
-
-
     /* ---------------------------------------------
      newstricker
      --------------------------------------------- */
-    $('.newsticker').newsTicker({
+    $(".newsticker").newsTicker({
         row_height: 12,
         max_rows: 2,
         speed: 600,
-        direction: 'up',
+        direction: "up",
         duration: 4000,
         autostart: 1,
         pauseOnHover: 0,
-        prevButton: $('#prev-button'),
-        nextButton: $('#next-button'),
-        stopButton: $('#stop-button'),
-        startButton: $('#start-button')
+        prevButton: $("#prev-button"),
+        nextButton: $("#next-button"),
+        stopButton: $("#stop-button"),
+        startButton: $("#start-button"),
     });
-
 
     /* ---------------------------------------------
      Tab
      --------------------------------------------- */
 
-    $('.tab-inner ul.tabs').addClass('active').find('> li:eq(0)').addClass('current');
-    $('.tab-inner ul.tabs li a').on('click', function(g) {
-        var tab = $(this).closest('.tab-inner'),
-            index = $(this).closest('li').index();
+    $(".tab-inner ul.tabs")
+        .addClass("active")
+        .find("> li:eq(0)")
+        .addClass("current");
+    $(".tab-inner ul.tabs li a").on("click", function (g) {
+        var tab = $(this).closest(".tab-inner"),
+            index = $(this).closest("li").index();
 
-        tab.find('ul.tabs > li').removeClass('current');
-        $(this).closest('li').addClass('current');
+        tab.find("ul.tabs > li").removeClass("current");
+        $(this).closest("li").addClass("current");
 
-        tab.find('.tab_content').find('div.tab-item-inner').not('div.tab-item-inner:eq(' + index + ')').slideUp();
-        tab.find('.tab_content').find('div.tab-item-inner:eq(' + index + ')').slideDown();
+        tab.find(".tab_content")
+            .find("div.tab-item-inner")
+            .not("div.tab-item-inner:eq(" + index + ")")
+            .slideUp();
+        tab.find(".tab_content")
+            .find("div.tab-item-inner:eq(" + index + ")")
+            .slideDown();
 
         g.preventDefault();
     });
 
-
-
     /* ---------------------------------------------
-     Date picker  
+     Date picker
      --------------------------------------------- */
 
     $("#from").datepicker({
         defaultDate: "+1w",
         changeMonth: true,
         numberOfMonths: 3,
-        onClose: function(selectedDate) {
+        onClose: function (selectedDate) {
             $("#to").datepicker("option", "minDate", selectedDate);
-        }
+        },
     });
     $("#to").datepicker({
         defaultDate: "+1w",
         changeMonth: true,
         numberOfMonths: 3,
-        onClose: function(selectedDate) {
+        onClose: function (selectedDate) {
             $("#from").datepicker("option", "maxDate", selectedDate);
-        }
+        },
     });
-
-
-
 
     /* ---------------------------------------------
      Youtube Video
      --------------------------------------------- */
-    var api_key = 'AIzaSyAroKpLQWTON6y34m5VqGcLCPtOmfLBqh4'; // use your own api key
+    var api_key = "AIzaSyAroKpLQWTON6y34m5VqGcLCPtOmfLBqh4"; // use your own api key
 
     // Start all players on the page with default options
-    $('.RYPP').rypp('AIzaSyAroKpLQWTON6y34m5VqGcLCPtOmfLBqh4'); // use your own api key
+    $(".RYPP").rypp("AIzaSyAroKpLQWTON6y34m5VqGcLCPtOmfLBqh4"); // use your own api key
 
     // Start two players by ID, with default settings
-    $('#rypp-demo-4').rypp(api_key, {
+    $("#rypp-demo-4").rypp(api_key, {
         autoplay: false,
         autonext: false,
         loop: false,
-        mute: true
+        mute: true,
     });
 
     /* ---------------------------------------------
      Youtube Video for home page four
      --------------------------------------------- */
 
-    $(".arrow-right").bind("click", function(event) {
+    $(".arrow-right").bind("click", function (event) {
         event.preventDefault();
-        $(".vid-list-container").stop().animate({
-            scrollLeft: "+=336"
-        }, 750);
+        $(".vid-list-container").stop().animate(
+            {
+                scrollLeft: "+=336",
+            },
+            750
+        );
     });
-    $(".arrow-left").bind("click", function(event) {
+    $(".arrow-left").bind("click", function (event) {
         event.preventDefault();
-        $(".vid-list-container").stop().animate({
-            scrollLeft: "-=336"
-        }, 750);
+        $(".vid-list-container").stop().animate(
+            {
+                scrollLeft: "-=336",
+            },
+            750
+        );
     });
 
     /* ---------------------------------------------
        youtube video for home page five
        --------------------------------------------- */
 
-    $('#player-button').on('click', function(ev) {
-
+    $("#player-button").on("click", function (ev) {
         $("#yt")[0].src += "?autoplay=1";
         $("#player").hide();
         $("#post-info").hide();
         ev.preventDefault();
     });
 
-
     /* ---------------------------------------------
      tricker animation for home page four
      --------------------------------------------- */
 
-
     function tick() {
-        $('#ticker li:first').animate({ 'opacity': 0 }, 400, function() {
-            $(this).appendTo($('#ticker')).css('opacity', 1);
+        $("#ticker li:first").animate({ opacity: 0 }, 400, function () {
+            $(this).appendTo($("#ticker")).css("opacity", 1);
         });
     }
-    setInterval(function() { tick() }, 3000);
+    setInterval(function () {
+        tick();
+    }, 3000);
 
     /* ---------------------------------------------
-     Form 
+     Form
      --------------------------------------------- */
 
     if (!String.prototype.trim) {
-        (function() {
+        (function () {
             // Make sure we trim BOM and NBSP
             var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-            String.prototype.trim = function() {
-                return this.replace(rtrim, '');
+            String.prototype.trim = function () {
+                return this.replace(rtrim, "");
             };
         })();
     }
-    [].slice.call(document.querySelectorAll('input.input_field,textarea.input_field')).forEach(function(inputEl) {
-        // in case the input is already filled..
-        if (inputEl.value.trim() !== '') {
-            classie.add(inputEl.parentNode, 'input--filled');
-        }
-        // events:
-        inputEl.addEventListener('focus', onInputFocus);
-        inputEl.addEventListener('blur', onInputBlur);
-    });
+    [].slice
+        .call(
+            document.querySelectorAll("input.input_field,textarea.input_field")
+        )
+        .forEach(function (inputEl) {
+            // in case the input is already filled..
+            if (inputEl.value.trim() !== "") {
+                classie.add(inputEl.parentNode, "input--filled");
+            }
+            // events:
+            inputEl.addEventListener("focus", onInputFocus);
+            inputEl.addEventListener("blur", onInputBlur);
+        });
 
     function onInputFocus(ev) {
-        classie.add(ev.target.parentNode, 'input--filled');
+        classie.add(ev.target.parentNode, "input--filled");
     }
 
     function onInputBlur(ev) {
-        if (ev.target.value.trim() === '') {
-            classie.remove(ev.target.parentNode, 'input--filled');
+        if (ev.target.value.trim() === "") {
+            classie.remove(ev.target.parentNode, "input--filled");
         }
     }
-
 });
 
-
-
-
 $(window).on({
-    load: function() {
-
+    load: function () {
         /* ---------------------------------------------
-          Scroll Box 
+          Scroll Box
          --------------------------------------------- */
 
         $(".mobile-menu").mCustomScrollbar({ theme: "minimal" });
         $(".archive-post").mCustomScrollbar({ theme: "minimal-dark" });
-
-
     },
 
-    scroll: function() {
-
+    scroll: function () {
         /* ---------------------------------------------
-        Scroll to Top 
+        Scroll to Top
         --------------------------------------------- */
 
         if ($(this).scrollTop() !== 0) {
-            $('#toTop').fadeIn();
+            $("#toTop").fadeIn();
         } else {
-            $('#toTop').fadeOut();
+            $("#toTop").fadeOut();
         }
-    }
-
+    },
 });
-
-
 
 /* ---------------------------------------------
  This is for Mobile Menu
  --------------------------------------------- */
 
-//Nav Icon at mobile 
-$('.nav-icon').on('click', function() {
-    $(this).toggleClass('open');
+//Nav Icon at mobile
+$(".nav-icon").on("click", function () {
+    $(this).toggleClass("open");
 });
 
 //mobile Menu showLeft at mobile
-var menuLeft = document.getElementById('mobile-menu'),
-    showLeft = document.getElementById('showLeft'),
+var menuLeft = document.getElementById("mobile-menu"),
+    showLeft = document.getElementById("showLeft"),
     body = document.body;
 var classie;
-showLeft.onclick = function() {
-    classie.toggle(this, 'active');
-    classie.toggle(menuLeft, 'mobile-menu-open');
-    disableOther('showLeft');
+showLeft.onclick = function () {
+    classie.toggle(this, "active");
+    classie.toggle(menuLeft, "mobile-menu-open");
+    disableOther("showLeft");
 };
 
 function disableOther(button) {
-    if (button !== 'showLeft') {
-        classie.toggle(showLeft, 'disabled');
+    if (button !== "showLeft") {
+        classie.toggle(showLeft, "disabled");
     }
 }
+
+// Wait for the DOM to be ready
+document.addEventListener("DOMContentLoaded", function () {
+    // Get the slideshow container
+    var slideshow = document.getElementById("slideshow");
+
+    // Get all the images within the slideshow container
+    var images = slideshow.getElementsByTagName("img");
+    var imageCount = images.length;
+    var currentIndex = 0;
+
+    // Function to change the image every 5 seconds
+    function slideImage() {
+        // Hide the current image
+        images[currentIndex].style.display = "none";
+
+        // Move to the next image
+        currentIndex = (currentIndex + 1) % imageCount;
+
+        // Show the next image
+        images[currentIndex].style.display = "block";
+    }
+
+    // Initial setup
+    images[currentIndex].style.display = "block";
+
+    // Start the slideshow
+    setInterval(slideImage, 5000);
+});

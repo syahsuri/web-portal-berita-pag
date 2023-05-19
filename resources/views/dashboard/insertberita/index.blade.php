@@ -101,8 +101,6 @@
                                                 </td>
                                             </tr>
                                     </tbody>
-
-
                                     {{-- Modal Hapus User --}}
                                     <div class="modal fade" id="modalHapus{{ $loop->iteration }}" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -114,7 +112,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
-                                                <form action="{{ route('insertberita.destroy',  ['id' => $artikel->id]) }}"
+                                                <form action="{{ route('insertberita.destroy', ['id' => $artikel->id]) }}"
                                                     method="post">
                                                     @method('delete')
                                                     @csrf
@@ -143,7 +141,126 @@
                     </div>
                 </div>
                 <!--/ Datatables -->
+                <!-- Datatables -->
+                <div class="row">
+                    <div class="col">
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                {{-- Table --}}
+                                <table id="myTable2"
+                                    class="table responsive nowrap table-bordered table-striped align-middle"
+                                    style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Posisi Berita</th>
+                                            <th>Berita</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($topnews as $topberita)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $topberita->position }}</td>
+                                                <td>{{ $topberita->articles->judul }}</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                                                        data-bs-target="#myModal{{ $loop->iteration }}">
+                                                        <i class="fa-regular fa-pen-to-square"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                    </tbody>
+                                    {{-- Modal Hapus User --}}
+                                    <!-- The Modal -->
+                                    <div class="modal" id="myModal{{ $loop->iteration }}">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Select Option</h4>
+                                                    <button type="button" class="close"
+                                                        data-dismiss="modal">&times;</button>
+                                                </div>
+
+                                                <!-- Modal Body -->
+                                                <div class="modal-body">
+                                                    <form action="{{ route('insertberita.topnews', $topberita->id) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('put')
+                                                        <div class="form-group">
+                                                            <label for="js-example-basic-single">Select Option:</label>
+                                                            <select class="js-example-basic-single" id="select2{{$loop->iteration}}"
+                                                                name="id_articles">
+                                                                @foreach ($articles as $artikel)
+                                                                    <option value="{{ $artikel->id }}"
+                                                                        {{ old('artikel->id', $topberita->articles->id) == $artikel->id ? 'selected' : '' }}>
+                                                                        {{ $artikel->judul }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <img class="img-fluid" id="thumbnail" src=""
+                                                                alt="thumbnail">
+                                                        </div>
+                                                </div>
+                                                <!-- Modal Footer -->
+                                                <div class="modal-footer">
+                                                    <button type="" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- / Modal Hapus Prodi --}}
+                                    @endforeach
+                                </table>
+                                {{-- End Table --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/ Datatables -->
             </div>
         </div>
     </div>
+
+@section('script')
+    <script>
+        @for ( $i = 1; $i <= 5; $i++)
+            $(document).ready(function() {
+                $("#select2{{$i}}").select2({
+                    dropdownParent: $("#myModal{{$i}}"),
+                    width: '100%',
+                });
+            });
+
+            $(document).ready(function() {
+                $('#select2{{$i}}').on('change', function() {
+                    var articleId = $(this).val();
+                    console.log(articleId);
+                    $.ajax({
+                        url: '/get-thumbnail',
+                        method: 'GET',
+                        data: {
+                            id: articleId
+                        },
+                        success: function(response) {
+                            $('#thumbnail').attr('src', response.thumbnail);
+                        },
+                        error: function(xhr) {
+                            // Handle error
+                            console.log(xhr.responseText);
+                        }
+                    });
+                });
+            });
+        @endfor
+    </script>
+@endsection
 @endsection

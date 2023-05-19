@@ -3,24 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\article;
-use App\Models\view;
+use App\Models\broadcast;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class detailspageController extends Controller
+class broadcastController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, $slug)
+    public function index()
     {
-        $detailsarticles = Article::where('slug', $slug)->firstOrFail();
-
-        // Create or update the ArticleView record
-        view::updateOrCreate(['article_id' => $detailsarticles->id], ['views' => DB::raw('views + 1')]);
-
-        return view('homepage.detailberita.index')->with(compact('detailsarticles'));
+        $broadcasts = broadcast::all();
+        return view('dashboard.insertbroadcast.index')->with(compact('broadcasts'));
     }
 
     /**
@@ -36,7 +30,25 @@ class detailspageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'deskripsi' => 'nullable',
+        ]);
+
+        $broadcast = new broadcast();
+        $broadcast->deskripsi = $request->deskripsi;
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('broadcast'), $filename);
+            $broadcast->image = 'broadcast' . $filename; // Update the path to 'images' directory
+        }
+
+        $broadcast->save();
+
+        // Perform any additional actions or return a response as needed
+        return redirect()->back()->with('success', 'Broadcast created successfully');
     }
 
     /**

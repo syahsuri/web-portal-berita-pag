@@ -22,5 +22,14 @@ class article extends Model
     {
         return $this->belongsTo(division::class, 'id_divisi', 'id');
     }
-}
 
+    public function topNews()
+    {
+        return $this->hasOne(TopNews::class, 'id_articles');
+    }
+
+    public function view()
+    {
+        return $this->hasOne(view::class, 'article_id');
+    }
+}

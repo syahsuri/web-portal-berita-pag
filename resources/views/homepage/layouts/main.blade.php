@@ -33,6 +33,9 @@
     {{-- Script --}}
     @include('homepage.layouts.script')
     {{-- /Script --}}
+
+    @yield('script')
+
 </body>
 
 </html>

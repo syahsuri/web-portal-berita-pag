@@ -20,14 +20,14 @@
                             </li>
                             <li><a title="" href="#">{{ $detailsarticles->created_at->format('d F Y h:i A') }}</a> --</li>
                             <li>
-                                <a title="" href="#"><span>275 Comments</span></a>
+                                <a title="" href="#"><span>{{ $detailsarticles->view->views }} Views</span></a>
                             </li>
                         </ul>
                     </div>
                     <div style="text-align: justify">
                         <p>
                             @php
-                                echo strip_tags($detailsarticles->article, '<b><i><u>');
+                                echo strip_tags($detailsarticles->article, '<p><b><i><u>');
                             @endphp
                         </p>
                     </div>

@@ -8,23 +8,24 @@
                     <div class="post-wrapper post-grid-1 wow fadeIn" data-wow-duration="2s">
                         <div class="post-thumb img-zoom-in">
                             <a href="#">
-                                <img class="entry-thumb" src="{{ asset('images/' . $secondlatestnews->thumbnail) }}"
-                                    alt="" value="{{ $secondlatestnews->thumbnail }}" alt="">
+                                <img class="entry-thumb" src="{{ asset('images/' . $firstleftNews->thumbnail) }}"
+                                    alt="" value="{{ $firstleftNews->thumbnail }}" alt="">
                             </a>
                         </div>
                         <div class="post-info">
-                            <span class="color-3">{{ $secondlatestnews->division->nama_divisi }}</span>
+                            <span class="color-3">{{ $firstleftNews->division_name }}</span>
                             <h3 class="post-title post-title-size"><a
-                                    href="{{ route('detailsberita', ['slug' => $secondlatestnews->slug]) }}"
-                                    rel="bookmark">{{ substr($secondlatestnews->judul, 0) }}{{ strlen($secondlatestnews->judul) > 50 ? '...' : '' }}</a>
+                                    href="{{ route('detailsberita', ['slug' => $firstleftNews->slug]) }}"
+                                    rel="bookmark">{{ substr($firstleftNews->judul, 0) }}{{ strlen($firstleftNews->judul) > 50 ? '...' : '' }}</a>
                             </h3>
                             <div class="post-editor-date">
                                 <!-- post date -->
                                 <div class="post-date">
-                                    <i class="pe-7s-clock"></i> {{ $secondlatestnews->created_at->format('d F Y') }}
+                                    <i class="pe-7s-clock"></i> {{ date('d F Y', strtotime($firstleftNews->created_at)) }}
                                 </div>
                                 <!-- post comment -->
-                                <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
+                                <div class="post-author-comment"><i class="pe-7s-comment"></i>{{ $firstleftNews->views }}
+                                </div>
                                 <!-- read more -->
                                 <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
                             </div>
@@ -33,21 +34,24 @@
                     <div class="post-wrapper post-grid-2 wow fadeIn" data-wow-duration="2s">
                         <div class="post-thumb img-zoom-in">
                             <a href="#">
-                                <img class="entry-thumb"
-                                    src="{{ asset('images/' . $fifthlatestnews->thumbnail) }}"
+                                <img class="entry-thumb" src="{{ asset('images/' . $secondleftNews->thumbnail) }}"
                                     alt="">
                             </a>
                         </div>
                         <div class="post-info">
-                            <span class="color-5">{{ $fifthlatestnews->division->nama_divisi }}</span>
-                            <h3 class="post-title post-title-size"><a href="{{ route('detailsberita', ['slug' => $fifthlatestnews->slug]) }}" rel="bookmark">{{ substr($fifthlatestnews->judul, 0) }}{{ strlen($fifthlatestnews->judul) > 50 ? '...' : '' }}</a></h3>
+                            <span class="color-5">{{ $secondleftNews->division_name }}</span>
+                            <h3 class="post-title post-title-size"><a
+                                    href="{{ route('detailsberita', ['slug' => $secondleftNews->slug]) }}"
+                                    rel="bookmark">{{ substr($secondleftNews->judul, 0) }}{{ strlen($secondleftNews->judul) > 50 ? '...' : '' }}</a>
+                            </h3>
                             <div class="post-editor-date">
                                 <!-- post date -->
                                 <div class="post-date">
-                                    <i class="pe-7s-clock"></i> {{ $fifthlatestnews->created_at->format('d F Y') }}
+                                    <i class="pe-7s-clock"></i> {{ date('d F Y', strtotime($secondleftNews->created_at)) }}
                                 </div>
                                 <!-- post comment -->
-                                <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
+                                <div class="post-author-comment"><i class="pe-7s-comment"></i>{{ $secondleftNews->views }}
+                                </div>
                                 <!-- read more -->
                                 <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
                             </div>
@@ -59,22 +63,21 @@
                     <div class="post-wrapper post-grid-3 wow fadeIn" data-wow-duration="2s">
                         <div class="post-thumb img-zoom-in">
                             <a href="#">
-                                <img class="entry-thumb-middle" src="{{ asset('images/' . $firstlatestnews->thumbnail) }}"
-                                    alt="" value="{{ $firstlatestnews->thumbnail }}">
+                                <img class="entry-thumb-middle" src="{{ asset('images/' . $midNews->thumbnail) }}"
+                                    alt="" value="">
                             </a>
                         </div>
                         <div class="post-info">
-                            <span class="color-4">{{ $firstlatestnews->division->nama_divisi }}</span>
-                            <h3 class="post-title"><a
-                                    href="{{ route('detailsberita', ['slug' => $firstlatestnews->slug]) }}"
-                                    rel="bookmark">{{ $firstlatestnews->judul }} </a></h3>
+                            <span class="color-4">{{ $midNews->division_name }}</span>
+                            <h3 class="post-title"><a href="{{ route('detailsberita', ['slug' => $midNews->slug]) }}"
+                                    rel="bookmark">{{ $midNews->judul }} </a></h3>
                             <div class="post-editor-date">
                                 <!-- post date -->
                                 <div class="post-date">
-                                    <i class="pe-7s-clock"></i> {{ $firstlatestnews->created_at->format('d F Y') }}
+                                    <i class="pe-7s-clock"></i>{{ date('d F Y', strtotime($midNews->created_at)) }}
                                 </div>
                                 <!-- post comment -->
-                                <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
+                                <div class="post-author-comment"><i class="pe-7s-comment"></i>{{ $midNews->views }}</div>
                                 <!-- read more -->
                                 <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
                             </div>
@@ -87,23 +90,24 @@
                     <div class="post-wrapper post-grid-4 wow fadeIn" data-wow-duration="2s">
                         <div class="post-thumb img-zoom-in">
                             <a href="#">
-                                <img class="entry-thumb" src="{{ asset('images/' . $thirdlatestnews->thumbnail) }}"
+                                <img class="entry-thumb" src="{{ asset('images/' . $firstrightNews->thumbnail) }}"
                                     alt="">
                             </a>
                         </div>
                         <div class="post-info">
-                            <span class="color-1">{{ $thirdlatestnews->division->nama_divisi }}</span>
+                            <span class="color-1">{{ $firstrightNews->division_name }}</span>
                             <h3 class="post-title post-title-size"><a
-                                    href="{{ route('detailsberita', ['slug' => $thirdlatestnews->slug]) }}"
-                                    rel="bookmark">{{ substr($thirdlatestnews->judul, 0) }}{{ strlen($thirdlatestnews->judul) > 50 ? '...' : '' }}</a>
+                                    href="{{ route('detailsberita', ['slug' => $firstrightNews->slug]) }}"
+                                    rel="bookmark">{{ substr($firstrightNews->judul, 0) }}{{ strlen($firstrightNews->judul) > 50 ? '...' : '' }}</a>
                             </h3>
                             <div class="post-editor-date">
                                 <!-- post date -->
                                 <div class="post-date">
-                                    <i class="pe-7s-clock"></i>{{ $thirdlatestnews->created_at->format('d F Y') }}
+                                    <i class="pe-7s-clock"></i>{{ date('d F Y', strtotime($firstrightNews->created_at)) }}
                                 </div>
                                 <!-- post comment -->
-                                <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
+                                <div class="post-author-comment"><i class="pe-7s-comment"></i>{{ $firstrightNews->views }}
+                                </div>
                                 <!-- read more -->
                                 <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
                             </div>
@@ -114,23 +118,25 @@
                     <div class="post-wrapper post-grid-5 wow fadeIn" data-wow-duration="2s">
                         <div class="post-thumb img-zoom-in">
                             <a href="#">
-                                <img class="entry-thumb" src="{{ asset('images/' . $fourthlatestnews->thumbnail) }}"
+                                <img class="entry-thumb" src="{{ asset('images/' . $secondrightNews->thumbnail) }}"
                                     alt="">
                             </a>
                         </div>
                         <div class="post-info">
-                            <span class="color-2">{{ $fourthlatestnews->division->nama_divisi }}</span>
+                            <span class="color-2">{{ $secondrightNews->division_name }}</span>
                             <h3 class="post-title post-title-size"><a
-                                    href="{{ route('detailsberita', ['slug' => $fourthlatestnews->slug]) }}"
-                                    rel="bookmark">{{ substr($fourthlatestnews->judul, 0) }}{{ strlen($fourthlatestnews->judul) > 50 ? '...' : '' }}</a>
+                                    href="{{ route('detailsberita', ['slug' => $secondrightNews->slug]) }}"
+                                    rel="bookmark">{{ substr($secondrightNews->judul, 0) }}{{ strlen($secondrightNews->judul) > 50 ? '...' : '' }}</a>
                             </h3>
                             <div class="post-editor-date">
                                 <!-- post date -->
                                 <div class="post-date">
-                                    <i class="pe-7s-clock"></i> {{ $fourthlatestnews->created_at->format('d F Y') }}
+                                    <i class="pe-7s-clock"></i>
+                                    {{ date('d F Y', strtotime($secondrightNews->created_at)) }}
                                 </div>
                                 <!-- post comment -->
-                                <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
+                                <div class="post-author-comment"><i
+                                        class="pe-7s-comment"></i>{{ $secondrightNews->views }}</div>
                                 <!-- read more -->
                                 <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
                             </div>
@@ -153,185 +159,84 @@
                     <div class="row">
                         <div id="content-slide" class="owl-carousel">
                             <!-- item-1 -->
-                            <div class="item home2-post">
-                                <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
-                                    <!-- image -->
-                                    <div class="post-thumb">
-                                        <a href="#">
-                                            <img class="img-responsive"
-                                                src="https://pertaarungas.pertamina.com/gambar/7fdeca8ba02980212ec63de025c07bc0.JPG"
-                                                alt="">
-                                        </a>
-                                    </div>
-                                    <div class="post-info meta-info-rn">
-                                        <div class="slide">
-                                            <a target="_blank" href="#" class="post-badge btn_six">T</a>
+                            @foreach ($scrollingrecentnews as $beritascroll)
+                                <div class="item home2-post">
+                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
+                                        <!-- image -->
+                                        <div class="post-thumb">
+                                            <a href="#">
+                                                <img class="img-responsive"
+                                                    src="{{ asset('images/' . $beritascroll->thumbnail) }}"
+                                                    alt="" style="width: 100%; height: 250px; overflow: hidden;">
+                                            </a>
+                                        </div>
+                                        <div class="post-info meta-info-rn">
+                                            <div class="slide">
+                                                <a target="_blank" href="#"
+                                                    class="post-badge btn_six">{{ $beritascroll->division->nama_divisi }}</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <h3><a href="#">There are many variations of passages of Lorem Ipsum available</a>
-                                </h3>
-                                <div class="post-title-author-details">
-                                    <div class="date">
-                                        <ul>
-                                            <li>By <a title="" href="#"><span>Naeem Khan</span></a> --</li>
-                                            <li><a title="" href="#">Oct 6, 2016</a> --</li>
-                                            <li><a title="" href="#"><span>275 Comments</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as
-                                        necessary, making this the first true <a href="#">Read more...</a></p>
-                                </div>
-                            </div>
-                            <!-- item-2 -->
-                            <div class="item home2-post">
-                                <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-                                    <!-- image -->
-                                    <div class="post-thumb">
-                                        <a href="#">
-                                            <img class="img-responsive"
-                                                src="https://pertaarungas.pertamina.com/gambar/ac4ccca8921d9e3e8a142a32ab6ecc8c.jpg"
-                                                alt="">
-                                        </a>
-                                    </div>
-                                    <div class="post-info meta-info-rn">
-                                        <div class="slide">
-                                            <a target="_blank" href="#" class="post-badge btn_sev">I</a>
+                                    <h3><a
+                                            href="{{ route('detailsberita', ['slug' => $beritascroll->slug]) }}">{{ substr($beritascroll->judul, 0, 50) }}{{ strlen($beritascroll->judul) > 50 ? '...' : '' }}</a>
+                                    </h3>
+                                    <div class="post-title-author-details">
+                                        <div class="date">
+                                            <ul>
+                                                <li>By <a title=""
+                                                        href="#"><span>{{ $beritascroll->author }}</span></a> --
+                                                </li>
+                                                <li><a title=""
+                                                        href="#">{{ date('d F Y', strtotime($beritascroll->created_at)) }}</a>
+                                                    --</li>
+                                                <li><a title="" href="#"><span>275 Comments</span></a></li>
+                                            </ul>
                                         </div>
+                                        <p>{{ Str::limit(strip_tags($beritascroll->article), 80) }} <a
+                                                href="{{ route('detailsberita', ['slug' => $beritascroll->slug]) }}">Read
+                                                more...</a></p>
                                     </div>
                                 </div>
-                                <h3><a href="#">There are many variations of passages of Lorem Ipsum available</a>
-                                </h3>
-                                <div class="post-title-author-details">
-                                    <div class="date">
-                                        <ul>
-                                            <li>By <a title="" href="#"><span>Naeem Khan</span></a> --</li>
-                                            <li><a title="" href="#">Oct 6, 2016</a> --</li>
-                                            <li><a title="" href="#"><span>275 Comments</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as
-                                        necessary, making this the first true <a href="#">Read more...</a></p>
-                                </div>
-                            </div>
-                            <!-- item-3 -->
-                            <div class="item home2-post">
-                                <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s">
-                                    <!-- image -->
-                                    <div class="post-thumb">
-                                        <a href="#">
-                                            <img class="img-responsive"
-                                                src="https://pertaarungas.pertamina.com/gambar/ac4ccca8921d9e3e8a142a32ab6ecc8c.jpg"
-                                                alt="">
-                                        </a>
-                                    </div>
-                                    <div class="post-info meta-info-rn">
-                                        <div class="slide">
-                                            <a target="_blank" href="#" class="post-badge btn_five">B</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h3><a href="#">There are many variations of passages of Lorem Ipsum available</a>
-                                </h3>
-                                <div class="post-title-author-details">
-                                    <div class="date">
-                                        <ul>
-                                            <li>By <a title="" href="#"><span>Naeem Khan</span></a> --</li>
-                                            <li><a title="" href="#">Oct 6, 2016</a> --</li>
-                                            <li><a title="" href="#"><span>275 Comments</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as
-                                        necessary, making this the first true <a href="#">Read more...</a></p>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="row rn_block">
-                        <div class="col-md-4 col-sm-4 padd">
-                            <div class="home2-post">
-                                <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
-                                    <!-- image -->
-                                    <div class="post-thumb">
-                                        <a href="#">
-                                            <img class="img-responsive"
-                                                src="https://pertaarungas.pertamina.com/gambar/e9a3207468140278618215a173db053e.jpg"
-                                                alt="">
-                                        </a>
+                        @foreach ($otherLatestNews as $beritalain)
+                            <div class="col-md-4 col-sm-4 padd">
+                                <div class="home2-post">
+                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
+                                        <!-- image -->
+                                        <div class="post-thumb">
+                                            <a href="#">
+                                                <img class="img-responsive"
+                                                    src="{{ asset('images/' . $beritalain->thumbnail) }}" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="post-info meta-info-rn">
+                                            <div class="slide">
+                                                <a target="_blank" href="#"
+                                                    class="post-badge btn_eight">{{ $beritalain->division->nama_divisi }}</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="post-info meta-info-rn">
-                                        <div class="slide">
-                                            <a target="_blank" href="#" class="post-badge btn_eight">H</a>
+                                    <div class="post-title-author-details">
+                                        <h4><a
+                                                href="{{ route('detailsberita', ['slug' => $beritalain->slug]) }}">{{ substr($beritalain->judul, 0, 50) }}{{ strlen($beritalain->judul) > 50 ? '...' : '' }}</a>
+                                        </h4>
+                                        <div class="date">
+                                            <ul>
+                                                <li>By <a title=""
+                                                        href="#"><span>{{ $beritalain->author }}</span></a> --
+                                                </li>
+                                                <li><a title=""
+                                                        href="#">{{ date('d F Y', strtotime($beritalain->created_at)) }}</a>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="post-title-author-details">
-                                    <h4><a href="#">World Econmy Changing and Affecting in 3rd ...</a></h4>
-                                    <div class="date">
-                                        <ul>
-                                            <li>By <a title="" href="#"><span>Naeem Khan</span></a> --</li>
-                                            <li><a title="" href="#">Oct 6, 2016</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4 padd">
-                            <div class="home2-post">
-                                <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-                                    <!-- image -->
-                                    <div class="post-thumb">
-                                        <a href="#">
-                                            <img class="img-responsive"
-                                                src="https://pertaarungas.pertamina.com/gambar/e9a3207468140278618215a173db053e.jpg"
-                                                alt="">
-                                        </a>
-                                    </div>
-                                    <div class="post-info meta-info-rn">
-                                        <div class="slide">
-                                            <a target="_blank" href="#" class="post-badge btn_nine">p</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="post-title-author-details">
-                                    <h4><a href="#">World Econmy Changing and Affecting in 3rd ...</a></h4>
-                                    <div class="date">
-                                        <ul>
-                                            <li>By <a title="" href="#"><span>Naeem Khan</span></a> --</li>
-                                            <li><a title="" href="#">Oct 6, 2016</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4 padd">
-                            <div class="home2-post">
-                                <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s">
-                                    <!-- image -->
-                                    <div class="post-thumb">
-                                        <a href="#">
-                                            <img class="img-responsive"
-                                                src="https://pertaarungas.pertamina.com/gambar/7fdeca8ba02980212ec63de025c07bc0.JPG"
-                                                alt="">
-                                        </a>
-                                    </div>
-                                    <div class="post-info meta-info-rn">
-                                        <div class="slide">
-                                            <a target="_blank" href="#" class="post-badge btn_one">F</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="post-title-author-details">
-                                    <h4><a href="#">World Econmy Changing and Affecting in 3rd ...</a></h4>
-                                    <div class="date">
-                                        <ul>
-                                            <li>By <a title="" href="#"><span>Naeem Khan</span></a> --</li>
-                                            <li><a title="" href="#">Oct 6, 2016</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </section>
 
@@ -349,12 +254,11 @@
                 </div>
                 <!-- /.search area -->
                 <div class="banner-add">
-                    <!-- add -->
-                    <span class="add-title">- Broadcast -</span>
-                    <a href="#"><img src="images/ad-banner.jpg" class="img-responsive center-block"
-                            alt=""></a>
+                    <span class="add-title"> - Broadcast - </span>
+                    <div id="slideshow">
+                        <a href="#"><img src="images/ad-banner.jpg" class="img-responsive center-block" alt=""></a>
+                    </div>
                 </div>
-
             </div>
             <!-- side content end -->
 
