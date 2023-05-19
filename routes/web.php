@@ -51,7 +51,7 @@ Route::prefix('/dashboard')->group(function() {
 
     Route::get('/insertbroadcast', [broadcastController::class, 'index'])->name('insertbroadcast');
     Route::delete('/insertbroadcast/{id}', [broadcastController::class, 'destroy'])->name('insertbroadcast.destroy');
-    Route::get('/createvideos', [broadcastController::class, 'create'])->name('createvideos');
+    Route::get('/createbroadcast', [broadcastController::class, 'create'])->name('createbroadcast');
     Route::post('/insertbroadcast', [broadcastController::class, 'store'])->name('insertbroadcast.store');
     Route::get('/editvideos{id}', [broadcastController::class, 'edit'])->name('editvideos');
     Route::post('/editvideos{id}', [broadcastController::class, 'update'])->name('editvideos.update');
