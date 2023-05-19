@@ -20,13 +20,15 @@ class homepageController extends Controller
         $midNews = DB::table('top_news')
             ->join('articles', 'top_news.id_articles', '=', 'articles.id')
             ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
-            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name')
+            ->leftJoin('views', 'articles.id', '=', 'views.article_id')
+            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', 'views.views')
             ->first();
 
         $firstleftNews = DB::table('top_news')
             ->join('articles', 'top_news.id_articles', '=', 'articles.id')
             ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
-            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name')
+            ->leftJoin('views', 'articles.id', '=', 'views.article_id')
+            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', 'views.views')
             ->skip(1)
             ->take(1)
             ->first();
@@ -34,7 +36,8 @@ class homepageController extends Controller
         $secondleftNews = DB::table('top_news')
             ->join('articles', 'top_news.id_articles', '=', 'articles.id')
             ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
-            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name')
+            ->leftJoin('views', 'articles.id', '=', 'views.article_id')
+            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', 'views.views')
             ->skip(2)
             ->take(1)
             ->first();
@@ -42,7 +45,8 @@ class homepageController extends Controller
         $firstrightNews = DB::table('top_news')
             ->join('articles', 'top_news.id_articles', '=', 'articles.id')
             ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
-            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name')
+            ->leftJoin('views', 'articles.id', '=', 'views.article_id')
+            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', 'views.views')
             ->skip(3)
             ->take(1)
             ->first();
@@ -50,7 +54,8 @@ class homepageController extends Controller
         $secondrightNews = DB::table('top_news')
             ->join('articles', 'top_news.id_articles', '=', 'articles.id')
             ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
-            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name')
+            ->leftJoin('views', 'articles.id', '=', 'views.article_id')
+            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', 'views.views')
             ->skip(4)
             ->take(1)
             ->first();
@@ -67,7 +72,8 @@ class homepageController extends Controller
             'secondleftNews',
             'firstrightNews',
             'secondrightNews',
-            'scrollingrecentnews','otherLatestNews'
+            'scrollingrecentnews',
+            'otherLatestNews'
         ));
     }
 

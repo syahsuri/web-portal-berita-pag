@@ -10,6 +10,7 @@ class broadcast extends Model
     use HasFactory;
 
     protected $fillable = [
-        'image'
+        'deskripsi',
+        'image',
     ];
 }

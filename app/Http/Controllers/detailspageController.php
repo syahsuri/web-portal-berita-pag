@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\article;
+use App\Models\view;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class detailspageController extends Controller
 {
@@ -13,7 +15,11 @@ class detailspageController extends Controller
      */
     public function index(Request $request, $slug)
     {
-        $detailsarticles = article::where('slug', $slug)->firstOrFail();
+        $detailsarticles = Article::where('slug', $slug)->firstOrFail();
+
+        // Create or update the ArticleView record
+        view::updateOrCreate(['article_id' => $detailsarticles->id], ['views' => DB::raw('views + 1')]);
+
         return view('homepage.detailberita.index')->with(compact('detailsarticles'));
     }
 

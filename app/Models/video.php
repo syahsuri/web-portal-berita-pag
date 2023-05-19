@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class video extends Model
 {
     use HasFactory;
-    
+
+    protected $table = 'video';
+
     protected $fillable = [
         'judul',
         'slug',

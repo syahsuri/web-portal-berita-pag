@@ -24,6 +24,7 @@
 <!-- animate -->
 <link rel="stylesheet" href="{{ asset('css/animate.min.css')}}">
 <!-- fonts css -->
+
 <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/Pe-icon-7-stroke.css')}}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('css/flaticon.css')}}" />

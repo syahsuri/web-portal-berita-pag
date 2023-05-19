@@ -1,7 +1,6 @@
 @extends('homepage.layouts.main')
 
 @section('highlightsSections')
-<h1>Commit From Tiara</h1>
     <section class="headding-news ">
         <div class="container">
             <div class="row row-margin">
@@ -25,7 +24,8 @@
                                     <i class="pe-7s-clock"></i> {{ date('d F Y', strtotime($firstleftNews->created_at)) }}
                                 </div>
                                 <!-- post comment -->
-                                <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
+                                <div class="post-author-comment"><i class="pe-7s-comment"></i>{{ $firstleftNews->views }}
+                                </div>
                                 <!-- read more -->
                                 <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
                             </div>
@@ -50,7 +50,8 @@
                                     <i class="pe-7s-clock"></i> {{ date('d F Y', strtotime($secondleftNews->created_at)) }}
                                 </div>
                                 <!-- post comment -->
-                                <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
+                                <div class="post-author-comment"><i class="pe-7s-comment"></i>{{ $secondleftNews->views }}
+                                </div>
                                 <!-- read more -->
                                 <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
                             </div>
@@ -73,10 +74,10 @@
                             <div class="post-editor-date">
                                 <!-- post date -->
                                 <div class="post-date">
-                                    <i class="pe-7s-clock"></i>{{ date('d F Y', strtotime($firstleftNews->created_at)) }}
+                                    <i class="pe-7s-clock"></i>{{ date('d F Y', strtotime($midNews->created_at)) }}
                                 </div>
                                 <!-- post comment -->
-                                <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
+                                <div class="post-author-comment"><i class="pe-7s-comment"></i>{{ $midNews->views }}</div>
                                 <!-- read more -->
                                 <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
                             </div>
@@ -105,7 +106,8 @@
                                     <i class="pe-7s-clock"></i>{{ date('d F Y', strtotime($firstrightNews->created_at)) }}
                                 </div>
                                 <!-- post comment -->
-                                <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
+                                <div class="post-author-comment"><i class="pe-7s-comment"></i>{{ $firstrightNews->views }}
+                                </div>
                                 <!-- read more -->
                                 <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
                             </div>
@@ -133,7 +135,8 @@
                                     {{ date('d F Y', strtotime($secondrightNews->created_at)) }}
                                 </div>
                                 <!-- post comment -->
-                                <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
+                                <div class="post-author-comment"><i
+                                        class="pe-7s-comment"></i>{{ $secondrightNews->views }}</div>
                                 <!-- read more -->
                                 <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
                             </div>
@@ -206,23 +209,28 @@
                                         <div class="post-thumb">
                                             <a href="#">
                                                 <img class="img-responsive"
-                                                    src="{{ asset('images/' . $beritalain->thumbnail) }}"
-                                                    alt="">
+                                                    src="{{ asset('images/' . $beritalain->thumbnail) }}" alt="">
                                             </a>
                                         </div>
                                         <div class="post-info meta-info-rn">
                                             <div class="slide">
-                                                <a target="_blank" href="#" class="post-badge btn_eight">{{ $beritalain->division->nama_divisi }}</a>
+                                                <a target="_blank" href="#"
+                                                    class="post-badge btn_eight">{{ $beritalain->division->nama_divisi }}</a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="post-title-author-details">
-                                        <h4><a href="{{ route('detailsberita', ['slug' => $beritalain->slug]) }}">{{ substr($beritalain->judul, 0, 50) }}{{ strlen($beritalain->judul) > 50 ? '...' : '' }}</a></h4>
+                                        <h4><a
+                                                href="{{ route('detailsberita', ['slug' => $beritalain->slug]) }}">{{ substr($beritalain->judul, 0, 50) }}{{ strlen($beritalain->judul) > 50 ? '...' : '' }}</a>
+                                        </h4>
                                         <div class="date">
                                             <ul>
-                                                <li>By <a title="" href="#"><span>{{ $beritalain->author }}</span></a> --
+                                                <li>By <a title=""
+                                                        href="#"><span>{{ $beritalain->author }}</span></a> --
                                                 </li>
-                                                <li><a title="" href="#">{{ date('d F Y', strtotime($beritalain->created_at)) }}</a></li>
+                                                <li><a title=""
+                                                        href="#">{{ date('d F Y', strtotime($beritalain->created_at)) }}</a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -246,12 +254,11 @@
                 </div>
                 <!-- /.search area -->
                 <div class="banner-add">
-                    <!-- add -->
-                    <span class="add-title">- Broadcast -</span>
-                    <a href="#"><img src="images/ad-banner.jpg" class="img-responsive center-block"
-                            alt=""></a>
+                    <span class="add-title"> - Broadcast - </span>
+                    <div id="slideshow">
+                        <a href="#"><img src="images/ad-banner.jpg" class="img-responsive center-block" alt=""></a>
+                    </div>
                 </div>
-
             </div>
             <!-- side content end -->
 

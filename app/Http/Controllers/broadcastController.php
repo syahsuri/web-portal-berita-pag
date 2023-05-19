@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\broadcast;
 use Illuminate\Http\Request;
 
 class broadcastController extends Controller
@@ -12,7 +13,8 @@ class broadcastController extends Controller
      */
     public function index()
     {
-        //
+        $broadcasts = broadcast::all();
+        return view('dashboard.insertbroadcast.index')->with(compact('broadcasts'));
     }
 
     /**
@@ -28,7 +30,25 @@ class broadcastController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'deskripsi' => 'nullable',
+        ]);
+
+        $broadcast = new broadcast();
+        $broadcast->deskripsi = $request->deskripsi;
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('broadcast'), $filename);
+            $broadcast->image = 'broadcast' . $filename; // Update the path to 'images' directory
+        }
+
+        $broadcast->save();
+
+        // Perform any additional actions or return a response as needed
+        return redirect()->back()->with('success', 'Broadcast created successfully');
     }
 
     /**
