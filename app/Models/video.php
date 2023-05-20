@@ -9,7 +9,7 @@ class video extends Model
 {
     use HasFactory;
 
-    protected $table = 'videos';
+    protected $table = 'video';
 
     protected $fillable = [
         'judul',
