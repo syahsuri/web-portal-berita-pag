@@ -42,7 +42,7 @@ class broadcastController extends Controller
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('broadcast'), $filename);
-            $broadcast->image = 'broadcast' . $filename; // Update the path to 'images' directory
+            $broadcast->image = $filename; // Remove the 'broadcast' prefix from the filename
         }
 
         $broadcast->save();

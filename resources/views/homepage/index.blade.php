@@ -253,13 +253,15 @@
                     </div>
                 </div>
                 <!-- /.search area -->
+                @foreach ($broadcasts as $broadcast)
                 <div class="banner-add">
                     <span class="add-title"> - Broadcast - </span>
                     <div id="slideshow">
-                        <a href="#"><img src="images/ad-banner.jpg" class="img-responsive center-block" alt=""></a>
+                        <a href="#"><img src="{{ asset('broadcast/' . basename($broadcast->image)) }}" class="img-responsive center-block" alt="">{{ $broadcast->id }}</a>
                     </div>
                 </div>
             </div>
+            @endforeach
             <!-- side content end -->
 
             <div class="col-sm-4 left-padding">

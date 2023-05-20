@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\article;
+use App\Models\broadcast;
 use App\Models\division;
 use App\Models\headnewspage;
 use Illuminate\Http\Request;
@@ -66,6 +67,8 @@ class homepageController extends Controller
             ->take(3)
             ->get();
 
+        $broadcasts = broadcast::all();
+
         return view('homepage.index')->with(compact(
             'midNews',
             'firstleftNews',
@@ -73,7 +76,9 @@ class homepageController extends Controller
             'firstrightNews',
             'secondrightNews',
             'scrollingrecentnews',
-            'otherLatestNews'
+            'otherLatestNews',
+            'broadcasts'
+
         ));
     }
 

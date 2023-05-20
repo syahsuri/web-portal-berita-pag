@@ -114,10 +114,12 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $broadcast->deskripsi }}</td>
-                                                <td> <a href="{{ asset('broadcast/' . $broadcast->image) }}" target="_blank"
-                                                        title="{{ $broadcast->image }}">
-                                                        {{ \Illuminate\Support\Str::limit($broadcast->image, 10) }}
-                                                    </a></td>
+                                                <td>
+                                                    <a href="{{ asset('broadcast/' . basename($broadcast->image)) }}"
+                                                        target="_blank" title="{{ $broadcast->image }}">
+                                                        {{ \Illuminate\Support\Str::limit(basename($broadcast->image), 10) }}
+                                                    </a>
+                                                </td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href="" class="btn btn-sm btn-warning me-2">

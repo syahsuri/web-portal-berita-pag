@@ -23,5 +23,11 @@
  <!-- custom js -->
  <script type="text/javascript" src="{{ asset('js/custom.js')}}"></script>
 
+ <!-- Include jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Include Slick carousel JavaScript -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 
 
