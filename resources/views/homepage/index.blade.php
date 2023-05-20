@@ -361,7 +361,7 @@
                                 <ul>
                                     <li><img src="images/comment-02.jpg" class="img-responsive" alt=""></li>
                                     <li>By <a title="" href="#"><span>Naeem Khan</span></a> --</li>
-                                    <li><a title="" href="#">Oct 6, 2016</a> --</li>
+                                    <li><a title="" href="#">Mei 15, 2023</a> --</li>
                                     <li><a title="" href="#"><span>275 Comments</span></a></li>
                                 </ul>
                             </div>
