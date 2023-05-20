@@ -1,11 +1,12 @@
  <!-- top header -->
+ <div>
  <div class="top_header hidden-xs">
     <div class="container">
         <div class="row">
             <!--breaking news-->
             <div class="col-sm-8 col-md-7">
                 <div class="newsticker-inner">
-                    <ul class="newsticker">
+                    {{-- <ul class="newsticker">
                         <li><span class="color-1">Finance</span><a href="#">Jadwal Closing Penerimaan
                                 Dokumen April 2023</a></li>
                         <li><span class="color-2">HSSE</span><a href="#">Waspada Covid 19 ARCTUS</a></li>
@@ -15,11 +16,11 @@
                                 Wahyu Shafaat</a></li>
                         <li><span class="color-1">HRD</span><a href="#">Himabauan Hadir tepat waktu bagi
                                 pekerja</a></li>
-                    </ul>
-                    <div class="next-prev-inner">
+                    </ul> --}}
+                    {{-- <div class="next-prev-inner">
                         <a href="#" id="prev-button"><i class='pe-7s-angle-left'></i></a>
                         <a href="#" id="next-button"><i class='pe-7s-angle-right'></i></a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
@@ -29,18 +30,20 @@
 <div class="top_banner_wrap">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-md-4 col-sm-4">
+            <div class="col-xs-12 col-md-4 col-sm-4" style="margin-left: 10px;">
+                <div class="header-logo">
+                    <!-- logo -->
+                    <a href="{{ route('homepage') }}">
+                        <img class="td-retina-data img-responsive" src="{{ asset('images/BUMN.png')}}"  alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-4 col-sm-4" style="position: absolute; top: 0px; right: 30px;">
                 <div class="header-logo">
                     <!-- logo -->
                     <a href="{{ route('homepage') }}">
                         <img class="td-retina-data img-responsive" src="{{ asset('images/logo.png')}}" alt="">
                     </a>
-                </div>
-            </div>
-            <div class="col-xs-8 col-md-8 col-sm-8 hidden-xs">
-                <div class="header-banner">
-                    <a href="#"><img class="td-retina img-responsive" src="{{ asset('images/top-bannner.jpg')}}"
-                            alt=""></a>
                 </div>
             </div>
         </div>
@@ -86,7 +89,7 @@
                     <a href="#" class="dropdown-toggle category03" data-toggle="dropdown">GALLERY &
                         VIDEO<span class="pe-7s-angle-down"></span></a>
                     <ul class="dropdown-menu menu-slide">
-                        <li><a href="#">Photo</a></li>
+                        <li><a href="{{ route('foto') }}">Photo</a></li>
                         <li><a href="#">Video</a></li>
                     </ul>
                 </li>
@@ -94,4 +97,19 @@
         </div>
         <!-- navbar-collapse -->
     </nav>
+
+</div>
+<div class="col-sm-12 col-md-12" style="background-color: azure" >
+    <marquee behavior="scroll" direction="left" >
+        <div class="newsticker" style="">
+        <div>
+            <a href="#" style=""><span style="padding: 0px 5px" class="color-1"> <b>Finance</b> </span>Jadwal Closing Penerimaan Dokumen April 2023</a>  
+            <a href="#" style=""><span style="padding: 0px 5px" class="color-2"><b>HSSE</b></span>Waspada Covid 19 ARCTUS</a>  
+            <a href="#" style=""><span style="padding: 0px 5px" class="color-3"><b>HRD</b></span>Tips Aman Meninggalkan Rumah Saat Mudik Lebaran</a>  
+            <a href="#" style=""><span style="padding: 0px 5px" class="color-4"><b>HRD</b></span>Pengukuhan Jabatan Manager Legal Wahyu Shafaat</a> 
+            <a href="#" style=""><span style="padding: 0px 5px" class="color-4"><b>HRD</b></span>Himabauan Hadir Tepat Waktu bagi Pekerja</a> 
+        </div>
+    </div>
+    </marquee>
+    </div>
 </div>

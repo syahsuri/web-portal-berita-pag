@@ -253,14 +253,13 @@
                     </div>
                 </div>
                 <!-- /.search area -->
-                @foreach ($broadcasts as $broadcast)
-                    <div class="banner-add">
-                        <span class="add-title"> - Broadcast - </span>
-                        <div id="slideshow">
-                            <a href="#"><img src="{{ asset('broadcast/' . basename($broadcast->image)) }}"
-                                    class="img-responsive center-block" alt="">{{ $broadcast->id }}</a>
-                        </div>
-                    </div>
+                <div class="banner-add">
+                    <!-- add -->
+                    <span class="add-title">- Broadcast -</span>
+                    <a href="#"><img src="images/ad-banner.jpg" class="img-responsive center-block"
+                            alt=""></a>
+                </div>
+
             </div>
             @endforeach
             <!-- side content end -->
@@ -297,36 +296,78 @@
                     <h3 class="category-headding ">VIDEO POST</h3>
                     <div class="headding-border"></div>
                 </div>
-                @foreach ($videos as $video)
-                    <div class="col-sm-4">
-                        <div class="post-style1">
-                            <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
-                                <!-- post image -->
-                                <a href="#" class="video-img-icon">
-                                    <i class="fa fa-play"></i>
-                                    <video src="{{ asset('videos/' . $video->video) }} " alt=""
-                                        class="img-responsive">
-                                    </video>
-                                </a>
-                            </div>
-                            <!-- post title -->
-                            <h3><a href="#">{{ "$video->judul" }}</a></h3>
-                            <div class="post-title-author-details">
-                                <div class="date">
-                                    <ul>
-                                        <li><img src="images/comment-02.jpg" class="img-responsive" alt=""></li>
-                                        <li>By <a title="" href="#"><span>{{ "$video->author" }}</span></a>
-                                            --</li>
-                                        <li><a title=""
-                                                href="#">{{ date('d F Y', strtotime($video->created_at)) }}</a> --
-                                        </li>
-                                        <li><a title="" href="#"><span>275 Comments</span></a></li>
-                                    </ul>
-                                </div>
+                <div class="col-sm-4">
+                    <div class="post-style1">
+                        <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
+                            <!-- post image -->
+                            <a href="#" class="video-img-icon">
+                                <i class="fa fa-play"></i>
+                                <img src="http://pertaarungas.pertamina.com/album/cbeebdcaf9f500316bbd2d58c5818341.JPG"
+                                    alt="" class="img-responsive">
+                            </a>
+                        </div>
+                        <!-- post title -->
+                        <h3><a href="#">There are many variations of passages of.</a></h3>
+                        <div class="post-title-author-details">
+                            <div class="date">
+                                <ul>
+                                    <li><img src="images/comment-02.jpg" class="img-responsive" alt=""></li>
+                                    <li>By <a title="" href="#"><span>Naeem Khan</span></a> --</li>
+                                    <li><a title="" href="#">Oct 6, 2016</a> --</li>
+                                    <li><a title="" href="#"><span>275 Comments</span></a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                </div>
+                <div class="col-sm-4">
+                    <div class="post-style1">
+                        <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <!-- post image -->
+                            <a href="#" class="video-img-icon">
+                                <i class="fa fa-play"></i>
+                                <img src="http://pertaarungas.pertamina.com/galeri/aafc59947ee716e53a7a1fa4a5a592cb.JPG"
+                                    alt="" class="img-responsive">
+                            </a>
+                        </div>
+                        <!-- post title -->
+                        <h3><a href="#">There are many variations of passages of.</a></h3>
+                        <div class="post-title-author-details">
+                            <div class="date">
+                                <ul>
+                                    <li><img src="images/comment-01.jpg" class="img-responsive" alt=""></li>
+                                    <li>By <a title="" href="#"><span>Naeem Khan</span></a> --</li>
+                                    <li><a title="" href="#">Oct 6, 2016</a> --</li>
+                                    <li><a title="" href="#"><span>275 Comments</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="post-style1">
+                        <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
+                            <!-- post image -->
+                            <a href="#" class="video-img-icon">
+                                <i class="fa fa-play"></i>
+                                <img src="http://pertaarungas.pertamina.com/album/9b00f65295924e8a4184bd57fe3833d1.jpg"
+                                    alt="" class="img-responsive">
+                            </a>
+                        </div>
+                        <!-- post title -->
+                        <h3><a href="#">There are many variations of passages of.</a></h3>
+                        <div class="post-title-author-details">
+                            <div class="date">
+                                <ul>
+                                    <li><img src="images/comment-02.jpg" class="img-responsive" alt=""></li>
+                                    <li>By <a title="" href="#"><span>Naeem Khan</span></a> --</li>
+                                    <li><a title="" href="#">Oct 6, 2016</a> --</li>
+                                    <li><a title="" href="#"><span>275 Comments</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
