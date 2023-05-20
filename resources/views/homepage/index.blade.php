@@ -253,13 +253,16 @@
                     </div>
                 </div>
                 <!-- /.search area -->
-                <div class="banner-add">
-                    <span class="add-title"> - Broadcast - </span>
-                    <div id="slideshow">
-                        <a href="#"><img src="images/ad-banner.jpg" class="img-responsive center-block" alt=""></a>
+                @foreach ($broadcasts as $broadcast)
+                    <div class="banner-add">
+                        <span class="add-title"> - Broadcast - </span>
+                        <div id="slideshow">
+                            <a href="#"><img src="{{ asset('broadcast/' . basename($broadcast->image)) }}"
+                                    class="img-responsive center-block" alt="">{{ $broadcast->id }}</a>
+                        </div>
                     </div>
-                </div>
             </div>
+            @endforeach
             <!-- side content end -->
 
             <div class="col-sm-4 left-padding">
@@ -294,32 +297,35 @@
                     <h3 class="category-headding ">VIDEO POST</h3>
                     <div class="headding-border"></div>
                 </div>
-                @foreach ($videos as $video )
-                <div class="col-sm-4">
-                    <div class="post-style1">
-                        <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
-                            <!-- post image -->
-                            <a href="#" class="video-img-icon">
-                                <i class="fa fa-play"></i>
-                                <video  src="{{ asset('videos/' . $video->video) }} "
-                                    alt="" class="img-responsive">
-                                </video>
-                            </a>
-                        </div>
-                        <!-- post title -->
-                        <h3><a href="#">{{ "$video->judul" }}</a></h3>
-                        <div class="post-title-author-details">
-                            <div class="date">
-                                <ul>
-                                    <li><img src="images/comment-02.jpg" class="img-responsive" alt=""></li>
-                                    <li>By <a title="" href="#"><span>{{ "$video->author" }}</span></a> --</li>
-                                    <li><a title="" href="#">{{ date('d F Y', strtotime($video->created_at)) }}</a> --</li>
-                                    <li><a title="" href="#"><span>275 Comments</span></a></li>
-                                </ul>
+                @foreach ($videos as $video)
+                    <div class="col-sm-4">
+                        <div class="post-style1">
+                            <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
+                                <!-- post image -->
+                                <a href="#" class="video-img-icon">
+                                    <i class="fa fa-play"></i>
+                                    <video src="{{ asset('videos/' . $video->video) }} " alt=""
+                                        class="img-responsive">
+                                    </video>
+                                </a>
+                            </div>
+                            <!-- post title -->
+                            <h3><a href="#">{{ "$video->judul" }}</a></h3>
+                            <div class="post-title-author-details">
+                                <div class="date">
+                                    <ul>
+                                        <li><img src="images/comment-02.jpg" class="img-responsive" alt=""></li>
+                                        <li>By <a title="" href="#"><span>{{ "$video->author" }}</span></a>
+                                            --</li>
+                                        <li><a title=""
+                                                href="#">{{ date('d F Y', strtotime($video->created_at)) }}</a> --
+                                        </li>
+                                        <li><a title="" href="#"><span>275 Comments</span></a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
