@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\detailspageController;
+use App\Http\Controllers\photoController;
+use App\Http\Controllers\videoController;
 use App\Http\Controllers\homepageController;
 use App\Http\Controllers\insertberitaController;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +28,8 @@ Route::get('/', function () {
 Route::prefix('/homepage')->group(function() {
     Route::get('/', [homepageController::class, 'index'])->name('homepage');
     Route::get('/detailberita/{slug}', [detailspageController::class, 'index'])->name('detailsberita');
+    Route::get('/foto', [photoController::class, 'index'])->name('foto');
+    Route::get('/video', [videoController::class, 'index'])->name('video');
 });
 
 Route::prefix('/dashboard')->group(function() {
