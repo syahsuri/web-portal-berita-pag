@@ -7,6 +7,7 @@ use App\Models\article;
 use App\Models\broadcast;
 use App\Models\division;
 use App\Models\headnewspage;
+use App\Models\video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -68,6 +69,7 @@ class homepageController extends Controller
             ->get();
 
         $broadcasts = broadcast::all();
+        $videos = video::latest()->take(3)->get();
 
         return view('homepage.index')->with(compact(
             'midNews',
@@ -77,8 +79,8 @@ class homepageController extends Controller
             'secondrightNews',
             'scrollingrecentnews',
             'otherLatestNews',
-            'broadcasts'
-
+            'broadcasts',
+            'videos'
         ));
     }
 

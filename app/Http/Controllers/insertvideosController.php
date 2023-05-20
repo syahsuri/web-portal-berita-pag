@@ -7,11 +7,14 @@ use App\Models\division;
 use App\Models\video;
 use Illuminate\Http\Request;
 
+
+
 class insertvideosController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
         $divisions = division::all();
@@ -31,6 +34,7 @@ class insertvideosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    
     public function store(Request $request)
     {
         $validatedData = $request->validate([
