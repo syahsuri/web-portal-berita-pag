@@ -93,8 +93,6 @@
                                     <div class="mb-2 mt-2" id="video-preview"></div>
                                 </div>
 
-
-
                                 <div class="form-group">
                                     <label for="eventRegInput2">Deskripsi</label>
                                     <input type="text" id="deskripsi"

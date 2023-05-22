@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\beritafungsiController;
 use App\Http\Controllers\broadcastController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\detailspageController;
@@ -8,6 +9,8 @@ use App\Http\Controllers\videoController;
 use App\Http\Controllers\homepageController;
 use App\Http\Controllers\insertberitaController;
 use App\Http\Controllers\insertvideosController;
+use App\Http\Controllers\livebroadcastController;
+use App\Models\liveBroadcast;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,14 +30,15 @@ Route::get('/', function () {
 
 
 
-Route::prefix('/homepage')->group(function() {
+Route::prefix('/homepage')->group(function () {
     Route::get('/', [homepageController::class, 'index'])->name('homepage');
     Route::get('/detailberita/{slug}', [detailspageController::class, 'index'])->name('detailsberita');
+    Route::get('/beritafungsi', [beritafungsiController::class, 'index'])->name('beritafungsi');
     Route::get('/foto', [photoController::class, 'index'])->name('foto');
     Route::get('/video', [videoController::class, 'index'])->name('video');
 });
 
-Route::prefix('/dashboard')->group(function() {
+Route::prefix('/dashboard')->group(function () {
     Route::get('/', [dashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/insertberita', [insertberitaController::class, 'index'])->name('insertberita');
@@ -57,9 +61,14 @@ Route::prefix('/dashboard')->group(function() {
     Route::delete('/insertbroadcast/{id}', [broadcastController::class, 'destroy'])->name('insertbroadcast.destroy');
     Route::get('/createbroadcast', [broadcastController::class, 'create'])->name('createbroadcast');
     Route::post('/insertbroadcast', [broadcastController::class, 'store'])->name('insertbroadcast.store');
-    Route::get('/editvideos{id}', [broadcastController::class, 'edit'])->name('editvideos');
-    Route::post('/editvideos{id}', [broadcastController::class, 'update'])->name('editvideos.update');
+    Route::post('/editbroadcast{id}', [broadcastController::class, 'update'])->name('editbroadcast.update');
 
+    Route::get('/insertlivebroadcast', [livebroadcastController::class, 'index'])->name('insertlivebroadcast');
+    Route::delete('/insertlivebroadcast/{id}', [livebroadcastController::class, 'destroy'])->name('insertlivebroadcast.destroy');
+    Route::get('/createlivebroadcast', [livebroadcastController::class, 'create'])->name('createlivebroadcast');
+    Route::post('/insertlivebroadcast', [livebroadcastController::class, 'store'])->name('insertlivebroadcast.store');
+    Route::post('/editlivebroadcast{id}', [livebroadcastController::class, 'update'])->name('editlivebroadcast.update');
+    Route::post('/live_broadcasts/{id}/toggle', [livebroadcastController::class, 'toggle'])->name('live_broadcasts.toggle');
 });
 
-Route::get('/get-thumbnail',[insertberitaController::class, 'getThumbnail']);
+Route::get('/get-thumbnail', [insertberitaController::class, 'getThumbnail']);

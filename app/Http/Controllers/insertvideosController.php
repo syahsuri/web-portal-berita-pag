@@ -34,7 +34,7 @@ class insertvideosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -86,32 +86,31 @@ class insertvideosController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // Find the article to be updated
-        $video = video::findOrFail($id);
+        // Find the video to be updated
+        $video = Video::findOrFail($id);
 
-        // Update the article's fields with the new data from the form
+        // Update the video's fields with the new data from the form
         $video->judul = $request->input('judul');
         $video->slug = $request->input('slug');
         $video->id_divisi = $request->input('id_divisi');
         $video->author = $request->input('author');
 
-        // Handle the videos upload
-        if ($request->hasFile('videos')) {
-            $file = $request->file('videos');
+        // Handle the video upload
+        if ($request->hasFile('video')) {
+            $file = $request->file('video');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('video'), $filename);
-            $video->thumbnail = $filename;
-
-            // Update the article's content
-            $video->article = $request->input('video');
-
-            // Save the changes to the database
-            $video->save();
-
-            // Redirect the user to the updated article's page
-            return redirect()->route('insertvideos')->with('success', 'Artikel berhasil disimpan.');
+            $file->move(public_path('videos'), $filename);
+            $video->video = $filename;
         }
+
+        // Save the changes to the database
+        $video->save();
+
+
+        // Redirect the user to the appropriate route or page
+        return redirect()->route('insertvideos')->with('success', 'Video berhasil diupdate.');
     }
+
 
     /**
      * Remove the specified resource from storage.

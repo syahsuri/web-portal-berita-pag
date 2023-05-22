@@ -11,6 +11,7 @@ class video extends Model
 
     protected $table = 'video';
 
+
     protected $fillable = [
         'judul',
         'slug',
@@ -19,6 +20,7 @@ class video extends Model
         'video',
         'deskripsi',
     ];
+
     public function division()
     {
         return $this->belongsTo(division::class, 'id_divisi', 'id');

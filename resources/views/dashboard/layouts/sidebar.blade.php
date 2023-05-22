@@ -46,6 +46,16 @@
                     </span>
                 </a>
             </li>
+            <li class=" nav-item">
+                <a class="nav-link has-arrow {{ Request::is('dashboard/insertlivebroadcast') ? 'active' : '' }}"
+                    href="{{ route('insertlivebroadcast') }}">
+                    <i class="fa-solid fa-square-plus"></i>
+                    </i>
+                    <span class="menu-title" data-i18n="Shop">
+                        Insert Live Broadcast
+                    </span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

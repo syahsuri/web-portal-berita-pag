@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\article;
+use App\Models\video;
 use Illuminate\Http\Request;
 
 class dashboardController extends Controller
@@ -12,7 +14,11 @@ class dashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        $authorCount = article::distinct('author')->count('author');
+        $articleCount = article::count();
+        $imageCount = article::count('thumbnail');
+        $videoCount = video::count('video');
+        return view('dashboard.index')->with(compact('articleCount','authorCount','imageCount','videoCount'));
     }
 
     /**

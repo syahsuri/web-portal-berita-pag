@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\division;
+use App\Models\liveBroadcast;
+use App\Models\video;
 use Illuminate\Http\Request;
 
 class videoController extends Controller
@@ -11,7 +14,10 @@ class videoController extends Controller
      */
     public function index()
     {
-        return view ('homepage.video.index');
+        $livebroadcast = liveBroadcast::where('is_live', 1)->get();
+        $divisions = division::all();
+        $images = video::orderBy('created_at', 'desc')->get();
+        return view ('homepage.video.index')->with(compact('divisions','images','livebroadcast'));
     }
 
     /**

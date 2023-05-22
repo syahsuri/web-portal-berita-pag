@@ -1,21 +1,17 @@
- <!-- top header -->
- <div>
- <div class="top_header hidden-xs">
+<!-- top header -->
+<div class="top_header hidden-xs">
     <div class="container">
         <div class="row">
-            <!--breaking news-->
+            <!-- breaking news -->
             <div class="col-sm-8 col-md-7">
                 <div class="newsticker-inner">
+                    <!-- uncomment the following lines if needed -->
                     {{-- <ul class="newsticker">
-                        <li><span class="color-1">Finance</span><a href="#">Jadwal Closing Penerimaan
-                                Dokumen April 2023</a></li>
+                        <li><span class="color-1">Finance</span><a href="#">Jadwal Closing Penerimaan Dokumen April 2023</a></li>
                         <li><span class="color-2">HSSE</span><a href="#">Waspada Covid 19 ARCTUS</a></li>
-                        <li><span class="color-3">HSSE</span><a href="#">Tips Aman Meninggalkan Rumah Saat
-                                Mudik Lebaran</a></li>
-                        <li><span class="color-4">HRD</span><a href="#">Pengukuhan Jabatan Manager Legal
-                                Wahyu Shafaat</a></li>
-                        <li><span class="color-1">HRD</span><a href="#">Himabauan Hadir tepat waktu bagi
-                                pekerja</a></li>
+                        <li><span class="color-3">HSSE</span><a href="#">Tips Aman Meninggalkan Rumah Saat Mudik Lebaran</a></li>
+                        <li><span class="color-4">HRD</span><a href="#">Pengukuhan Jabatan Manager Legal Wahyu Shafaat</a></li>
+                        <li><span class="color-1">HRD</span><a href="#">Himabauan Hadir tepat waktu bagi pekerja</a></li>
                     </ul> --}}
                     {{-- <div class="next-prev-inner">
                         <a href="#" id="prev-button"><i class='pe-7s-angle-left'></i></a>
@@ -23,33 +19,34 @@
                     </div> --}}
                 </div>
             </div>
-
         </div>
     </div>
 </div>
 <div class="top_banner_wrap">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-md-4 col-sm-4" style="margin-left: 10px;">
+            <div class="col-xs-12 col-md-4 col-sm-4">
                 <div class="header-logo">
                     <!-- logo -->
-                    <a href="{{ route('homepage') }}">
-                        <img class="td-retina-data img-responsive" src="{{ asset('images/BUMN.png')}}"  alt="">
+                    <a href="home-style-one.html">
+                        <img class="td-retina-data img-responsive" src="{{ asset('images/BUMN.png')}}" alt="">
                     </a>
                 </div>
             </div>
-            <div class="col-xs-12 col-md-4 col-sm-4" style="position: absolute; top: 0px; right: 30px;">
+            <div class="col-xs-12 col-md-4 col-sm-push-3">
                 <div class="header-logo">
                     <!-- logo -->
-                    <a href="{{ route('homepage') }}">
+                    <a href="home-style-one.html">
                         <img class="td-retina-data img-responsive" src="{{ asset('images/logo.png')}}" alt="">
                     </a>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
-<!-- navber -->
+
+<!-- navbar -->
 <div class="container hidden-xs">
     <nav class="navbar">
         <div class="collapse navbar-collapse">
@@ -69,8 +66,8 @@
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle category03" data-toggle="dropdown">APLIKASI
-                        INTERNAL<span class="pe-7s-angle-down"></span></a>
+                    <a href="#" class="dropdown-toggle category03" data-toggle="dropdown">APLIKASI INTERNAL
+                        <span class="pe-7s-angle-down"></span></a>
                     <ul class="dropdown-menu menu-slide">
                         <li><a href="#">LEMON</a></li>
                         <li><a href="#">COPER</a></li>
@@ -86,30 +83,29 @@
                 <li><a href="category-style-two.html" class="category04">INTERNAL BROADCAST</a></li>
                 <li><a href="category-style-one.html" class="category05">DOCUMENT MANAGEMENT</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle category03" data-toggle="dropdown">GALLERY &
-                        VIDEO<span class="pe-7s-angle-down"></span></a>
+                    <a href="#" class="dropdown-toggle category03" data-toggle="dropdown">GALLERY & VIDEO
+                        <span class="pe-7s-angle-down"></span></a>
                     <ul class="dropdown-menu menu-slide">
                         <li><a href="{{ route('foto') }}">Photo</a></li>
-                        <li><a href="#">Video</a></li>
+                        <li><a href="{{ route('video') }}">Video</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
         <!-- navbar-collapse -->
     </nav>
+</div>
 
-</div>
-<div class="col-sm-12 col-md-12" style="background-color: azure" >
-    <marquee behavior="scroll" direction="left" >
-        <div class="newsticker" style="">
-        <div>
-            <a href="#" style=""><span style="padding: 0px 5px" class="color-1"> <b>Finance</b> </span>Jadwal Closing Penerimaan Dokumen April 2023</a>  
-            <a href="#" style=""><span style="padding: 0px 5px" class="color-2"><b>HSSE</b></span>Waspada Covid 19 ARCTUS</a>  
-            <a href="#" style=""><span style="padding: 0px 5px" class="color-3"><b>HRD</b></span>Tips Aman Meninggalkan Rumah Saat Mudik Lebaran</a>  
-            <a href="#" style=""><span style="padding: 0px 5px" class="color-4"><b>HRD</b></span>Pengukuhan Jabatan Manager Legal Wahyu Shafaat</a> 
-            <a href="#" style=""><span style="padding: 0px 5px" class="color-4"><b>HRD</b></span>Himabauan Hadir Tepat Waktu bagi Pekerja</a> 
+<div class="col-sm-12 col-md-12" style="background-color: azure; font-size: 1.4em;">
+    <marquee behavior="scroll" direction="left">
+        <div class="newsticker">
+            <div>
+                @foreach ($livebroadcast as $pesan)
+                <a href="#" style=""><span style="padding: 0px 5px"
+                    class="color-1"><b>{{ $pesan->division->nama_divisi }}</b></span>{{ $pesan->deskripsi }}</a>
+                @endforeach
+            </div>
         </div>
-    </div>
     </marquee>
-    </div>
 </div>
+

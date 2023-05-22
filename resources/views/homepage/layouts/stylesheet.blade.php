@@ -25,8 +25,12 @@
 <link rel="stylesheet" href="{{ asset('css/animate.min.css')}}">
 <!-- fonts css -->
 
+<script src="https://kit.fontawesome.com/0735ededae.js" crossorigin="anonymous"></script>
+
 <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css')}}">
+
 <link rel="stylesheet" type="text/css" href="{{ asset('css/Pe-icon-7-stroke.css')}}" />
+
 <link rel="stylesheet" type="text/css" href="{{ asset('css/flaticon.css')}}" />
 <!-- custom css -->
 <link rel="stylesheet" href="{{ asset('css/style.css')}}">

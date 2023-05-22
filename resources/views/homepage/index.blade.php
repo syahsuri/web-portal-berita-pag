@@ -13,8 +13,8 @@
                             </a>
                         </div>
                         <div class="post-info">
-                            <span class="color-3">{{ $firstleftNews->division_name }}</span>
-                            <h3 class="post-title post-title-size"><a
+                            <span class="color-3"><a class="rounded-border">{{ $firstleftNews->division_name }}</a></span>
+                            <h3 class="post-title post-title-size shadow-text"><a
                                     href="{{ route('detailsberita', ['slug' => $firstleftNews->slug]) }}"
                                     rel="bookmark">{{ substr($firstleftNews->judul, 0) }}{{ strlen($firstleftNews->judul) > 50 ? '...' : '' }}</a>
                             </h3>
@@ -24,7 +24,7 @@
                                     <i class="pe-7s-clock"></i> {{ date('d F Y', strtotime($firstleftNews->created_at)) }}
                                 </div>
                                 <!-- post comment -->
-                                <div class="post-author-comment"><i class="pe-7s-comment"></i>{{ $firstleftNews->views }}
+                                <div class="post-author-comment"><i class="fas fa-eye"></i>{{ $firstleftNews->views }}
                                 </div>
                                 <!-- read more -->
                                 <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
@@ -39,8 +39,8 @@
                             </a>
                         </div>
                         <div class="post-info">
-                            <span class="color-5">{{ $secondleftNews->division_name }}</span>
-                            <h3 class="post-title post-title-size"><a
+                            <span class="color-5"><a class="rounded-border">{{ $secondleftNews->division_name }}</a></span>
+                            <h3 class="post-title post-title-size shadow-text"><a
                                     href="{{ route('detailsberita', ['slug' => $secondleftNews->slug]) }}"
                                     rel="bookmark">{{ substr($secondleftNews->judul, 0) }}{{ strlen($secondleftNews->judul) > 50 ? '...' : '' }}</a>
                             </h3>
@@ -50,7 +50,7 @@
                                     <i class="pe-7s-clock"></i> {{ date('d F Y', strtotime($secondleftNews->created_at)) }}
                                 </div>
                                 <!-- post comment -->
-                                <div class="post-author-comment"><i class="pe-7s-comment"></i>{{ $secondleftNews->views }}
+                                <div class="post-author-comment"><i class="fas fa-eye"></i>{{ $secondleftNews->views }}
                                 </div>
                                 <!-- read more -->
                                 <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
@@ -68,7 +68,7 @@
                             </a>
                         </div>
                         <div class="post-info">
-                            <span class="color-4">{{ $midNews->division_name }}</span>
+                            <span class="color-4"><a class="rounded-border">{{ $midNews->division_name }}</a></span>
                             <h3 class="post-title"><a href="{{ route('detailsberita', ['slug' => $midNews->slug]) }}"
                                     rel="bookmark">{{ $midNews->judul }} </a></h3>
                             <div class="post-editor-date">
@@ -77,7 +77,7 @@
                                     <i class="pe-7s-clock"></i>{{ date('d F Y', strtotime($midNews->created_at)) }}
                                 </div>
                                 <!-- post comment -->
-                                <div class="post-author-comment"><i class="pe-7s-comment"></i>{{ $midNews->views }}</div>
+                                <div class="post-author-comment"><i class="fas fa-eye"></i>{{ $midNews->views }}</div>
                                 <!-- read more -->
                                 <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
                             </div>
@@ -95,8 +95,8 @@
                             </a>
                         </div>
                         <div class="post-info">
-                            <span class="color-1">{{ $firstrightNews->division_name }}</span>
-                            <h3 class="post-title post-title-size"><a
+                            <span class="color-1"><a class="rounded-border">{{ $firstrightNews->division_name }}</a></span>
+                            <h3 class="post-title post-title-size shadow-text"><a
                                     href="{{ route('detailsberita', ['slug' => $firstrightNews->slug]) }}"
                                     rel="bookmark">{{ substr($firstrightNews->judul, 0) }}{{ strlen($firstrightNews->judul) > 50 ? '...' : '' }}</a>
                             </h3>
@@ -106,7 +106,7 @@
                                     <i class="pe-7s-clock"></i>{{ date('d F Y', strtotime($firstrightNews->created_at)) }}
                                 </div>
                                 <!-- post comment -->
-                                <div class="post-author-comment"><i class="pe-7s-comment"></i>{{ $firstrightNews->views }}
+                                <div class="post-author-comment"><i class="fas fa-eye"></i>{{ $firstrightNews->views }}
                                 </div>
                                 <!-- read more -->
                                 <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
@@ -123,8 +123,8 @@
                             </a>
                         </div>
                         <div class="post-info">
-                            <span class="color-2">{{ $secondrightNews->division_name }}</span>
-                            <h3 class="post-title post-title-size"><a
+                            <span class="color-2"><a class="rounded-border">{{ $secondrightNews->division_name }}</a></span>
+                            <h3 class="post-title post-title-size shadow-text"><a
                                     href="{{ route('detailsberita', ['slug' => $secondrightNews->slug]) }}"
                                     rel="bookmark">{{ substr($secondrightNews->judul, 0) }}{{ strlen($secondrightNews->judul) > 50 ? '...' : '' }}</a>
                             </h3>
@@ -135,8 +135,7 @@
                                     {{ date('d F Y', strtotime($secondrightNews->created_at)) }}
                                 </div>
                                 <!-- post comment -->
-                                <div class="post-author-comment"><i
-                                        class="pe-7s-comment"></i>{{ $secondrightNews->views }}</div>
+                                <div class="post-author-comment"><i class="fas fa-eye"></i>{{ $secondrightNews->views }}</div>
                                 <!-- read more -->
                                 <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
                             </div>
@@ -173,7 +172,8 @@
                                         <div class="post-info meta-info-rn">
                                             <div class="slide">
                                                 <a target="_blank" href="#"
-                                                    class="post-badge btn_six">{{ $beritascroll->division->nama_divisi }}</a>
+                                                    class="post-badge btn_six">{{ $beritascroll->division->nama_divisi }}
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -189,7 +189,7 @@
                                                 <li><a title=""
                                                         href="#">{{ date('d F Y', strtotime($beritascroll->created_at)) }}</a>
                                                     --</li>
-                                                <li><a title="" href="#"><span>275 Comments</span></a></li>
+                                                <li><a title="" href="#"><span><i class="fas fa-eye"></i> {{ $beritascroll->view->views }}</span></a></li>
                                             </ul>
                                         </div>
                                         <p>{{ Str::limit(strip_tags($beritascroll->article), 80) }} <a
@@ -253,122 +253,131 @@
                     </div>
                 </div>
                 <!-- /.search area -->
-                <div class="banner-add">
-                    <!-- add -->
-                    <span class="add-title">- Broadcast -</span>
-                    <a href="#"><img src="images/ad-banner.jpg" class="img-responsive center-block"
-                            alt=""></a>
+                <div class="slideshow-container">
+                    @foreach ($broadcasts as $key => $broadcast)
+                        <div class="mySlides">
+                            <div class="numbertext">{{ $key + 1 }} / {{ count($broadcasts) }}</div>
+                            <img src="{{ asset('broadcast/' . basename($broadcast->image)) }}" alt="">
+                        </div>
+                    @endforeach
                 </div>
 
-            </div>
-            @endforeach
-            <!-- side content end -->
+                <script>
+                    let slideIndex = 0;
+                    showSlides();
 
-            <div class="col-sm-4 left-padding">
+                    function showSlides() {
+                        let i;
+                        let slides = document.getElementsByClassName("mySlides");
+
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";
+                        }
+
+                        slideIndex++;
+
+                        if (slideIndex > slides.length) {
+                            slideIndex = 1;
+                        }
+
+                        slides[slideIndex - 1].style.display = "block";
+                        setTimeout(showSlides, 5000); // Change image every 10 seconds
+                    }
+                </script>
+                <!-- side content end -->
+
+            </div>
+            <div class="col-sm-4 left-padding"style="margin-top: 20px;">
                 <aside>
                     <h3 class="category-headding ">RHISOL RANK</h3>
-                    <div class="headding-border bg-color-2"></div>
-                    <div class="cats-widget">
-                        <ul>
-                            <li class=""><a href="#" title="Title goes here.">1. Chairul Azdaman</a> <span>20
-                                    Laporan</span></li>
-                            <li class=""><a href="#" title="Title goes here.">2. Budiman</a> <span>18
-                                    Laporan</span></li>
-                            <li class=""><a href="#">3. Arianto</a> <span>16 Laporan</span></li>
-                            <li class=""><a href="#" title="Title goes here.">4. Agus</a> <span>15
-                                    Laporan</span></li>
-                            <li class=""><a href="#">5. Siska</a> <span>14 Laporan</span></li>
-                            <li class=""><a href="#">6. Nanda</a> <span>13 Laporan</span></li>
-                        </ul>
-                    </div>
-                </aside>
+                        <div class="headding-border bg-color-2"></div>
+                        <div class="cats-widget">
+                            <ul>
+                                <li class=""><a href="#" title="Title goes here.">1. Chairul Azdaman</a>
+                                    <span>20
+                                        Laporan</span>
+                                </li>
+                                <li class=""><a href="#" title="Title goes here.">2. Budiman</a> <span>18
+                                        Laporan</span></li>
+                                <li class=""><a href="#">3. Arianto</a> <span>16 Laporan</span></li>
+                                <li class=""><a href="#" title="Title goes here.">4. Agus</a> <span>15
+                                        Laporan</span></li>
+                                <li class=""><a href="#">5. Siska</a> <span>14 Laporan</span></li>
+                                <li class=""><a href="#">6. Nanda</a> <span>13 Laporan</span></li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+                <!-- row end -->
             </div>
         </div>
-        <!-- row end -->
-    </div>
 @endsection
 
 @section('videosSections')
     <section class="video-post-inner">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h3 class="category-headding ">VIDEO POST</h3>
-                    <div class="headding-border"></div>
-                </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="category-headding ">VIDEO POST</h3>
+                        <div class="headding-border"></div>
+                    </div>
+                     @foreach ($videos as $video)
                 <div class="col-sm-4">
                     <div class="post-style1">
                         <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
                             <!-- post image -->
-                            <a href="#" class="video-img-icon">
+                            <a href="#" class="video-img-icon" data-toggle="modal"
+                                data-target="#videoModal{{ $video->id }}">
                                 <i class="fa fa-play"></i>
-                                <img src="http://pertaarungas.pertamina.com/album/cbeebdcaf9f500316bbd2d58c5818341.JPG"
-                                    alt="" class="img-responsive">
+                                <div class="video-container">
+                                    <video src="{{ asset('videos/' . $video->video) }}" class="img-responsive"
+                                        style="width:500px"></video>
+                                </div>
                             </a>
                         </div>
                         <!-- post title -->
-                        <h3><a href="#">There are many variations of passages of.</a></h3>
+                        <h3><a href="#">{{ $video->judul }}</a></h3>
                         <div class="post-title-author-details">
                             <div class="date">
                                 <ul>
-                                    <li><img src="images/comment-02.jpg" class="img-responsive" alt=""></li>
-                                    <li>By <a title="" href="#"><span>Naeem Khan</span></a> --</li>
-                                    <li><a title="" href="#">Oct 6, 2016</a> --</li>
+                                    <li><img src="images/comment-02.jpg" class="img-responsive" alt="">
+                                    </li>
+                                    <li>By <a title="" href="#"><span>{{ $video->author }}</span></a>
+                                        --
+                                    </li>
+                                    <li><a title=""
+                                            href="#">{{ date('d F Y', strtotime($video->created_at)) }}</a>
+                                        --
+                                    </li>
                                     <li><a title="" href="#"><span>275 Comments</span></a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
+
                 </div>
-                <div class="col-sm-4">
-                    <div class="post-style1">
-                        <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-                            <!-- post image -->
-                            <a href="#" class="video-img-icon">
-                                <i class="fa fa-play"></i>
-                                <img src="http://pertaarungas.pertamina.com/galeri/aafc59947ee716e53a7a1fa4a5a592cb.JPG"
-                                    alt="" class="img-responsive">
-                            </a>
-                        </div>
-                        <!-- post title -->
-                        <h3><a href="#">There are many variations of passages of.</a></h3>
-                        <div class="post-title-author-details">
-                            <div class="date">
-                                <ul>
-                                    <li><img src="images/comment-01.jpg" class="img-responsive" alt=""></li>
-                                    <li>By <a title="" href="#"><span>Naeem Khan</span></a> --</li>
-                                    <li><a title="" href="#">Oct 6, 2016</a> --</li>
-                                    <li><a title="" href="#"><span>275 Comments</span></a></li>
-                                </ul>
+
+                <!-- Video Modal -->
+                <div id="videoModal{{ $video->id }}" class="modal fade" tabindex="-1" role="dialog"
+                    aria-labelledby="videoModal{{ $video->id }}Label" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="video-container">
+                                    <video id="videoPlayer{{ $video->id }}" class="img-responsive" controls>
+                                        <source src="{{ asset('videos/' . $video->video) }}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="post-style1">
-                        <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                            <!-- post image -->
-                            <a href="#" class="video-img-icon">
-                                <i class="fa fa-play"></i>
-                                <img src="http://pertaarungas.pertamina.com/album/9b00f65295924e8a4184bd57fe3833d1.jpg"
-                                    alt="" class="img-responsive">
-                            </a>
-                        </div>
-                        <!-- post title -->
-                        <h3><a href="#">There are many variations of passages of.</a></h3>
-                        <div class="post-title-author-details">
-                            <div class="date">
-                                <ul>
-                                    <li><img src="images/comment-02.jpg" class="img-responsive" alt=""></li>
-                                    <li>By <a title="" href="#"><span>Naeem Khan</span></a> --</li>
-                                    <li><a title="" href="#">Oct 6, 2016</a> --</li>
-                                    <li><a title="" href="#"><span>275 Comments</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
-    </section>
-@endsection
+        </section>
+    @endsection

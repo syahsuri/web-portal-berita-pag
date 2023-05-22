@@ -70,16 +70,49 @@ class broadcastController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        // Find the broadcast to be updated
+        $broadcast = Broadcast::findOrFail($id);
+
+        // Get the current image
+        $currentImage = $broadcast->image;
+
+        // Update the image field if a new image is uploaded
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('broadcast'), $filename);
+            $broadcast->image = $filename;
+        }
+
+        // Update the description field
+        $broadcast->deskripsi = $request->input('deskripsi');
+
+        // Save the changes to the database
+        $broadcast->save();
+
+        // Delete the old image if a new image is uploaded
+        if ($request->hasFile('image') && $currentImage) {
+            // Assuming the image is stored in the public/broadcast directory
+            $imagePath = public_path('broadcast/' . $currentImage);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
+
+        // Redirect the user to the appropriate route or page
+        return redirect()->route('insertbroadcast')->with('success', 'Broadcast successfully updated.');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $broadcasts = broadcast::find($request->id); // find the article based on its ID
+        $broadcasts->delete(); // delete the article
+        return redirect()->route('insertbroadcast')->with('success', "Berita $broadcasts->judul berhasil dihapus!");
     }
 }

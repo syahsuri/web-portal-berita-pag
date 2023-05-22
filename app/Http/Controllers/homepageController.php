@@ -7,6 +7,7 @@ use App\Models\article;
 use App\Models\broadcast;
 use App\Models\division;
 use App\Models\headnewspage;
+use App\Models\liveBroadcast;
 use App\Models\video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,6 +19,7 @@ class homepageController extends Controller
      */
     public function index()
     {
+        $livebroadcast = liveBroadcast::where('is_live', 1)->get();
         $divisions = division::all();
         $midNews = DB::table('top_news')
             ->join('articles', 'top_news.id_articles', '=', 'articles.id')
@@ -69,7 +71,7 @@ class homepageController extends Controller
             ->get();
 
         $broadcasts = broadcast::all();
-        $videos = video::latest()->take(3)->get();
+        $videos = Video::latest()->take(3)->get();
 
         return view('homepage.index')->with(compact(
             'midNews',
@@ -79,7 +81,7 @@ class homepageController extends Controller
             'secondrightNews',
             'scrollingrecentnews',
             'otherLatestNews',
-            'broadcasts',
+            'broadcasts','livebroadcast',
             'videos'
         ));
     }
