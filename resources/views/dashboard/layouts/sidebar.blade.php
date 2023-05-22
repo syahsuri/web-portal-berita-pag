@@ -29,7 +29,7 @@
             <li class=" nav-item">
                 <a class="nav-link has-arrow {{ Request::is('dashboard/insertvideos') ? 'active' : '' }}"
                     href="{{ route('insertvideos') }}">
-                    <i class="fa-solid fa-square-plus"></i>
+                    <i class="fa-solid fa-video-plus"></i>
                     </i>
                     <span class="menu-title" data-i18n="Shop">
                         Insert Video
