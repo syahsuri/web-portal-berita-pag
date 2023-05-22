@@ -19,8 +19,7 @@
             <li class=" nav-item">
                 <a class="nav-link has-arrow {{ Request::is('dashboard/insertberita') ? 'active' : '' }}"
                     href="{{ route('insertberita') }}">
-                    <i class="fa-solid fa-square-plus"></i>
-                    </i>
+                    <i class="fa-regular fa-newspaper"></i>
                     <span class="menu-title" data-i18n="Shop">
                         Insert Berita
                     </span>
@@ -29,8 +28,7 @@
             <li class=" nav-item">
                 <a class="nav-link has-arrow {{ Request::is('dashboard/insertvideos') ? 'active' : '' }}"
                     href="{{ route('insertvideos') }}">
-                    <i class="fa-solid fa-video-plus"></i>
-                    </i>
+                    <i class="fa-regular fa-file-video"></i>
                     <span class="menu-title" data-i18n="Shop">
                         Insert Video
                     </span>
@@ -39,7 +37,7 @@
             <li class=" nav-item">
                 <a class="nav-link has-arrow {{ Request::is('dashboard/insertbroadcast') ? 'active' : '' }}"
                     href="{{ route('insertbroadcast') }}">
-                    <i class="fa-solid fa-square-plus"></i>
+                    <i class="fa-solid fa-blog"></i>
                     </i>
                     <span class="menu-title" data-i18n="Shop">
                         Insert Broadcast
@@ -49,7 +47,7 @@
             <li class=" nav-item">
                 <a class="nav-link has-arrow {{ Request::is('dashboard/insertlivebroadcast') ? 'active' : '' }}"
                     href="{{ route('insertlivebroadcast') }}">
-                    <i class="fa-solid fa-square-plus"></i>
+                    <i class="fa-solid fa-bullhorn"></i>
                     </i>
                     <span class="menu-title" data-i18n="Shop">
                         Insert Live Broadcast

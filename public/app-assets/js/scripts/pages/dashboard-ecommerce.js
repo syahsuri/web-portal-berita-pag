@@ -11,7 +11,7 @@ $(window).on("load", function(){
     var new_orders = new PerfectScrollbar('#recent-buyers, #new-orders',{
         wheelPropagation: true
     });
-    
+
     /********************************************
     *               Monthly Sales               *
     ********************************************/
@@ -36,10 +36,11 @@ $(window).on("load", function(){
         barColors: ['#FF394F'],
         hideHover: 'auto',
     });
-    
+
 });
+
 (function(window, document, $) {
-    'use strict';    
+    'use strict';
     /*************************************************
     *               Score Chart                      *
     *************************************************/
@@ -192,21 +193,10 @@ $(window).on("load", function(){
     new Chartist.Line('#cost-revenue', {
         labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         series: [
-            [
-                {meta:'Revenue', value: 5},
-                {meta:'Revenue', value: 3},
-                {meta:'Revenue', value: 6},
-                {meta:'Revenue', value: 3},
-                {meta:'Revenue', value: 8},
-                {meta:'Revenue', value: 5},
-                {meta:'Revenue', value: 8},
-                {meta:'Revenue', value: 12},
-                {meta:'Revenue', value: 7},
-                {meta:'Revenue', value: 14},
-             
-            ]
+            [10, 7, 5, 8, 5, 10, 7, 6, 9, 5]
         ]
-    }, {
+    },
+    {
         low: 0,
         high: 18,
         fullWidth: true,

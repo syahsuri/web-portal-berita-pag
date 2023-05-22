@@ -106,14 +106,8 @@
                     <div id="recent-transactions" class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Recent Transactions</h4>
+                                <h4 class="card-title">Berita Fungsi</h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                                <div class="heading-elements">
-                                    <ul class="list-inline mb-0">
-                                        <li><a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right"
-                                                href="invoice-summary.html" target="_blank">Invoice Summary</a></li>
-                                    </ul>
-                                </div>
                             </div>
                             <div class="card-content">
                                 <div class="table-responsive">
@@ -122,26 +116,22 @@
                                             <tr>
                                                 <th class="border-top-0">No</th>
                                                 <th class="border-top-0">Divisi</th>
-                                                <th class="border-top-0">Customer Name</th>
-                                                <th class="border-top-0">Amount</th>
+                                                <th class="border-top-0"style="text-align: center">Jumlah Berita</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td class="text-truncate"><i
-                                                        class="la la-dot-circle-o success font-medium-1 mr-1"></i> Paid
-                                                </td>
-                                                <td class="text-truncate"><a href="#">INV-001001</a></td>
-                                                <td class="text-truncate">
-                                                    <span class="avatar avatar-xs">
-                                                        <img class="box-shadow-2"
-                                                            src="../../../app-assets/images/portrait/small/avatar-s-4.png"
-                                                            alt="avatar">
-                                                    </span>
-                                                    <span>Elizabeth W.</span>
-                                                </td>
-                                                <td class="text-truncate">$ 1200.00</td>
-                                            </tr>
+                                            @foreach ($divisions as $division)
+                                                <tr>
+                                                    <td class="text-truncate"><i
+                                                            class="la la-dot-circle-o success font-medium-1 mr-1">--{{ $loop->iteration }}
+                                                        </i>
+                                                    </td>
+                                                    <td class="text-truncate"><a
+                                                            href="#">{{ $division->nama_divisi }}</a></td>
+                                                    <td class="text-truncate" style="text-align: center">
+                                                        {{ $division->articles_count }}</td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -156,46 +146,8 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-content ">
-                                <div id="cost-revenue" class="height-250 position-relative"></div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="row mt-1">
-                                    <div class="col-3 text-center">
-                                        <h6 class="text-muted">Total Products</h6>
-                                        <h2 class="block font-weight-normal">18.6 k</h2>
-                                        <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                                            <div class="progress-bar bg-gradient-x-info" role="progressbar"
-                                                style="width: 70%" aria-valuenow="70" aria-valuemin="0"
-                                                aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 text-center">
-                                        <h6 class="text-muted">Total Sales</h6>
-                                        <h2 class="block font-weight-normal">64.54 M</h2>
-                                        <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                                            <div class="progress-bar bg-gradient-x-warning" role="progressbar"
-                                                style="width: 60%" aria-valuenow="60" aria-valuemin="0"
-                                                aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 text-center">
-                                        <h6 class="text-muted">Total Cost</h6>
-                                        <h2 class="block font-weight-normal">24.38 B</h2>
-                                        <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                                            <div class="progress-bar bg-gradient-x-danger" role="progressbar"
-                                                style="width: 40%" aria-valuenow="40" aria-valuemin="0"
-                                                aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 text-center">
-                                        <h6 class="text-muted">Total Revenue</h6>
-                                        <h2 class="block font-weight-normal">36.72 M</h2>
-                                        <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                                            <div class="progress-bar bg-gradient-x-success" role="progressbar"
-                                                style="width: 90%" aria-valuenow="90" aria-valuemin="0"
-                                                aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
+                                <div>
+                                    <canvas id="myChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -206,4 +158,38 @@
         </div>
     </div>
     <!-- END: Content-->
+@endsection
+
+@section('script')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        function truncateLabel(label, maxLength) {
+            if (label.length > maxLength) {
+                return label.substring(0, maxLength) + '...';
+            }
+            return label;
+        }
+
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {!! json_encode($chartData['labels']) !!}.map(label => truncateLabel(label, 25)),
+                datasets: [{
+                    label: '# of Views',
+                    data: {!! json_encode($chartData['datasets'][0]['data']) !!},
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 @endsection
