@@ -4,6 +4,7 @@
     <section class="headding-news ">
         <div class="container">
             <div class="row row-margin">
+
                 <div class="col-sm-3 col-padding">
                     <div class="post-wrapper post-grid-1 wow fadeIn" data-wow-duration="2s">
                         <div class="post-thumb img-zoom-in">
@@ -114,35 +115,45 @@
                         </div>
                     </div>
 
-
                     <div class="post-wrapper post-grid-5 wow fadeIn" data-wow-duration="2s">
-                        <div class="post-thumb img-zoom-in">
-                            <a href="#">
-                                <img class="entry-thumb" src="{{ asset('images/' . $secondrightNews->thumbnail) }}"
-                                    alt="">
-                            </a>
-                        </div>
-                        <div class="post-info">
-                            <span class="color-2"><a
-                                    class="rounded-border">{{ $secondrightNews->division_name }}</a></span>
-                            <h3 class="post-title post-title-size shadow-text"><a
-                                    href="{{ route('detailsberita', ['slug' => $secondrightNews->slug]) }}"
-                                    rel="bookmark">{{ substr($secondrightNews->judul, 0) }}{{ strlen($secondrightNews->judul) > 50 ? '...' : '' }}</a>
-                            </h3>
-                            <div class="post-editor-date">
-                                <!-- post date -->
-                                <div class="post-date">
-                                    <i class="pe-7s-clock"></i>
-                                    {{ date('d F Y', strtotime($secondrightNews->created_at)) }}
-                                </div>
-                                <!-- post comment -->
-                                <div class="post-author-comment"><i class="fas fa-eye"></i>{{ $secondrightNews->views }}
-                                </div>
-                                <!-- read more -->
-                                <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
+                        @if ($secondrightNews !== null)
+                            <div class="post-thumb img-zoom-in">
+                                <a href="#">
+                                    <img class="entry-thumb" src="{{ asset('images/' . $secondrightNews->thumbnail) }}"
+                                        alt="">
+                                </a>
                             </div>
-                        </div>
+
+                            <div class="post-info">
+                                <span class="color-2"><a
+                                        class="rounded-border">{{ $secondrightNews->division_name }}</a></span>
+                                <h3 class="post-title post-title-size shadow-text"><a
+                                        href="{{ route('detailsberita', ['slug' => $secondrightNews->slug]) }}"
+                                        rel="bookmark">{{ substr($secondrightNews->judul, 0) }}{{ strlen($secondrightNews->judul) > 50 ? '...' : '' }}</a>
+                                </h3>
+                                <div class="post-editor-date">
+                                    <!-- post date -->
+                                    <div class="post-date">
+                                        <i class="pe-7s-clock"></i>
+                                        {{ date('d F Y', strtotime($secondrightNews->created_at)) }}
+                                    </div>
+                                    <!-- post comment -->
+                                    <div class="post-author-comment"><i
+                                            class="fas fa-eye"></i>{{ $secondrightNews->views }}
+                                    </div>
+                                    <!-- read more -->
+                                    <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
+                                </div>
+                            </div>
                     </div>
+                @else
+                    <div class="post-thumb img-zoom-in">
+                        <a href="#">
+                            <img class="entry-thumb" src="{{ asset('images/slider/slide-02.jpg') }}"
+                                alt="Default Image">
+                        </a>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
