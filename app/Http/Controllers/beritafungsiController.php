@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\article;
+use App\Models\division;
 use App\Models\liveBroadcast;
 use App\Models\view;
 use Illuminate\Http\Request;
@@ -11,16 +13,22 @@ class beritafungsiController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request, $id)
     {
+        $divisions = division::all();
         $livebroadcast = liveBroadcast::where('is_live', 1)->get();
         $mostViews = View::with('article.division')
-        ->orderBy('views', 'desc')
-        ->take(5)
-        ->get();
+            ->orderBy('views', 'desc')
+            ->take(5)
+            ->get();
 
-    return view('homepage.beritafungsi.index')->with(compact('mostViews','livebroadcast'));
+        $divisi = division::findOrFail($id);
+        $divisiArticles = Article::with('view')
+            ->where('id_divisi', $id)
+            ->orderBy('created_at', 'desc')
+            ->get();
 
+        return view('homepage.beritafungsi.index')->with(compact('mostViews', 'livebroadcast', 'divisions', 'divisi', 'divisiArticles'));
     }
 
     /**
@@ -69,5 +77,12 @@ class beritafungsiController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function showByDivision(Request $request, $id)
+    {
+        $divisi = division::findOrFail($id);
+        $divisiArticles = article::where('id_divisi', $id)->get();
+
+        return view('homepage.beritafungsi.index', compact('divisi', 'divisiArticles'));
     }
 }

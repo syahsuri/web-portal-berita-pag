@@ -145,7 +145,7 @@
                 <div class="rowt">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-content ">
+                            <div class="card-content mb-3 ">
                                 <div>
                                     <canvas id="myChart"></canvas>
                                 </div>

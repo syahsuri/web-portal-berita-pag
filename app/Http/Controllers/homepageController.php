@@ -73,6 +73,7 @@ class homepageController extends Controller
         $broadcasts = broadcast::all();
         $videos = Video::latest()->take(3)->get();
 
+
         return view('homepage.index')->with(compact(
             'midNews',
             'firstleftNews',
@@ -82,7 +83,8 @@ class homepageController extends Controller
             'scrollingrecentnews',
             'otherLatestNews',
             'broadcasts','livebroadcast',
-            'videos'
+            'videos','divisions'
+
         ));
     }
 
@@ -133,4 +135,5 @@ class homepageController extends Controller
     {
         //
     }
+
 }

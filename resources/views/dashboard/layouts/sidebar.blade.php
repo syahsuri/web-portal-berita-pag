@@ -21,7 +21,7 @@
                     href="{{ route('insertberita') }}">
                     <i class="fa-regular fa-newspaper"></i>
                     <span class="menu-title" data-i18n="Shop">
-                        Insert Berita
+                        Tambah Berita
                     </span>
                 </a>
             </li>
@@ -30,7 +30,7 @@
                     href="{{ route('insertvideos') }}">
                     <i class="fa-regular fa-file-video"></i>
                     <span class="menu-title" data-i18n="Shop">
-                        Insert Video
+                        Tambah Video
                     </span>
                 </a>
             </li>
@@ -40,7 +40,7 @@
                     <i class="fa-solid fa-blog"></i>
                     </i>
                     <span class="menu-title" data-i18n="Shop">
-                        Insert Broadcast
+                        Tambah Broadcast
                     </span>
                 </a>
             </li>
@@ -50,7 +50,7 @@
                     <i class="fa-solid fa-bullhorn"></i>
                     </i>
                     <span class="menu-title" data-i18n="Shop">
-                        Insert Live Broadcast
+                        Tambah Live Broadcast
                     </span>
                 </a>
             </li>

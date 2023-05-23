@@ -29,7 +29,7 @@
                 <div class="header-logo">
                     <!-- logo -->
                     <a href="home-style-one.html">
-                        <img class="td-retina-data img-responsive" src="{{ asset('images/BUMN.png')}}" alt="">
+                        <img class="td-retina-data img-responsive" src="{{ asset('images/BUMN.png') }}" alt="">
                     </a>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                 <div class="header-logo">
                     <!-- logo -->
                     <a href="home-style-one.html">
-                        <img class="td-retina-data img-responsive" src="{{ asset('images/logo.png')}}" alt="">
+                        <img class="td-retina-data img-responsive" src="{{ asset('images/logo.png') }}" alt="">
                     </a>
                 </div>
             </div>
@@ -56,12 +56,11 @@
                     <a href="#" class="dropdown-toggle category03" data-toggle="dropdown">BERITA FUNGSI
                         <span class="pe-7s-angle-down"></span></a>
                     <ul class="dropdown-menu menu-slide">
-                        <li><a href="#">VP Finance</a></li>
-                        <li><a href="#">VP CSP & BD</a></li>
-                        <li><a href="#">VP Production</a></li>
-                        <li><a href="#">VP Technical & Service</a></li>
-                        <li><a href="#">Corporate Secretary</a></li>
-                        <li><a href="#">HR Development</a></li>
+                        @foreach ($divisions as $division)
+                            <li><a
+                                    href="{{ route('division.beritafungsi', ['id' => $division->id]) }}">{{ $division->nama_divisi }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </li>
 
@@ -101,11 +100,10 @@
         <div class="newsticker">
             <div>
                 @foreach ($livebroadcast as $pesan)
-                <a href="#" style=""><span style="padding: 0px 5px"
-                    class="color-1"><b>{{ $pesan->division->nama_divisi }}</b></span>{{ $pesan->deskripsi }}</a>
+                    <a href="#" style=""><span style="padding: 0px 5px"
+                            class="color-1"><b>{{ $pesan->division->nama_divisi }}</b></span>{{ $pesan->deskripsi }}</a>
                 @endforeach
             </div>
         </div>
     </marquee>
 </div>
-

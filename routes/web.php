@@ -10,7 +10,6 @@ use App\Http\Controllers\homepageController;
 use App\Http\Controllers\insertberitaController;
 use App\Http\Controllers\insertvideosController;
 use App\Http\Controllers\livebroadcastController;
-use App\Models\liveBroadcast;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,12 +27,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
 Route::prefix('/homepage')->group(function () {
     Route::get('/', [homepageController::class, 'index'])->name('homepage');
     Route::get('/detailberita/{slug}', [detailspageController::class, 'index'])->name('detailsberita');
-    Route::get('/beritafungsi', [beritafungsiController::class, 'index'])->name('beritafungsi');
+    Route::get('/beritafungsi/{id}', [beritafungsiController::class, 'index'])->name('division.beritafungsi');
     Route::get('/foto', [photoController::class, 'index'])->name('foto');
     Route::get('/video', [videoController::class, 'index'])->name('video');
 });

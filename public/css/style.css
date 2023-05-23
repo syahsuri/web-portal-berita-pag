@@ -4320,3 +4320,9 @@ img {
     background-color: #000000;
     width: 100%;
 }
+
+.article-image {
+    width: 250px;
+    height: 150px;
+}
+

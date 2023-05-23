@@ -123,7 +123,8 @@
                             </a>
                         </div>
                         <div class="post-info">
-                            <span class="color-2"><a class="rounded-border">{{ $secondrightNews->division_name }}</a></span>
+                            <span class="color-2"><a
+                                    class="rounded-border">{{ $secondrightNews->division_name }}</a></span>
                             <h3 class="post-title post-title-size shadow-text"><a
                                     href="{{ route('detailsberita', ['slug' => $secondrightNews->slug]) }}"
                                     rel="bookmark">{{ substr($secondrightNews->judul, 0) }}{{ strlen($secondrightNews->judul) > 50 ? '...' : '' }}</a>
@@ -135,7 +136,8 @@
                                     {{ date('d F Y', strtotime($secondrightNews->created_at)) }}
                                 </div>
                                 <!-- post comment -->
-                                <div class="post-author-comment"><i class="fas fa-eye"></i>{{ $secondrightNews->views }}</div>
+                                <div class="post-author-comment"><i class="fas fa-eye"></i>{{ $secondrightNews->views }}
+                                </div>
                                 <!-- read more -->
                                 <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
                             </div>
@@ -189,7 +191,8 @@
                                                 <li><a title=""
                                                         href="#">{{ date('d F Y', strtotime($beritascroll->created_at)) }}</a>
                                                     --</li>
-                                                <li><a title="" href="#"><span><i class="fas fa-eye"></i> {{ $beritascroll->view->views }}</span></a></li>
+                                                <li><a title="" href="#"><span><i class="fas fa-eye"></i>
+                                                            {{ $beritascroll->view->views }}</span></a></li>
                                             </ul>
                                         </div>
                                         <p>{{ Str::limit(strip_tags($beritascroll->article), 80) }} <a
@@ -290,94 +293,94 @@
             <div class="col-sm-4 left-padding"style="margin-top: 20px;">
                 <aside>
                     <h3 class="category-headding ">RHISOL RANK</h3>
-                        <div class="headding-border bg-color-2"></div>
-                        <div class="cats-widget">
-                            <ul>
-                                <li class=""><a href="#" title="Title goes here.">1. Chairul Azdaman</a>
-                                    <span>20
-                                        Laporan</span>
-                                </li>
-                                <li class=""><a href="#" title="Title goes here.">2. Budiman</a> <span>18
-                                        Laporan</span></li>
-                                <li class=""><a href="#">3. Arianto</a> <span>16 Laporan</span></li>
-                                <li class=""><a href="#" title="Title goes here.">4. Agus</a> <span>15
-                                        Laporan</span></li>
-                                <li class=""><a href="#">5. Siska</a> <span>14 Laporan</span></li>
-                                <li class=""><a href="#">6. Nanda</a> <span>13 Laporan</span></li>
-                            </ul>
-                        </div>
-                    </aside>
-                </div>
-                <!-- row end -->
+                    <div class="headding-border bg-color-2"></div>
+                    <div class="cats-widget">
+                        <ul>
+                            <li class=""><a href="#" title="Title goes here.">1. Chairul Azdaman</a>
+                                <span>20
+                                    Laporan</span>
+                            </li>
+                            <li class=""><a href="#" title="Title goes here.">2. Budiman</a> <span>18
+                                    Laporan</span></li>
+                            <li class=""><a href="#">3. Arianto</a> <span>16 Laporan</span></li>
+                            <li class=""><a href="#" title="Title goes here.">4. Agus</a> <span>15
+                                    Laporan</span></li>
+                            <li class=""><a href="#">5. Siska</a> <span>14 Laporan</span></li>
+                            <li class=""><a href="#">6. Nanda</a> <span>13 Laporan</span></li>
+                        </ul>
+                    </div>
+                </aside>
             </div>
+            <!-- row end -->
         </div>
+    </div>
 @endsection
 
 @section('videosSections')
     <section class="video-post-inner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h3 class="category-headding ">VIDEO POST</h3>
-                        <div class="headding-border"></div>
-                    </div>
-                     @foreach ($videos as $video)
-                <div class="col-sm-4">
-                    <div class="post-style1">
-                        <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
-                            <!-- post image -->
-                            <a href="#" class="video-img-icon" data-toggle="modal"
-                                data-target="#videoModal{{ $video->id }}">
-                                <i class="fa fa-play"></i>
-                                <div class="video-container">
-                                    <video src="{{ asset('videos/' . $video->video) }}" class="img-responsive"
-                                        style="width:500px"></video>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- post title -->
-                        <h3><a href="#">{{ $video->judul }}</a></h3>
-                        <div class="post-title-author-details">
-                            <div class="date">
-                                <ul>
-                                    <li><img src="images/comment-02.jpg" class="img-responsive" alt="">
-                                    </li>
-                                    <li>By <a title="" href="#"><span>{{ $video->author }}</span></a>
-                                        --
-                                    </li>
-                                    <li><a title=""
-                                            href="#">{{ date('d F Y', strtotime($video->created_at)) }}</a>
-                                        --
-                                    </li>
-                                    <li><a title="" href="#"><span>275 Comments</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="category-headding ">VIDEO POST</h3>
+                    <div class="headding-border"></div>
                 </div>
-
-                <!-- Video Modal -->
-                <div id="videoModal{{ $video->id }}" class="modal fade" tabindex="-1" role="dialog"
-                    aria-labelledby="videoModal{{ $video->id }}Label" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="video-container">
-                                    <video id="videoPlayer{{ $video->id }}" class="img-responsive" controls>
-                                        <source src="{{ asset('videos/' . $video->video) }}" type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
+                @foreach ($videos as $video)
+                    <div class="col-sm-4">
+                        <div class="post-style1">
+                            <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
+                                <!-- post image -->
+                                <a href="#" class="video-img-icon" data-toggle="modal"
+                                    data-target="#videoModal{{ $video->id }}">
+                                    <i class="fa fa-play"></i>
+                                    <div class="video-container">
+                                        <video src="{{ asset('videos/' . $video->video) }}" class="img-responsive"
+                                            style="width:500px"></video>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- post title -->
+                            <h3><a href="#">{{ $video->judul }}</a></h3>
+                            <div class="post-title-author-details">
+                                <div class="date">
+                                    <ul>
+                                        <li><i class="fa-solid fa-circle-user fa-2xl"></i></i>
+                                        </li>
+                                        <li> By <a title="" href="#"><span>{{ $video->author }}</span></a>
+                                            --
+                                        </li>
+                                        <li><a title=""
+                                                href="#">{{ date('d F Y', strtotime($video->created_at)) }}</a>
+                                            --
+                                        </li>
+                                        <li><a title="" href="#"><span>275 Comments</span></a></li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+
+                    <!-- Video Modal -->
+                    <div id="videoModal{{ $video->id }}" class="modal fade" tabindex="-1" role="dialog"
+                        aria-labelledby="videoModal{{ $video->id }}Label" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="video-container">
+                                        <video id="videoPlayer{{ $video->id }}" class="img-responsive" controls>
+                                            <source src="{{ asset('videos/' . $video->video) }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
-        </section>
-    @endsection
+    </section>
+@endsection

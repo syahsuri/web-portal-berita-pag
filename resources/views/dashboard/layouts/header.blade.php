@@ -6,8 +6,8 @@
                 <li class="nav-item mobile-menu d-lg-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs"
                         href="#"><i class="ft-menu font-large-1"></i></a></li>
                 <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-logo"
-                            alt="" src="{{ asset('img/Pertamina.png') }}">
-                        <h3 class="brand-text">Pertamina</h3>
+                            alt="" src="{{ asset('images/fev-icon.png') }}">
+                        <h3 class="brand-text">Dashboard</h3>
                     </a></li>
                 <li class="nav-item d-none d-lg-block nav-toggle"><a class="nav-link modern-nav-toggle pr-0"
                         data-toggle="collapse"><i class="toggle-icon ft-toggle-right font-medium-3 white"
@@ -27,7 +27,7 @@
                 </ul>
                 <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span
                         class="mr-1 user-name text-bold-700"></span>
-                    <span class="avatar avatar-online"><img src="{{ asset('img/undraw_profile_1.svg') }}"
+                    <span class="avatar avatar-online"><img src="{{ asset('images/avatar.png') }}"
                             alt="avatar">
                     </span>
                 </a>
