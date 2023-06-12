@@ -64,15 +64,11 @@ class livebroadcastController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // Find the broadcast to be updated
         $broadcast = liveBroadcast::findOrFail($id);
 
-
-        // Update the description field
         $broadcast->deskripsi = $request->input('deskripsi');
         $broadcast->id_divisi = $request->input('id_divisi');
 
-        // Save the changes to the database
         $broadcast->save();
 
         return redirect()->route('insertlivebroadcast')->with('success', 'Broadcast successfully updated.');
@@ -85,7 +81,7 @@ class livebroadcastController extends Controller
     {
         $broadcasts = liveBroadcast::find($request->id); // find the article based on its ID
         $broadcasts->delete(); // delete the article
-        return redirect()->route('insertlivebroadcast')->with('success', "Broadcast $broadcasts->judul berhasil dihapus!");
+        return redirect()->route('addalbum')->with('success', "Broadcast $broadcasts->judul berhasil dihapus!");
     }
 
     public function toggle(Request $request, $id)

@@ -21,37 +21,70 @@
             <div class="col-sm-8">
                 <!--Post list-->
                 @foreach ($divisiArticles as $artikeldivisi)
-                <div class="post-style2 wow fadeIn" data-wow-duration="1s">
-                    <a href="#">
-                        <img src="{{ asset('images/' . $artikeldivisi->thumbnail) }}" alt="" class="article-image">
-                    </a>
-                    <div class="post-style2-detail">
-                        <h3><a href="#" title="">{{ $artikeldivisi->judul }}</a></h3>
-                        <div class="date">
-                            <ul>
-                                <li>By <a title="" href="#"><span>{{ $artikeldivisi->author }}</span></a> --</li>
-                                <li><a title="" href="#">{{ $artikeldivisi->created_at->format('d F Y h:i A') }}</a> --</li>
-                                <li><a title="" href="#"><span>Views {{ $artikeldivisi->view->views }}</span></a></li>
-                            </ul>
+                    <div class="post-style2 wow fadeIn" data-wow-duration="1s">
+                        <a href="#">
+                            <img src="{{ asset('thumbnails/' . $artikeldivisi->thumbnail) }}" alt=""
+                                class="article-image">
+                        </a>
+                        <div class="post-style2-detail">
+                            <h3><a href="#" title="">{{ $artikeldivisi->judul }}</a></h3>
+                            <div class="date">
+                                <ul>
+                                    <li>By <a title="" href="#"><span>{{ $artikeldivisi->author }}</span></a> --
+                                    </li>
+                                    <li><a title=""
+                                            href="#">{{ $artikeldivisi->created_at->format('d F Y h:i A') }}</a> --
+                                    </li>
+                                    <li><a title="" href="#"><span>Views
+                                                {{ $artikeldivisi->view_count }}</span></a></li>
+                                </ul>
+                            </div>
+                            <a href="{{ route('detailsberita', ['slug' => $artikeldivisi->slug]) }}"
+                                class="btn btn-style">Read more</a>
                         </div>
-                        <a href="{{ route('detailsberita', ['slug' => $artikeldivisi->slug]) }}" class="btn btn-style">Read more</a>
                     </div>
-                </div>
-            @endforeach
-
-
+                @endforeach
             </div>
+
             <aside class="col-sm-4 left-padding">
-                <div class="input-group search-area">
-                    <!-- search area -->
-                    <input type="text" class="form-control" placeholder="Search articles here ..." name="q">
-                    <div class="input-group-btn">
-                        <button class="btn btn-search" type="submit"><i class="fa fa-search"
-                                aria-hidden="true"></i></button>
-                    </div>
-                </div>
+
                 <div class="tab-inner">
-                    <ul class="tabs">
+
+                    <div class="banner-add mb-25">
+                        <!-- add -->
+                        <span class="add-title">- Advertisement -</span>
+                        <div class="slideshow-container">
+                            @foreach ($broadcasts as $key => $broadcast)
+                                <div class="mySlides">
+                                    <div class="numbertext">{{ $key + 1 }} / {{ count($broadcasts) }}</div>
+                                    <img src="{{ asset('broadcast/' . basename($broadcast->image)) }}" alt="">
+                                </div>
+                            @endforeach
+                        </div>
+                        <script>
+                            let slideIndex = 0;
+                            showSlides();
+
+                            function showSlides() {
+                                let i;
+                                let slides = document.getElementsByClassName("mySlides");
+
+                                for (i = 0; i < slides.length; i++) {
+                                    slides[i].style.display = "none";
+                                }
+
+                                slideIndex++;
+
+                                if (slideIndex > slides.length) {
+                                    slideIndex = 1;
+                                }
+
+                                slides[slideIndex - 1].style.display = "block";
+                                setTimeout(showSlides, 5000); // Change image every 10 seconds
+                            }
+                        </script>
+                    </div>
+                    <ul class="tabs mt-25">
                         <li><a href="#">POPULAR</a></li>
                     </ul>
                     <hr>
@@ -63,7 +96,7 @@
                                     <div class="img-thumb" style="width: 90px; height: 70px;">
                                         <a href="#" rel="bookmark">
                                             <img class="entry-thumb"
-                                                src="{{ asset('images/' . $artikelpopular->article->thumbnail) }}"
+                                                src="{{ asset('thumbnails/' . $artikelpopular->article->thumbnail) }}"
                                                 alt="" style="width: 100%; height: 100%; object-fit: cover;"
                                                 width="30" height="60" />
                                         </a>
@@ -97,12 +130,6 @@
                     <!-- / tab_content -->
                 </div>
                 <!-- / tab -->
-                <div class="banner-add">
-                    <!-- add -->
-                    <span class="add-title">- Advertisement -</span>
-                    <a href="#"><img src="images/ad-banner.jpg" class="img-responsive center-block"
-                            alt=""></a>
-                </div>
             </aside>
         </div>
     </div>

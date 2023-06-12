@@ -11,10 +11,6 @@ class headnewspage extends Model
 
     protected $table = 'top_news';
 
-    protected $fillable = [
-        'id_articles'
-    ];
-
     public function articles()
     {
         return $this->belongsTo(article::class, 'id_articles');

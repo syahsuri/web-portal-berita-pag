@@ -1,27 +1,3 @@
-<!-- top header -->
-<div class="top_header hidden-xs">
-    <div class="container">
-        <div class="row">
-            <!-- breaking news -->
-            <div class="col-sm-8 col-md-7">
-                <div class="newsticker-inner">
-                    <!-- uncomment the following lines if needed -->
-                    {{-- <ul class="newsticker">
-                        <li><span class="color-1">Finance</span><a href="#">Jadwal Closing Penerimaan Dokumen April 2023</a></li>
-                        <li><span class="color-2">HSSE</span><a href="#">Waspada Covid 19 ARCTUS</a></li>
-                        <li><span class="color-3">HSSE</span><a href="#">Tips Aman Meninggalkan Rumah Saat Mudik Lebaran</a></li>
-                        <li><span class="color-4">HRD</span><a href="#">Pengukuhan Jabatan Manager Legal Wahyu Shafaat</a></li>
-                        <li><span class="color-1">HRD</span><a href="#">Himabauan Hadir tepat waktu bagi pekerja</a></li>
-                    </ul> --}}
-                    {{-- <div class="next-prev-inner">
-                        <a href="#" id="prev-button"><i class='pe-7s-angle-left'></i></a>
-                        <a href="#" id="next-button"><i class='pe-7s-angle-right'></i></a>
-                    </div> --}}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="top_banner_wrap">
     <div class="container">
         <div class="row">
@@ -79,31 +55,38 @@
                         <li><a href="#">STK ONLINE</a></li>
                     </ul>
                 </li>
-                <li><a href="category-style-two.html" class="category04">INTERNAL BROADCAST</a></li>
-                <li><a href="category-style-one.html" class="category05">DOCUMENT MANAGEMENT</a></li>
+                <li><a href="{{ route('internalbroadcast') }}" class="category04">INTERNAL BROADCAST</a></li>
+                <li><a href="{{ route('documentmanagement') }}" class="category05">DOCUMENT MANAGEMENT</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle category03" data-toggle="dropdown">GALLERY & VIDEO
                         <span class="pe-7s-angle-down"></span></a>
                     <ul class="dropdown-menu menu-slide">
-                        <li><a href="{{ route('foto') }}">Photo</a></li>
+                        <li><a href="{{ route('albumphoto') }}">Photo</a></li>
                         <li><a href="{{ route('video') }}">Video</a></li>
                     </ul>
                 </li>
+                <li><a class="category04" style="color: transparent;">int-</a></li>
             </ul>
         </div>
+
         <!-- navbar-collapse -->
     </nav>
 </div>
+<div style="margin-left: 115px; margin-right: 115px;">
+    <div class="col-sm-12 col-md-12" style="background-color: rgba(188, 179, 179, 0.23); font-size: 1.4em;">
+        <marquee behavior="scroll" direction="left" style="width: 100%;">
+            <div class="newsticker">
+                <div>
+                    <style>
 
-<div class="col-sm-12 col-md-12" style="background-color: azure; font-size: 1.4em;">
-    <marquee behavior="scroll" direction="left">
-        <div class="newsticker">
-            <div>
-                @foreach ($livebroadcast as $pesan)
-                    <a href="#" style=""><span style="padding: 0px 5px"
-                            class="color-1"><b>{{ $pesan->division->nama_divisi }}</b></span>{{ $pesan->deskripsi }}</a>
-                @endforeach
+                    </style>
+                    @foreach ($livebroadcast as $pesan)
+                        <a href="#" style="">
+                            <span class="rounded-border-2"><b>NEWS </b></span>{{ $pesan->deskripsi }}
+                        </a> <a href="" style="color: black"><b> --</b></a>
+                    @endforeach
+                </div>
             </div>
-        </div>
-    </marquee>
+        </marquee>
+    </div>
 </div>

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_divisi')->constrained('divisions')->onUpdate('cascade')->onDelete('restrict');
             $table->text('deskripsi');
-            $table->boolean('is_live')->default(false);
             $table->timestamps();
         });
     }

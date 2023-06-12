@@ -7,119 +7,165 @@
 
                 <div class="col-sm-3 col-padding">
                     <div class="post-wrapper post-grid-1 wow fadeIn" data-wow-duration="2s">
-                        <div class="post-thumb img-zoom-in">
-                            <a href="#">
-                                <img class="entry-thumb" src="{{ asset('images/' . $firstleftNews->thumbnail) }}"
-                                    alt="" value="{{ $firstleftNews->thumbnail }}" alt="">
-                            </a>
-                        </div>
-                        <div class="post-info">
-                            <span class="color-3"><a class="rounded-border">{{ $firstleftNews->division_name }}</a></span>
-                            <h3 class="post-title post-title-size shadow-text"><a
-                                    href="{{ route('detailsberita', ['slug' => $firstleftNews->slug]) }}"
-                                    rel="bookmark">{{ substr($firstleftNews->judul, 0) }}{{ strlen($firstleftNews->judul) > 50 ? '...' : '' }}</a>
-                            </h3>
-                            <div class="post-editor-date">
-                                <!-- post date -->
-                                <div class="post-date">
-                                    <i class="pe-7s-clock"></i> {{ date('d F Y', strtotime($firstleftNews->created_at)) }}
-                                </div>
-                                <!-- post comment -->
-                                <div class="post-author-comment"><i class="fas fa-eye"></i>{{ $firstleftNews->views }}
-                                </div>
-                                <!-- read more -->
-                                <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
+                        @if ($firstleftNews !== null)
+                            <div class="post-thumb img-zoom-in">
+                                <a href="#">
+                                    <img class="entry-thumb" src="{{ asset('thumbnails/' . $firstleftNews->thumbnail) }}"
+                                        alt="" value="{{ $firstleftNews->thumbnail }}" alt="">
+                                </a>
                             </div>
-                        </div>
+                            <div class="post-info">
+                                <span class="color-3"><a
+                                        class="rounded-border">{{ $firstleftNews->division_name }}</a></span>
+                                <h3 class="post-title post-title-size shadow-text"><a
+                                        href="{{ route('detailsberita', ['slug' => $firstleftNews->slug]) }}"
+                                        rel="bookmark">{{ substr($firstleftNews->judul, 0) }}{{ strlen($firstleftNews->judul) > 50 ? '...' : '' }}</a>
+                                </h3>
+                                <div class="post-editor-date">
+                                    <!-- post date -->
+                                    <div class="post-date">
+                                        <i class="pe-7s-clock"></i>
+                                        {{ date('d F Y', strtotime($firstleftNews->created_at)) }}
+                                    </div>
+                                    <!-- post comment -->
+                                    <div class="post-author-comment"><i
+                                            class="fas fa-eye"></i>{{ $firstleftNews->view_count }}
+                                    </div>
+                                    <!-- read more -->
+                                    <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
+                                </div>
+                            </div>
+                        @else
+                            <div class="post-thumb img-zoom-in">
+                                <a href="#">
+                                    <img class="entry-thumb" src="{{ asset('images/notselectedyet.jpg') }}"
+                                        alt="Default Image">
+                                </a>
+                            </div>
+                        @endif
                     </div>
+
                     <div class="post-wrapper post-grid-2 wow fadeIn" data-wow-duration="2s">
-                        <div class="post-thumb img-zoom-in">
-                            <a href="#">
-                                <img class="entry-thumb" src="{{ asset('images/' . $secondleftNews->thumbnail) }}"
-                                    alt="">
-                            </a>
-                        </div>
-                        <div class="post-info">
-                            <span class="color-5"><a class="rounded-border">{{ $secondleftNews->division_name }}</a></span>
-                            <h3 class="post-title post-title-size shadow-text"><a
-                                    href="{{ route('detailsberita', ['slug' => $secondleftNews->slug]) }}"
-                                    rel="bookmark">{{ substr($secondleftNews->judul, 0) }}{{ strlen($secondleftNews->judul) > 50 ? '...' : '' }}</a>
-                            </h3>
-                            <div class="post-editor-date">
-                                <!-- post date -->
-                                <div class="post-date">
-                                    <i class="pe-7s-clock"></i> {{ date('d F Y', strtotime($secondleftNews->created_at)) }}
-                                </div>
-                                <!-- post comment -->
-                                <div class="post-author-comment"><i class="fas fa-eye"></i>{{ $secondleftNews->views }}
-                                </div>
-                                <!-- read more -->
-                                <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
+                        @if ($secondleftNews !== null)
+                            <div class="post-thumb img-zoom-in">
+                                <a href="#">
+                                    <img class="entry-thumb" src="{{ asset('thumbnails/' . $secondleftNews->thumbnail) }}"
+                                        alt="">
+                                </a>
                             </div>
-                        </div>
+                            <div class="post-info">
+                                <span class="color-5"><a
+                                        class="rounded-border">{{ $secondleftNews->division_name }}</a></span>
+                                <h3 class="post-title post-title-size shadow-text"><a
+                                        href="{{ route('detailsberita', ['slug' => $secondleftNews->slug]) }}"
+                                        rel="bookmark">{{ substr($secondleftNews->judul, 0) }}{{ strlen($secondleftNews->judul) > 50 ? '...' : '' }}</a>
+                                </h3>
+                                <div class="post-editor-date">
+                                    <!-- post date -->
+                                    <div class="post-date">
+                                        <i class="pe-7s-clock"></i>
+                                        {{ date('d F Y', strtotime($secondleftNews->created_at)) }}
+                                    </div>
+                                    <!-- post comment -->
+                                    <div class="post-author-comment"><i
+                                            class="fas fa-eye"></i>{{ $secondleftNews->view_count }}
+                                    </div>
+                                    <!-- read more -->
+                                    <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
+                                </div>
+                            </div>
+                        @else
+                            <div class="post-thumb img-zoom-in">
+                                <a href="#">
+                                    <img class="entry-thumb" src="{{ asset('images/notselectedyet.jpg') }}"
+                                        alt="Default Image">
+                                </a>
+                            </div>
+                        @endif
                     </div>
                 </div>
 
                 <div class="col-sm-6 col-padding">
                     <div class="post-wrapper post-grid-3 wow fadeIn" data-wow-duration="2s">
-                        <div class="post-thumb img-zoom-in">
-                            <a href="#">
-                                <img class="entry-thumb-middle" src="{{ asset('images/' . $midNews->thumbnail) }}"
-                                    alt="" value="">
-                            </a>
-                        </div>
-                        <div class="post-info">
-                            <span class="color-4"><a class="rounded-border">{{ $midNews->division_name }}</a></span>
-                            <h3 class="post-title"><a href="{{ route('detailsberita', ['slug' => $midNews->slug]) }}"
-                                    rel="bookmark">{{ $midNews->judul }} </a></h3>
-                            <div class="post-editor-date">
-                                <!-- post date -->
-                                <div class="post-date">
-                                    <i class="pe-7s-clock"></i>{{ date('d F Y', strtotime($midNews->created_at)) }}
-                                </div>
-                                <!-- post comment -->
-                                <div class="post-author-comment"><i class="fas fa-eye"></i>{{ $midNews->views }}</div>
-                                <!-- read more -->
-                                <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
+                        @if ($firstleftNews !== null)
+                            <div class="post-thumb img-zoom-in">
+                                <a href="#">
+                                    <img class="entry-thumb-middle" src="{{ asset('thumbnails/' . $midNews->thumbnail) }}"
+                                        alt="" value="">
+                                </a>
                             </div>
-                        </div>
+                            <div class="post-info">
+                                <span class="color-4"><a class="rounded-border">{{ $midNews->division_name }}</a></span>
+                                <h3 class="post-title"><a href="{{ route('detailsberita', ['slug' => $midNews->slug]) }}"
+                                        rel="bookmark">{{ $midNews->judul }} </a></h3>
+                                <div class="post-editor-date">
+                                    <!-- post date -->
+                                    <div class="post-date">
+                                        <i class="pe-7s-clock"></i>{{ date('d F Y', strtotime($midNews->created_at)) }}
+                                    </div>
+                                    <!-- post comment -->
+                                    <div class="post-author-comment"><i class="fas fa-eye"></i>{{ $midNews->view_count }}
+                                    </div>
+                                    <!-- read more -->
+                                    <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
+                                </div>
+                            </div>
+                        @else
+                            <div class="post-thumb img-zoom-in">
+                                <a href="#">
+                                    <img class="entry-thumb" src="{{ asset('images/notselectedyet.jpg') }}"
+                                        alt="Default Image">
+                                </a>
+                            </div>
+                        @endif
                     </div>
                 </div>
 
-
                 <div class="col-sm-3 col-padding">
                     <div class="post-wrapper post-grid-4 wow fadeIn" data-wow-duration="2s">
-                        <div class="post-thumb img-zoom-in">
-                            <a href="#">
-                                <img class="entry-thumb" src="{{ asset('images/' . $firstrightNews->thumbnail) }}"
-                                    alt="">
-                            </a>
-                        </div>
-                        <div class="post-info">
-                            <span class="color-1"><a class="rounded-border">{{ $firstrightNews->division_name }}</a></span>
-                            <h3 class="post-title post-title-size shadow-text"><a
-                                    href="{{ route('detailsberita', ['slug' => $firstrightNews->slug]) }}"
-                                    rel="bookmark">{{ substr($firstrightNews->judul, 0) }}{{ strlen($firstrightNews->judul) > 50 ? '...' : '' }}</a>
-                            </h3>
-                            <div class="post-editor-date">
-                                <!-- post date -->
-                                <div class="post-date">
-                                    <i class="pe-7s-clock"></i>{{ date('d F Y', strtotime($firstrightNews->created_at)) }}
-                                </div>
-                                <!-- post comment -->
-                                <div class="post-author-comment"><i class="fas fa-eye"></i>{{ $firstrightNews->views }}
-                                </div>
-                                <!-- read more -->
-                                <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
+                        @if ($firstrightNews !== null)
+                            <div class="post-thumb img-zoom-in">
+                                <a href="#">
+                                    <img class="entry-thumb" src="{{ asset('thumbnails/' . $firstrightNews->thumbnail) }}"
+                                        alt="">
+                                </a>
                             </div>
-                        </div>
+                            <div class="post-info">
+                                <span class="color-1"><a
+                                        class="rounded-border">{{ $firstrightNews->division_name }}</a></span>
+                                <h3 class="post-title post-title-size shadow-text"><a
+                                        href="{{ route('detailsberita', ['slug' => $firstrightNews->slug]) }}"
+                                        rel="bookmark">{{ substr($firstrightNews->judul, 0) }}{{ strlen($firstrightNews->judul) > 50 ? '...' : '' }}</a>
+                                </h3>
+                                <div class="post-editor-date">
+                                    <!-- post date -->
+                                    <div class="post-date">
+                                        <i
+                                            class="pe-7s-clock"></i>{{ date('d F Y', strtotime($firstrightNews->created_at)) }}
+                                    </div>
+                                    <!-- post comment -->
+                                    <div class="post-author-comment"><i
+                                            class="fas fa-eye"></i>{{ $firstrightNews->view_count }}
+                                    </div>
+                                    <!-- read more -->
+                                    <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
+                                </div>
+                            </div>
+                        @else
+                            <div class="post-thumb img-zoom-in">
+                                <a href="#">
+                                    <img class="entry-thumb" src="{{ asset('images/notselectedyet.jpg') }}"
+                                        alt="Default Image">
+                                </a>
+                            </div>
+                        @endif
                     </div>
 
                     <div class="post-wrapper post-grid-5 wow fadeIn" data-wow-duration="2s">
                         @if ($secondrightNews !== null)
                             <div class="post-thumb img-zoom-in">
                                 <a href="#">
-                                    <img class="entry-thumb" src="{{ asset('images/' . $secondrightNews->thumbnail) }}"
+                                    <img class="entry-thumb" src="{{ asset('thumbnails/' . $secondrightNews->thumbnail) }}"
                                         alt="">
                                 </a>
                             </div>
@@ -139,7 +185,7 @@
                                     </div>
                                     <!-- post comment -->
                                     <div class="post-author-comment"><i
-                                            class="fas fa-eye"></i>{{ $secondrightNews->views }}
+                                            class="fas fa-eye"></i>{{ $secondrightNews->view_count }}
                                     </div>
                                     <!-- read more -->
                                     <a class="readmore pull-right" href="#"><i class="pe-7s-angle-right"></i></a>
@@ -149,7 +195,7 @@
                 @else
                     <div class="post-thumb img-zoom-in">
                         <a href="#">
-                            <img class="entry-thumb" src="{{ asset('images/slider/slide-02.jpg') }}"
+                            <img class="entry-thumb" src="{{ asset('images/notselectedyet.jpg') }}"
                                 alt="Default Image">
                         </a>
                     </div>
@@ -178,7 +224,7 @@
                                         <div class="post-thumb">
                                             <a href="#">
                                                 <img class="img-responsive"
-                                                    src="{{ asset('images/' . $beritascroll->thumbnail) }}"
+                                                    src="{{ asset('thumbnails/' . $beritascroll->thumbnail) }}"
                                                     alt="" style="width: 100%; height: 250px; overflow: hidden;">
                                             </a>
                                         </div>
@@ -202,8 +248,10 @@
                                                 <li><a title=""
                                                         href="#">{{ date('d F Y', strtotime($beritascroll->created_at)) }}</a>
                                                     --</li>
-                                                <li><a title="" href="#"><span><i class="fas fa-eye"></i>
-                                                            {{ $beritascroll->view->views }}</span></a></li>
+                                                <li><a title="" href="#"> <span>
+                                                            <i class="fas fa-eye"></i>
+                                                            {{ $beritascroll->view_count ?? 0 }}
+                                                        </span></a></li>
                                             </ul>
                                         </div>
                                         <p>{{ Str::limit(strip_tags($beritascroll->article), 80) }} <a
@@ -223,7 +271,7 @@
                                         <div class="post-thumb">
                                             <a href="#">
                                                 <img class="img-responsive"
-                                                    src="{{ asset('images/' . $beritalain->thumbnail) }}" alt="">
+                                                    src="{{ asset('thumbnails/' . $beritalain->thumbnail) }}" alt="">
                                             </a>
                                         </div>
                                         <div class="post-info meta-info-rn">

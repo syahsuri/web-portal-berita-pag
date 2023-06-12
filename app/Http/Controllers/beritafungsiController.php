@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\article;
+use App\Models\broadcast;
 use App\Models\division;
 use App\Models\liveBroadcast;
 use App\Models\view;
@@ -28,7 +29,8 @@ class beritafungsiController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('homepage.beritafungsi.index')->with(compact('mostViews', 'livebroadcast', 'divisions', 'divisi', 'divisiArticles'));
+        $broadcasts = broadcast::all();
+        return view('homepage.beritafungsi.index')->with(compact('mostViews', 'livebroadcast', 'divisions', 'divisi', 'divisiArticles','broadcasts'));
     }
 
     /**
@@ -78,11 +80,5 @@ class beritafungsiController extends Controller
     {
         //
     }
-    public function showByDivision(Request $request, $id)
-    {
-        $divisi = division::findOrFail($id);
-        $divisiArticles = article::where('id_divisi', $id)->get();
 
-        return view('homepage.beritafungsi.index', compact('divisi', 'divisiArticles'));
-    }
 }

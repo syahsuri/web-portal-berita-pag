@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\album;
 use App\Models\article;
 use App\Models\broadcast;
 use App\Models\division;
@@ -25,23 +26,29 @@ class homepageController extends Controller
             ->join('articles', 'top_news.id_articles', '=', 'articles.id')
             ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
             ->leftJoin('views', 'articles.id', '=', 'views.article_id')
-            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', 'views.views')
+            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', DB::raw('COUNT(views.id) as view_count'))
+            ->groupBy('articles.id', 'top_news.id')
             ->first();
+
 
         $firstleftNews = DB::table('top_news')
             ->join('articles', 'top_news.id_articles', '=', 'articles.id')
             ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
             ->leftJoin('views', 'articles.id', '=', 'views.article_id')
-            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', 'views.views')
+            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', DB::raw('COUNT(views.id) as view_count'))
+            ->groupBy('articles.id', 'top_news.id')
             ->skip(1)
             ->take(1)
             ->first();
+
+
 
         $secondleftNews = DB::table('top_news')
             ->join('articles', 'top_news.id_articles', '=', 'articles.id')
             ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
             ->leftJoin('views', 'articles.id', '=', 'views.article_id')
-            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', 'views.views')
+            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', DB::raw('COUNT(views.id) as view_count'))
+            ->groupBy('articles.id', 'top_news.id')
             ->skip(2)
             ->take(1)
             ->first();
@@ -50,7 +57,8 @@ class homepageController extends Controller
             ->join('articles', 'top_news.id_articles', '=', 'articles.id')
             ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
             ->leftJoin('views', 'articles.id', '=', 'views.article_id')
-            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', 'views.views')
+            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', DB::raw('COUNT(views.id) as view_count'))
+            ->groupBy('articles.id', 'top_news.id')
             ->skip(3)
             ->take(1)
             ->first();
@@ -59,12 +67,17 @@ class homepageController extends Controller
             ->join('articles', 'top_news.id_articles', '=', 'articles.id')
             ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
             ->leftJoin('views', 'articles.id', '=', 'views.article_id')
-            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', 'views.views')
+            ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', DB::raw('COUNT(views.id) as view_count'))
+            ->groupBy('articles.id', 'top_news.id')
             ->skip(4)
             ->take(1)
             ->first();
 
-        $scrollingrecentnews = Article::latest()->take(3)->get();
+        $scrollingrecentnews = Article::withCount('view')
+            ->latest()
+            ->take(3)
+            ->get();
+
         $otherLatestNews = Article::latest()
             ->whereNotIn('id', $scrollingrecentnews->pluck('id'))
             ->take(3)
@@ -73,6 +86,7 @@ class homepageController extends Controller
         $broadcasts = broadcast::all();
         $videos = Video::latest()->take(3)->get();
 
+        $albums = album::all();
 
         return view('homepage.index')->with(compact(
             'midNews',
@@ -82,8 +96,11 @@ class homepageController extends Controller
             'secondrightNews',
             'scrollingrecentnews',
             'otherLatestNews',
-            'broadcasts','livebroadcast',
-            'videos','divisions'
+            'broadcasts',
+            'livebroadcast',
+            'videos',
+            'divisions',
+            'albums'
 
         ));
     }
@@ -135,5 +152,4 @@ class homepageController extends Controller
     {
         //
     }
-
 }

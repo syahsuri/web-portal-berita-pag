@@ -4326,3 +4326,43 @@ img {
     height: 150px;
 }
 
+/* css of /dashboard/foto */
+
+.rounded-border-2 {
+    border-radius: 10px;
+    padding: 2px 5px;
+    font-size: 12px;
+    background-color: white;
+    color: red;
+    margin-right: 5px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .card-grid {
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    height: 300px; /* Set a fixed height for the card elements */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card img {
+    width: 50%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+  }
+
+  .card-content {
+    text-align: center;
+    padding: 10px;
+    flex-grow: 1;
+  }
+

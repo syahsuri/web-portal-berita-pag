@@ -35,31 +35,39 @@ class insertvideosController extends Controller
      * Store a newly created resource in storage.
      */
 
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'judul' => 'required',
-            'slug' => 'nullable',
-            'id_divisi' => 'required',
-            'author' => 'nullable',
-            'video' => 'required|mimes:mp4,mov,avi',
-            'deskripsi' => 'nullable',
-        ]);
+     public function store(Request $request)
+     {
+         $validatedData = $request->validate([
+             'judul' => 'required',
+             'slug' => 'nullable',
+             'id_divisi' => 'required',
+             'author' => 'nullable',
+             'video' => 'required|mimes:mp4,mov,avi|max:51200', // 50 MB limit (50 * 1024 = 51200 kilobytes)
+             'deskripsi' => 'nullable',
+         ], [
+             'video.max' => 'The video size should not exceed 50 MB.',
+         ]);
 
-        // Store the video
-        if ($request->hasFile('video')) {
-            $file = $request->file('video');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('videos'), $filename);
-            $validatedData['video'] = $filename;
-        }
+         // Store the video
+         if ($request->hasFile('video')) {
+             $file = $request->file('video');
+             $maxFileSize = 50 * 1024 * 1024; // 50 MB in bytes
+             if ($file->getSize() > $maxFileSize) {
+                 return redirect()->route('insertvideos')->with('failed', 'The video size should not exceed 50 MB.');
+             }
 
-        // Create the video using the validated data
-        Video::create($validatedData);
+             $filename = time() . '_' . $file->getClientOriginalName();
+             $file->move(public_path('videos'), $filename);
+             $validatedData['video'] = $filename;
+         }
 
-        // Redirect or return a response
-        return redirect()->route('insertvideos')->with('success', 'Video created successfully');
-    }
+         // Create the video using the validated data
+         Video::create($validatedData);
+
+         // Redirect or return a response
+         return redirect()->route('insertvideos')->with('success', 'Video created successfully');
+     }
+
 
     /**
      * Display the specified resource.

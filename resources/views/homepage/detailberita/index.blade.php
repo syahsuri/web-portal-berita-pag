@@ -6,7 +6,7 @@
             <div class="col-sm-8">
                 <article class="content">
                     <div class="post-thumb">
-                        <img src="{{ asset('images/' . $detailsarticles->thumbnail) }}" class="img-responsive post-image"
+                        <img src="{{ asset('thumbnails/' . $detailsarticles->thumbnail) }}" class="img-responsive post-image"
                             alt="" />
                     </div>
                     <h1>
@@ -21,7 +21,9 @@
                             <li><a title=""
                                     href="#">{{ $detailsarticles->created_at->format('d F Y h:i A') }}</a> --</li>
                             <li>
-                                <a title="" href="#"><span>{{ $detailsarticles->view->views }} Views</span></a>
+                                <a title="" href="#"><span>{{ $detailsarticles->view->views_count }}
+                                        Views</span></a>
+
                             </li>
                         </ul>
                     </div>
@@ -33,62 +35,49 @@
                         </p>
                     </div>
 
-                    <!-- form
-                                          ============================================ -->
+                    <!-- form ============================================ -->
                     <div class="form-area">
-                        <h3 class="category-headding">LEAVE A COMMENT</h3>
+                        <h3 class="category-headding"></h3>
                         <div class="headding-border"></div>
-                        <form>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <span class="input">
-                                        <input class="input_field" type="text" id="input-1" />
-                                        <label class="input_label" for="input-1">
-                                            <span class="input_label_content" data-content="Your Name">Your Name</span>
-                                        </label>
-                                    </span>
-                                </div>
-                                <div class="col-sm-6">
-                                    <span class="input">
-                                        <input class="input_field" type="text" id="input-2" />
-                                        <label class="input_label" for="input-2">
-                                            <span class="input_label_content" data-content="Your Email">Your Email</span>
-                                        </label>
-                                    </span>
-                                </div>
-                                <div class="col-sm-12">
-                                    <span class="input">
-                                        <textarea class="input_field" id="message"></textarea>
-                                        <label class="input_label" for="message">
-                                            <span class="input_label_content" data-content="Your Email">Your Message</span>
-                                        </label>
-                                    </span>
-                                    <button type="button" class="btn btn-style">
-                                        Post Your Comment
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
                     </div>
                 </article>
             </div>
             <div class="col-sm-4 left-padding">
                 <aside class="sidebar">
-                    <div class="input-group search-area">
-                        <!-- search area -->
-                        <input type="text" class="form-control" placeholder="Search articles here ..." name="q" />
-                        <div class="input-group-btn">
-                            <button class="btn btn-search" type="submit">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
                     <!-- /.search area -->
                     <div class="banner-add">
                         <!-- add -->
                         <span class="add-title">- Advertisement -</span>
-                        <a href="#"><img src="{{ asset('images/1684469000_ad-banner.jpg') }}"
-                                class="img-responsive center-block" alt="" /></a>
+                        <div class="slideshow-container">
+                            @foreach ($broadcasts as $key => $broadcast)
+                                <div class="mySlides">
+                                    <div class="numbertext">{{ $key + 1 }} / {{ count($broadcasts) }}</div>
+                                    <img src="{{ asset('broadcast/' . basename($broadcast->image)) }}" alt="">
+                                </div>
+                            @endforeach
+                        </div>
+                        <script>
+                            let slideIndex = 0;
+                            showSlides();
+
+                            function showSlides() {
+                                let i;
+                                let slides = document.getElementsByClassName("mySlides");
+
+                                for (i = 0; i < slides.length; i++) {
+                                    slides[i].style.display = "none";
+                                }
+
+                                slideIndex++;
+
+                                if (slideIndex > slides.length) {
+                                    slideIndex = 1;
+                                }
+
+                                slides[slideIndex - 1].style.display = "block";
+                                setTimeout(showSlides, 5000); // Change image every 10 seconds
+                            }
+                        </script>
                     </div>
 
                     <div class="tab-inner">
@@ -104,7 +93,7 @@
                                         <div class="img-thumb" style="width: 90px; height: 70px;">
                                             <a href="#" rel="bookmark">
                                                 <img class="entry-thumb"
-                                                    src="{{ asset('images/' . $artikelpopular->article->thumbnail) }}"
+                                                    src="{{ asset('thumbnails/' . $artikelpopular->article->thumbnail) }}"
                                                     alt="" style="width: 100%; height: 100%; object-fit: cover;"
                                                     width="30" height="60" />
                                             </a>
@@ -116,7 +105,8 @@
                                                 <a href="#">{{ $artikelpopular->article->division->nama_divisi }}</a>
                                             </h6>
                                             <h3 class="td-module-title">
-                                                <a href="{{ route('detailsberita', ['slug' => $artikelpopular->article->slug]) }}">{{ Str::limit($artikelpopular->article->judul, 30) }}</a>
+                                                <a
+                                                    href="{{ route('detailsberita', ['slug' => $artikelpopular->article->slug]) }}">{{ Str::limit($artikelpopular->article->judul, 30) }}</a>
                                             </h3>
                                             <div class="post-editor-date">
                                                 <!-- post date -->
@@ -126,7 +116,7 @@
                                                 </div>
                                                 <!-- post comment -->
                                                 <div class="post-author-comment">
-                                                    <i class="fas fa-eye"></i> {{ $artikelpopular->views }}
+                                                    <i class="fas fa-eye"></i> {{ $artikelpopular->view_count }}
                                                 </div>
                                             </div>
                                         </div>

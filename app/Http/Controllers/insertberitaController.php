@@ -53,7 +53,7 @@ class insertberitaController extends Controller
         if ($request->hasFile('thumbnail')) {
             $file = $request->file('thumbnail');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('images'), $filename);
+            $file->move(public_path('thumbnails'), $filename);
             $article->thumbnail = $filename;
         }
 
@@ -101,7 +101,7 @@ class insertberitaController extends Controller
         if ($request->hasFile('thumbnail')) {
             $file = $request->file('thumbnail');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('images'), $filename);
+            $file->move(public_path('thumbnails'), $filename);
             $article->thumbnail = $filename;
         }
 
@@ -131,10 +131,11 @@ class insertberitaController extends Controller
         $article = article::find($articleId);
 
         if ($article) {
-            $thumbnailPath = asset('images/' . $article->thumbnail);
+            $thumbnailPath = asset('thumbnails/' . $article->thumbnail);
             return response()->json(['thumbnail' => $thumbnailPath]);
         }
 
+        dd($article);
         return response()->json(['thumbnail' => '']);
     }
 

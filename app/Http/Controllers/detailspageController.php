@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\article;
+use App\Models\broadcast;
 use App\Models\division;
 use App\Models\liveBroadcast;
 use App\Models\view;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,18 +19,30 @@ class detailspageController extends Controller
      */
     public function index(Request $request, $slug)
     {
-        $divisions = division::all();
-        $livebroadcast = liveBroadcast::where('is_live', 1)->get();
+        $divisions = Division::all();
+        $livebroadcast = LiveBroadcast::where('is_live', 1)->get();
         $detailsarticles = Article::where('slug', $slug)->firstOrFail();
+
+        // Create a new View record
+        $view = new View();
+        $view->article_id = $detailsarticles->id;
+        $view->viewed_at = Carbon::now();
+        $view->save();
+
         $mostViews = View::with('article.division')
-            ->orderBy('views', 'desc')
+            ->select('article_id', DB::raw('COUNT(*) as view_count'))
+            ->groupBy('article_id')
+            ->orderBy('view_count', 'desc')
             ->take(5)
             ->get();
 
-        // Create or update the ArticleView record
-        view::updateOrCreate(['article_id' => $detailsarticles->id], ['views' => DB::raw('views + 1')]);
 
-        return view('homepage.detailberita.index')->with(compact('detailsarticles', 'mostViews','livebroadcast','divisions'));
+
+        $broadcasts = Broadcast::all();
+
+        // Additional logic...
+
+        return view('homepage.detailberita.index')->with(compact('detailsarticles', 'mostViews', 'livebroadcast', 'divisions', 'broadcasts'));
     }
 
     /**

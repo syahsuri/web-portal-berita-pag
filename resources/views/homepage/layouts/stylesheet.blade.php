@@ -34,3 +34,4 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/flaticon.css')}}" />
 <!-- custom css -->
 <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+

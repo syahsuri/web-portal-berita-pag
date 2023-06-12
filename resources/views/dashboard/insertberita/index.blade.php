@@ -80,8 +80,8 @@
                                                 <td>{{ $artikel->division->nama_divisi }}</td>
                                                 <td>{{ $artikel->author }}</td>
                                                 <td>
-                                                    <a href="{{ asset('images/' . $artikel->thumbnail) }}" target="_blank"
-                                                        title="{{ $artikel->thumbnail }}">
+                                                    <a href="{{ asset('thumbnails/' . $artikel->thumbnail) }}"
+                                                        target="_blank" title="{{ $artikel->thumbnail }}">
                                                         {{ \Illuminate\Support\Str::limit($artikel->thumbnail, 10) }}
                                                     </a>
                                                 </td>
@@ -142,10 +142,19 @@
                 </div>
                 <!--/ Datatables -->
                 <!-- Datatables -->
+
                 <div class="row">
+
                     <div class="col">
                         <div class="card mt-3">
                             <div class="card-body">
+                                <div class="content-header row">
+                                    <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
+                                        <h3 class="content-header-title mb-0 d-inline-block">Atur Posisi Top Berita</h3>
+                                        <div class="row breadcrumbs-top d-inline-block">
+                                        </div>
+                                    </div>
+                                </div>
                                 {{-- Table --}}
                                 <table id="myTable2"
                                     class="table responsive nowrap table-bordered table-striped align-middle"
@@ -163,7 +172,7 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $topberita->position }}</td>
-                                                <td>{{ $topberita->articles->judul }}</td>
+                                                <td>{{ $topberita->articles ? $topberita->articles->judul : 'N/A' }}</td>
                                                 <td>
                                                     <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
                                                         data-bs-target="#myModal{{ $loop->iteration }}">
@@ -193,8 +202,8 @@
                                                         @method('put')
                                                         <div class="form-group">
                                                             <label for="js-example-basic-single">Select Option:</label>
-                                                            <select class="js-example-basic-single" id="select2{{$loop->iteration}}"
-                                                                name="id_articles">
+                                                            <select class="js-example-basic-single"
+                                                                id="select2{{ $loop->iteration }}" name="id_articles">
                                                                 @foreach ($articles as $artikel)
                                                                     <option value="{{ $artikel->id }}"
                                                                         {{ old('artikel->id', $topberita->articles->id) == $artikel->id ? 'selected' : '' }}>
@@ -203,8 +212,7 @@
                                                             </select>
                                                         </div>
                                                         <div class="form-group">
-                                                            <img class="img-fluid" id="thumbnail" src=""
-                                                                alt="thumbnail">
+                                                            <img class="img-fluid" id="thumbnail{{$loop->iteration}}" src="" alt="thumbnail">
                                                         </div>
                                                 </div>
                                                 <!-- Modal Footer -->
@@ -232,16 +240,16 @@
 
 @section('script')
     <script>
-        @for ( $i = 1; $i <= 5; $i++)
+        @for ($i = 1; $i <= 5; $i++)
             $(document).ready(function() {
-                $("#select2{{$i}}").select2({
-                    dropdownParent: $("#myModal{{$i}}"),
+                $("#select2{{ $i }}").select2({
+                    dropdownParent: $("#myModal{{ $i }}"),
                     width: '100%',
                 });
             });
 
             $(document).ready(function() {
-                $('#select2{{$i}}').on('change', function() {
+                $('#select2{{ $i }}').on('change', function() {
                     var articleId = $(this).val();
                     console.log(articleId);
                     $.ajax({
@@ -251,7 +259,7 @@
                             id: articleId
                         },
                         success: function(response) {
-                            $('#thumbnail').attr('src', response.thumbnail);
+                            $('#thumbnail{{ $i }}').attr('src', response.thumbnail);
                         },
                         error: function(xhr) {
                             // Handle error
