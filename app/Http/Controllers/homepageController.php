@@ -27,9 +27,8 @@ class homepageController extends Controller
             ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
             ->leftJoin('views', 'articles.id', '=', 'views.article_id')
             ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', DB::raw('COUNT(views.id) as view_count'))
-            ->groupBy('articles.id', 'top_news.id')
+            ->groupBy('top_news.id')
             ->first();
-
 
         $firstleftNews = DB::table('top_news')
             ->join('articles', 'top_news.id_articles', '=', 'articles.id')
@@ -48,7 +47,7 @@ class homepageController extends Controller
             ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
             ->leftJoin('views', 'articles.id', '=', 'views.article_id')
             ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', DB::raw('COUNT(views.id) as view_count'))
-            ->groupBy('articles.id', 'top_news.id')
+            ->groupBy('top_news.id')
             ->skip(2)
             ->take(1)
             ->first();
@@ -58,7 +57,7 @@ class homepageController extends Controller
             ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
             ->leftJoin('views', 'articles.id', '=', 'views.article_id')
             ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', DB::raw('COUNT(views.id) as view_count'))
-            ->groupBy('articles.id', 'top_news.id')
+            ->groupBy('top_news.id')
             ->skip(3)
             ->take(1)
             ->first();
@@ -68,7 +67,7 @@ class homepageController extends Controller
             ->join('divisions', 'articles.id_divisi', '=', 'divisions.id')
             ->leftJoin('views', 'articles.id', '=', 'views.article_id')
             ->select('top_news.*', 'articles.*', 'divisions.nama_divisi as division_name', DB::raw('COUNT(views.id) as view_count'))
-            ->groupBy('articles.id', 'top_news.id')
+            ->groupBy('top_news.id')
             ->skip(4)
             ->take(1)
             ->first();
@@ -83,7 +82,8 @@ class homepageController extends Controller
             ->take(3)
             ->get();
 
-        $broadcasts = broadcast::all();
+        $broadcasts = Broadcast::orderBy('created_at', 'desc')->get();
+
         $videos = Video::latest()->take(3)->get();
 
         $albums = album::all();

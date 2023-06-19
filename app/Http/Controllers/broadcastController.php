@@ -13,7 +13,7 @@ class broadcastController extends Controller
      */
     public function index()
     {
-        $broadcasts = broadcast::all();
+        $broadcasts = Broadcast::orderBy('created_at', 'desc')->get();
         return view('dashboard.insertbroadcast.index')->with(compact('broadcasts'));
     }
 

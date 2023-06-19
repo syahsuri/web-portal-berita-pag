@@ -38,7 +38,8 @@ class detailspageController extends Controller
 
 
 
-        $broadcasts = Broadcast::all();
+        $broadcasts = Broadcast::orderBy('created_at', 'desc')->get();
+
 
         // Additional logic...
 

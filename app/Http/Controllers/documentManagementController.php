@@ -21,7 +21,9 @@ class documentManagementController extends Controller
             ->orderBy('views', 'desc')
             ->take(5)
             ->get();
-        $broadcasts = broadcast::all();
+
+        $broadcasts = Broadcast::orderBy('created_at', 'desc')->get();
+
 
         return view('homepage.documentManagement.index')->with(compact('divisions','livebroadcast','broadcasts','mostViews'));
     }

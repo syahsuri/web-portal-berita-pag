@@ -29,8 +29,9 @@ class beritafungsiController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        $broadcasts = broadcast::all();
-        return view('homepage.beritafungsi.index')->with(compact('mostViews', 'livebroadcast', 'divisions', 'divisi', 'divisiArticles','broadcasts'));
+        $broadcasts = Broadcast::orderBy('created_at', 'desc')->get();
+
+        return view('homepage.beritafungsi.index')->with(compact('mostViews', 'livebroadcast', 'divisions', 'divisi', 'divisiArticles', 'broadcasts'));
     }
 
     /**
@@ -80,5 +81,4 @@ class beritafungsiController extends Controller
     {
         //
     }
-
 }

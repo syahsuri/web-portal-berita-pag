@@ -148,7 +148,7 @@ class insertberitaController extends Controller
         // dd($article);
         headnewspage::where('id', $headnewspage->id)->update($article);
 
-        return redirect()->route('insertberita')->with('success', "Berita berhasil dihapus!");
+        return redirect()->route('insertberita')->with('success', "Berita berhasil Diganti !");
 
     }
 }

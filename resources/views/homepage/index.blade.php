@@ -87,7 +87,7 @@
 
                 <div class="col-sm-6 col-padding">
                     <div class="post-wrapper post-grid-3 wow fadeIn" data-wow-duration="2s">
-                        @if ($firstleftNews !== null)
+                        @if ($midNews !== null)
                             <div class="post-thumb img-zoom-in">
                                 <a href="#">
                                     <img class="entry-thumb-middle" src="{{ asset('thumbnails/' . $midNews->thumbnail) }}"
