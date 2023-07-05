@@ -3,6 +3,7 @@
 use App\Http\Controllers\albumController;
 use App\Http\Controllers\beritafungsiController;
 use App\Http\Controllers\broadcastController;
+use App\Http\Controllers\carouselPageController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\detailspageController;
 use App\Http\Controllers\documentManagementController;
@@ -30,6 +31,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect()->route('homepage');
 });
+
+Route::get('/carousel-page', [carouselPageController::class, 'index'])->name('carouselpage');
 
 Route::prefix('/homepage')->group(function () {
     Route::get('/', [homepageController::class, 'index'])->name('homepage');
