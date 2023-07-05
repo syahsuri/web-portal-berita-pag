@@ -12,4 +12,11 @@ class division extends Model
     protected $fillable = [
         'nama_divisi'
     ];
+
+    // Division.php (Division model)
+
+    public function articles()
+    {
+        return $this->hasMany(article::class, 'id_divisi');
+    }
 }

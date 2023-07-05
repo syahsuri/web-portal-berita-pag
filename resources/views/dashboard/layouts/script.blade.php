@@ -8,6 +8,9 @@
 <script src="{{ asset('app-assets/vendors/js/charts/raphael-min.js') }}"></script>
 <script src="{{ asset('app-assets/vendors/js/charts/morris.min.js') }}"></script>
 <script src="{{ asset('app-assets/vendors/js/timeline/horizontal-timeline.js') }}"></script>
+<script src="{{ asset('app-assets/vendors/js/charts/jvector/jquery-jvectormap-2.0.3.min.js')}}"></script>
+<script src="{{ asset('app-assets/vendors/js/charts/jvector/jquery-jvectormap-world-mill.js')}}"></script>
+<script src="{{ asset('app-assets/data/jvector/visitor-data.js')}}"></script>
 <!-- END: Page Vendor JS-->
 
 <!-- BEGIN: Theme JS-->
@@ -17,12 +20,13 @@
 
 <!-- BEGIN: Page JS-->
 <script src="{{ asset('app-assets/js/scripts/pages/dashboard-ecommerce.js') }}"></script>
-<script src="{{ asset('app-assets/js/scripts/charts/chartjs/line/line.js')}}"></script>
-<script src="{{ asset('app-assets/js/scripts/charts/chartjs/line/line-area.js')}}"></script>
-<script src="{{ asset('app-assets/js/scripts/charts/chartjs/line/line-logarithmic.js')}}"></script>
-<script src="{{ asset('app-assets/js/scripts/charts/chartjs/line/line-multi-axis.js')}}"></script>
-<script src="{{ asset('app-assets/js/scripts/charts/chartjs/line/line-skip-points.js')}}"></script>
-<script src="{{ asset('app-assets/js/scripts/charts/chartjs/line/line-stacked-area.js')}}"></script>
+<script src="{{ asset('app-assets/js/scripts/charts/chartjs/line/line.js') }}"></script>
+<script src="{{ asset('app-assets/js/scripts/charts/chartjs/line/line-area.js') }}"></script>
+<script src="{{ asset('app-assets/js/scripts/charts/chartjs/line/line-logarithmic.js') }}"></script>
+<script src="{{ asset('app-assets/js/scripts/charts/chartjs/line/line-multi-axis.js') }}"></script>
+<script src="{{ asset('app-assets/js/scripts/charts/chartjs/line/line-skip-points.js') }}"></script>
+<script src="{{ asset('app-assets/js/scripts/charts/chartjs/line/line-stacked-area.js') }}"></script>
+<script src="{{ asset('app-assets/js/scripts/pages/dashboard-sales.js') }}"></script>
 <!-- END: Page JS-->
 
 {{-- Datatables Script --}}
@@ -36,13 +40,10 @@
 {{-- Chart JS --}}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
- <!-- include libraries(jQuery, bootstrap) -->
- <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- include libraries(jQuery, bootstrap) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
- <!-- include summernote css/js -->
- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<!-- include summernote css/js -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-
-
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>

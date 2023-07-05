@@ -45,8 +45,8 @@
                 <div class="card-content collapse show">
                     <div class="card-body">
 
-                        <form class="form" action="{{ route('editvideos.update', ['id' => $video->id]) }}"
-                            method="POST" enctype="multipart/form-data">
+                        <form class="form" action="{{ route('editvideos.update', ['id' => $video->id]) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="form-body">
                                 <div class="form-group">
@@ -84,20 +84,31 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="thumbnail">Thumbnail</label>
-                                    <input type="file" class="form-control-file" id="video" name="video">
-                                    @if ($video->video)
-                                        <p>Previous video:</p>
-                                        <video src="{{ asset('video/' . $video->video) }}" alt="video"
-                                            style="max-width: 200px; max-height: 200px;">
-                                    @endif
+                                    <label for="video">Video</label>
+                                    <input type="file" class="form-control-file" id="video" name="video"
+                                        onchange="previewVideo(event)">
+                                    <div class="mb-2 mt-2" id="video-preview">
+                                        @if ($video->video)
+                                            <video controls style="max-width: 300px; max-height: 300px;">
+                                                <source src="{{ asset('videos/' . $video->video) }}" type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        @endif
+                                    </div>
                                 </div>
 
 
                                 <div class="form-group">
-                                    <label for="eventRegInput3">Deskripsi</label>
-                                    <textarea id="summernote" name="article" value="">{{ $video->deskripsi }}</textarea>
+                                    <label for="eventRegInput2">Deskripsi</label>
+                                    <input type="text" id="deskripsi"
+                                        class="form-control @error('author') is-invalid @enderror" name="deskripsi"
+                                        id="author" value="{{ $video->deskripsi }}">
+                                    @error('author')
+                                        <div class="invalid-feedback">
+                                        </div>
+                                    @enderror
                                 </div>
+
                             </div>
                             <div class="form-actions center">
                                 <button type="button" class="btn btn-warning mr-1">
@@ -117,7 +128,6 @@
 
 @section('script')
     <script>
-
         //Automatic Slug Typewritter
         const judulInput = document.getElementById('judul');
         const slugInput = document.getElementById('slug');
@@ -130,13 +140,18 @@
         });
     </script>
     <script>
-        $(document).ready(function() {
-            $('#summernote').summernote({
-                placeholder: 'Write Articles Here',
-                tabsize: 2,
-                height: 350
-            });
-        });
+        function previewVideo(event) {
+            var file = event.target.files[0];
+            var videoElement = document.createElement("video");
+            videoElement.controls = true;
+            videoElement.src = URL.createObjectURL(file);
+            videoElement.style.maxWidth = "300px";
+            videoElement.style.maxHeight = "300px";
+
+            var previewContainer = document.getElementById("video-preview");
+            previewContainer.innerHTML = ""; // Clear any previous preview
+            previewContainer.appendChild(videoElement);
+        }
     </script>
 @endsection
 @endsection

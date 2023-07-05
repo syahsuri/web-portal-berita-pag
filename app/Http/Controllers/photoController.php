@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\album;
+use App\Models\article;
+use App\Models\division;
+use App\Models\liveBroadcast;
+use App\Models\photo;
 use Illuminate\Http\Request;
 
 class photoController extends Controller
@@ -11,7 +16,12 @@ class photoController extends Controller
      */
     public function index()
     {
-        return view('homepage.foto.index');
+        $livebroadcast = liveBroadcast::where('is_live', 1)->get();
+        $divisions = division::all();
+        $images = Article::orderBy('created_at', 'desc')->get();
+        $albums = album::all();
+
+        return view('homepage.albumfoto.index')->with(compact('divisions','images','livebroadcast','albums'));
     }
 
     /**
@@ -60,5 +70,14 @@ class photoController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function showphotobyindex(Request $request, $id)
+    {
+        $divisions = division::all();
+        $livebroadcast = liveBroadcast::where('is_live', 1)->get();
+        $albums = album::findOrFail($id);
+        $photos = photo::where('album_id', $id)->get();
+
+        return view('homepage.photopage.index', compact('photos', 'albums','divisions','livebroadcast'));
     }
 }

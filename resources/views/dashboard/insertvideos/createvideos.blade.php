@@ -136,6 +136,12 @@
     <script>
         function previewVideo(event) {
             var file = event.target.files[0];
+            var maxSize = 50 * 1024 * 1024; // 50 MB in bytes
+            if (file.size > maxSize) {
+                alert("The video size should not exceed 50 MB.");
+                return;
+            }
+
             var videoElement = document.createElement("video");
             videoElement.controls = true;
             videoElement.src = URL.createObjectURL(file);

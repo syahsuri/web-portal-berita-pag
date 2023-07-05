@@ -31,6 +31,7 @@ class article extends Model
 
     public function view()
     {
-        return $this->hasOne(view::class, 'article_id');
+        return $this->hasOne(View::class, 'article_id');
     }
+
 }

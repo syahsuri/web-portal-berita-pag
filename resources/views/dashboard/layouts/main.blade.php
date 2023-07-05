@@ -11,9 +11,9 @@
     <meta name="keywords"
         content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
     <meta name="author" content="PIXINVENT">
-    <title>dashboard</title>
+    <title>Dasboard - Portal Berita Internal</title>
     <link rel="apple-touch-icon" href="{{ asset('app-assets/images/ico/apple-icon-120.png') }}">
-    <link rel="shortcut icon" type="image" href="{{ asset('img/Pertamina.png') }}">
+    <link rel="shortcut icon" type="image" href="{{ asset('images/fev-icon.png') }}">
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700"
         rel="stylesheet">
@@ -47,6 +47,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/core/colors/palette-gradient.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/timeline.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/dashboard-ecommerce.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/charts/jquery-jvectormap-2.0.3.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/charts/morris.css')}}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -67,6 +69,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
+    <script src="https://kit.fontawesome.com/0735ededae.js" crossorigin="anonymous"></script>
 
 </head>
 <!-- END: Head-->

@@ -122,17 +122,98 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <a href="" class="btn btn-sm btn-warning me-2">
+                                                        <button class="btn btn-sm btn-warning me-2" data-bs-toggle="modal"
+                                                            data-bs-target="#modalEdit{{ $loop->iteration }}">
                                                             <i class="fa-regular fa-pen-to-square"></i>
-                                                        </a>
+                                                        </button>
                                                         <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                                            data-bs-target="#modalHapus">
+                                                            data-bs-target="#modalHapus{{ $loop->iteration }}">
                                                             <i class="fa-regular fa-trash-can fa-lg"></i>
                                                         </button>
                                                     </div>
                                                 </td>
                                             </tr>
                                         </tbody>
+
+                                        {{-- Modal Hapus  --}}
+                                        <div class="modal fade" id="modalHapus{{ $loop->iteration }}" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Hapus Berita
+                                                        </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <form
+                                                        action="{{ route('insertbroadcast.destroy', ['id' => $broadcast->id]) }}"
+                                                        method="post">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <input type="hidden" name="id"
+                                                            value="{{ $broadcast->id }}">
+                                                        <div class="modal-body">
+                                                            <p class="fs-6">Apakah anda yakin akan menghapus
+                                                                <b>{{ $broadcast->deskripsi }}</b>
+                                                                <b></b>?
+                                                            </p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Batal</button>
+                                                            <button type="submit"
+                                                                class="btn btn-outline-danger">Hapus</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- /Modal Hapus  --}}
+
+                                        {{-- Modal edit  --}}
+                                        <div class="modal fade" id="modalEdit{{ $loop->iteration }}" tabindex="-1"
+                                            aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form
+                                                        action="{{ route('editbroadcast.update', ['id' => $broadcast->id]) }}"
+                                                        method="POST" enctype="multipart/form-data">
+                                                        @csrf
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Edit Broadcast</h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="mb-3">
+                                                                <label for="image" class="form-label">Image</label>
+                                                                <input type="file" class="form-control" id="image"
+                                                                    name="image" onchange="previewImage(event)">
+                                                            </div>
+                                                            <div id="imagePreviewContainer" class="mb-3">
+                                                                <img id="imagePreview"
+                                                                    src="{{ asset('broadcast/' . $broadcast->image) }}"
+                                                                    alt="Current Image"
+                                                                    style="max-width: 200px; max-height: 200px;">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="deskripsi"
+                                                                    class="form-label">Deskripsi</label>
+                                                                <textarea class="form-control" id="deskripsi" name="deskripsi">{{ $broadcast->deskripsi }}</textarea>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Save</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- /Modal edit  --}}
                                     @endforeach
                                 </table>
                                 {{-- End Table --}}

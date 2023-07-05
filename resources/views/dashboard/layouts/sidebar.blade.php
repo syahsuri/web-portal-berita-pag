@@ -19,32 +19,51 @@
             <li class=" nav-item">
                 <a class="nav-link has-arrow {{ Request::is('dashboard/insertberita') ? 'active' : '' }}"
                     href="{{ route('insertberita') }}">
-                    <i class="fa-solid fa-square-plus"></i>
-                    </i>
+                    <i class="fa-solid fa-envelope"></i>
                     <span class="menu-title" data-i18n="Shop">
-                        Insert Berita
+                        Tambah Berita
                     </span>
                 </a>
             </li>
             <li class=" nav-item">
                 <a class="nav-link has-arrow {{ Request::is('dashboard/insertvideos') ? 'active' : '' }}"
                     href="{{ route('insertvideos') }}">
-                    <i class="fa-solid fa-square-plus"></i>
-                    </i>
+                    <i class="fa-regular fa-file-video"></i>
                     <span class="menu-title" data-i18n="Shop">
-                        Insert Video
+                        Tambah Video
                     </span>
                 </a>
             </li>
             <li class=" nav-item">
                 <a class="nav-link has-arrow {{ Request::is('dashboard/insertbroadcast') ? 'active' : '' }}"
                     href="{{ route('insertbroadcast') }}">
-                    <i class="fa-solid fa-square-plus"></i>
+                    <i class="fa-solid fa-blog"></i>
                     </i>
                     <span class="menu-title" data-i18n="Shop">
-                        Insert Broadcast
+                        Tambah Broadcast
                     </span>
                 </a>
+            </li>
+            <li class=" nav-item">
+                <a class="nav-link has-arrow {{ Request::is('dashboard/insertlivebroadcast') ? 'active' : '' }}"
+                    href="{{ route('insertlivebroadcast') }}">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    </i>
+                    <span class="menu-title" data-i18n="Shop">
+                        Tambah Live Broadcast
+                    </span>
+                </a>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="la la-image"></i><span class="menu-title"
+                        data-i18n="Gallery">Gallery</span></a>
+                <ul class="menu-content">
+                    <li><a class="nav-link has-arrow {{ Request::is('dashboard/insertalbum') ? 'active' : '' }}" href="{{ route('addalbum') }}"><span
+                                data-i18n="Gallery Grid with Desc">Add Album</span></a>
+                    </li>
+                    <li><a class="nav-link has-arrow {{ Request::is('dashboard/insertphoto') ? 'active' : '' }}" href="{{ route('insertphoto') }}"><span
+                                data-i18n="Gallery Grid with Desc">Tambah Foto</span></a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>

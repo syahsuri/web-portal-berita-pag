@@ -10,6 +10,10 @@ class video extends Model
     use HasFactory;
 
     protected $table = 'video';
+<<<<<<< HEAD
+=======
+
+>>>>>>> dev-tiara
 
     protected $fillable = [
         'judul',
@@ -19,6 +23,7 @@ class video extends Model
         'video',
         'deskripsi',
     ];
+
     public function division()
     {
         return $this->belongsTo(division::class, 'id_divisi', 'id');
