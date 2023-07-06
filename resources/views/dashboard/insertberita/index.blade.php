@@ -205,10 +205,12 @@
                                                             <select class="js-example-basic-single"
                                                                 id="select2{{ $loop->iteration }}" name="id_articles">
                                                                 @foreach ($articles as $artikel)
-                                                                    <option value="{{ $artikel->id }}"
-                                                                        {{ old('artikel->id', $topberita->articles->id) == $artikel->id ? 'selected' : '' }}>
-                                                                        {{ $artikel->judul }}</option>
-                                                                @endforeach
+                                                                <option value="{{ $artikel->id }}"
+                                                                    {{ old('artikel->id', optional(optional($topberita)->articles)->id) == $artikel->id ? 'selected' : '' }}>
+                                                                    {{ $artikel->judul }}
+                                                                </option>
+                                                            @endforeach
+
                                                             </select>
                                                         </div>
                                                         <div class="form-group">

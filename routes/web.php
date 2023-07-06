@@ -14,6 +14,7 @@ use App\Http\Controllers\insertPhotoController;
 use App\Http\Controllers\insertvideosController;
 use App\Http\Controllers\internalbroadcastController;
 use App\Http\Controllers\livebroadcastController;
+use App\Http\Controllers\loginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -85,5 +86,7 @@ Route::prefix('/dashboard')->group(function () {
 
 
 });
+
+Route::get('/login', [loginController::class,'index'])->name('login');
 
 Route::get('/get-thumbnail', [insertberitaController::class, 'getThumbnail']);
