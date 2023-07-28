@@ -14,7 +14,7 @@
     <title>Login Inventory Perta Gas Arun
     </title>
     <link rel="apple-touch-icon" href="{{ asset('app-assets/images/ico/apple-icon-120.png')}}">
-    <link rel="shortcut icon" type="image" href="{{ asset('img/Pertamina.png')}}">
+    <link rel="shortcut icon" type="image" href="{{ asset('images/logo.png')}}">
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700"
         rel="stylesheet">
@@ -55,7 +55,7 @@
     <!-- END: Content-->
 
     {{-- Scritp  --}}
-    @include('auth.layouts.script')
+    @include('login.layouts.script')
     {{-- /Scritp  --}}
 
 </body>
